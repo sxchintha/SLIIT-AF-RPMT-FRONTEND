@@ -53,7 +53,7 @@ export default function SunEditor() {
                         setTextMarking(e)
                     }}
                     placeholder="Please type here..."
-                    autoFocus={true}
+                    autoFocus={false}
                     setOptions={{
 
                         charCounter: true,
