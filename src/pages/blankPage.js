@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer'
-import MarkingEditor from '../components/marking_scheme/createMarking'
 
-function CreateMarking() {
+function Blank() {
     return (
         <div>
             <div className="container-fluid overflow-hidden">
@@ -14,12 +14,11 @@ function CreateMarking() {
                     <div className="col d-flex flex-column h-sm-100">
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
-                                <MarkingEditor />
+                                {/* Body */}
+
                             </div>
-                        </main>
-                        <footer className="row bg-light py-4 mt-auto">
                             <Footer />
-                        </footer>
+                        </main>
                     </div>
                 </div>
             </div>
@@ -27,4 +26,4 @@ function CreateMarking() {
     )
 }
 
-export default CreateMarking;
+export default Blank;

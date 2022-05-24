@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom"
+
 import SunEditor from 'suneditor-react'
 import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 
-import { createNew } from './markingFunctions'
+import * as api from '../../index.api'
 
 export default function SunEditor() {
 
+    const navigate = useNavigate()
     const [markingName, setMarkingName] = useState('')
     const [textMarking, setTextMarking] = useState('')
 
@@ -22,12 +25,11 @@ export default function SunEditor() {
             marking: textMarking
         }
 
-        console.log(newMarking)
-
-        createNew(newMarking)
+        api.createNewMarking(newMarking)
             .then(res => {
                 if (!res.error) {
                     window.alert(res.status)
+                    navigate('/marking-schemes')
                 }
                 else {
                     window.alert(res.error)
@@ -40,10 +42,10 @@ export default function SunEditor() {
         <div>
             <h1>Editor</h1>
             <form onSubmit={onSubmit} method="POST">
-                <input name='markingName' type="text" 
-                onChange={(e) => {
-                    setMarkingName(e.target.value)
-                }} />
+                <input name='markingName' type="text"
+                    onChange={(e) => {
+                        setMarkingName(e.target.value)
+                    }} />
                 <SunEditor
                     // onSave={onSave}
                     width='90%'
