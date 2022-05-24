@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client'
 import App from './src/components/main';
 import Header from './src/components/Header';
 import CreateMarking from './src/pages/createMarking'
+import HomePage from './src/pages/homePage';
 
 
 createRoot(document.getElementById('app')).render(
@@ -17,6 +18,10 @@ createRoot(document.getElementById('app')).render(
                 <Route exact path='/' element={< App />} />
                 <Route path='/marking-schemes' element={< App />} >
                     <Route path='create' element={<CreateMarking />} />
+
+                </Route>
+                <Route path='/home' element={<HomePage/>}>
+
                 </Route>
             </Routes>
 
