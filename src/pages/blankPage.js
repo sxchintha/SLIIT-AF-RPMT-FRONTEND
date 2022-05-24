@@ -17,8 +17,13 @@ function Blank() {
                                 {/* Body */}
 
                             </div>
-                            <Footer />
                         </main>
+
+                        <footer class="row bg-light py-4 mt-auto">
+                            <div class="col">
+                                <Footer />
+                            </div>
+                        </footer>
                     </div>
                 </div>
             </div>
