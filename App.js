@@ -10,6 +10,10 @@ import './src/style/Primary.scss'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createRoot } from 'react-dom/client'
+
+import HomePage from './src/pages/homePage';
+import StaffRegister from './src/components/staff/StaffRegister'
+
 import App from './src/components/main';
 import Header from './src/components/Header';
 import CreateMarking from './src/pages/MarkingSchemes/createMarking'
@@ -25,6 +29,12 @@ createRoot(document.getElementById('app')).render(
             {/* <Header /> */}
             <Routes>
                 <Route exact path='/' element={< App />} />
+                <Route path='/home' element={<HomePage />} />
+
+
+                <Route path='/register' element={<StaffRegister />} />
+
+
                 <Route path='/usermanagement' element={< UserManagement />} />
                 <Route path='/admins' element={< AdminsManagement />} />
                 <Route path='/admins/new' element={< NewAdmin />} />
