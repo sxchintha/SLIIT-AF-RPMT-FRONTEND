@@ -55,7 +55,6 @@ function AdminsManagement() {
 
                                 <hr />
 
-
                                 <MDBDataTableV5
                                     hover
                                     entriesOptions={[5, 10, 20, 25]}
@@ -65,11 +64,9 @@ function AdminsManagement() {
                                     searchTop
                                     searchBottom={false} />
 
-
-
                             </div>
-                            <Footer />
                         </main>
+                        <Footer />
                     </div>
                 </div>
             </div>

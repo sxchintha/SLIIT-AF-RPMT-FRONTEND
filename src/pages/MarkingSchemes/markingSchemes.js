@@ -43,7 +43,7 @@ function MarkingSchemes() {
 
                                         {
                                             markings.map((marking) => (
-                                                <div  className="col-sm-4"  key={marking._id}>
+                                                <div className="col-sm-4" key={marking._id}>
                                                     <SunEditor
                                                         disable={true}
                                                         disableToolbar={true}
@@ -62,11 +62,8 @@ function MarkingSchemes() {
 
 
                             </div>
-                            <Footer />
                         </main>
-                        {/* <footer className="row bg-light py-4 mt-auto">
-
-                        </footer> */}
+                        <Footer />
                     </div>
                 </div>
             </div>

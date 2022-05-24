@@ -18,10 +18,7 @@ function CreateMarking() {
 
                             </div>
                         </main>
-                        <footer className="row bg-light py-4 mt-auto">
-                            <Footer />
-
-                        </footer>
+                        <Footer />
                     </div>
                 </div>
             </div>
