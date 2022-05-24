@@ -7,7 +7,7 @@ import * as api from '../../index.api'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 
-function AdminsManagement() {
+function StaffManagement() {
 
     const tableColumns = [
         {
@@ -19,28 +19,20 @@ function AdminsManagement() {
             field: 'lastname',
         },
         {
-            label: 'Name with initials',
-            field: 'nameWithInitials',
-        },
-        {
-            label: 'Address',
-            field: 'address',
-        },
-        {
-            label: 'NIC',
-            field: 'nic',
+            label: 'Username',
+            field: 'username',
         },
         {
             label: 'Email',
             field: 'email',
         },
         {
-            label: 'Mobile',
-            field: 'mobile',
+            label: 'Telephone',
+            field: 'telephone',
         },
         {
-            label: 'Landline',
-            field: 'landline',
+            label: 'Research Area',
+            field: 'researcharea',
         }
     ]
     const [datatable, setDatatable] = useState({
@@ -49,7 +41,7 @@ function AdminsManagement() {
     });
 
     useEffect(() => {
-        api.getAllAdmins()
+        api.getAllStaff()
             .then((res) => {
                 setDatatable({
                     columns: tableColumns,
@@ -68,10 +60,7 @@ function AdminsManagement() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>Admins</h1>
-                                <Link to='/admins/new' className="btn btn-outline-sliit-primary">
-                                    <i className="bi bi-plus-circle"></i> Add new Admin
-                                </Link>
+                                <h1>Staff</h1>
 
                                 <hr />
 
@@ -94,4 +83,4 @@ function AdminsManagement() {
     )
 }
 
-export default AdminsManagement;
+export default StaffManagement;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
@@ -8,6 +8,7 @@ import { addNewAdmin } from '../../index.api'
 
 function NewAdmin() {
 
+    const navigate = useNavigate()
     const [error, setError] = useState("");
     const [formdata, setFormdata] = useState({
         firstname: '',
@@ -37,7 +38,8 @@ function NewAdmin() {
 
         addNewAdmin(formdata)
             .then(res => {
-                console.log(res.message)
+                console.log(res.status)
+                navigate("/admins")
             })
             .catch(err => {
                 setError(err.response.data.error)

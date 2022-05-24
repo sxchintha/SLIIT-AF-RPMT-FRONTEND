@@ -9,3 +9,7 @@ export const createNewMarking = (data) => API.post('/marking-schemes/create', da
 
 export const getAllAdmins = () => API.get('/admins')
 export const addNewAdmin = (data) => API.post('/admins/add', data)
+
+export const getAllStaff = () => API.get('/staff')
+
+export const getAllStudents = () => API.get('/student')

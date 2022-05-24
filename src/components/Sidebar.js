@@ -42,8 +42,8 @@ function Sidebar() {
                             <i className="bi bi-people-fill"></i><span className="ms-1 d-none d-sm-inline"> User Management</span>
                         </a>
                         <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownuserm">
-                            <li><a className="dropdown-item" href="/staff"> Staff</a></li>
-                            <li><a className="dropdown-item" href="/students"> Students</a></li>
+                            <li><Link to='/staff' className="dropdown-item">Staff</Link></li>
+                            <li><Link to='/students' className="dropdown-item">Students</Link></li>
                             <li>
                                 <hr className="dropdown-divider" />
                             </li>
