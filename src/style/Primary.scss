@@ -1,0 +1,29 @@
+html,
+body {
+    min-height: 100%;
+}
+
+.bg-sliit-primary {
+    background-color: #00007a;
+}
+
+.bg-sliit-secondary {
+    background-color: #f6730c;
+}
+
+.btn-outline-sliit-primary {
+    background-color: inherit;
+    border-color: #00007a;
+    color: #00007a;
+
+    &:hover {
+        background-color: #00007a;
+        color: white;
+    }
+}
+
+.btn-outline-sliit-secondary {
+    background-color: inherit;
+    border-color: #f6730c;
+    color: #f6730c;
+}
