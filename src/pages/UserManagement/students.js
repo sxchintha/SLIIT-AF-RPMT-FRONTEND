@@ -7,41 +7,21 @@ import * as api from '../../index.api'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 
-function AdminsManagement() {
+function StudentManagement() {
 
     const tableColumns = [
         {
-            label: 'First name',
-            field: 'firstname',
+            label: 'Name',
+            field: 'name',
         },
         {
-            label: 'Last name',
-            field: 'lastname',
-        },
-        {
-            label: 'Name with initials',
-            field: 'nameWithInitials',
-        },
-        {
-            label: 'Address',
-            field: 'address',
-        },
-        {
-            label: 'NIC',
-            field: 'nic',
+            label: 'Registration Number',
+            field: 'itNumber',
         },
         {
             label: 'Email',
             field: 'email',
         },
-        {
-            label: 'Mobile',
-            field: 'mobile',
-        },
-        {
-            label: 'Landline',
-            field: 'landline',
-        }
     ]
     const [datatable, setDatatable] = useState({
         columns: [],
@@ -49,7 +29,7 @@ function AdminsManagement() {
     });
 
     useEffect(() => {
-        api.getAllAdmins()
+        api.getAllStudents()
             .then((res) => {
                 setDatatable({
                     columns: tableColumns,
@@ -68,10 +48,7 @@ function AdminsManagement() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>Admins</h1>
-                                <Link to='/admins/new' className="btn btn-outline-sliit-primary">
-                                    <i className="bi bi-plus-circle"></i> Add new Admin
-                                </Link>
+                                <h1>Students</h1>
 
                                 <hr />
 
@@ -94,4 +71,4 @@ function AdminsManagement() {
     )
 }
 
-export default AdminsManagement;
+export default StudentManagement;
