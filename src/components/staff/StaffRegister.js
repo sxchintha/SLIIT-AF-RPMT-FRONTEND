@@ -17,7 +17,6 @@ export default function RegisterStaff() {
     // const [password, setPassword] = useState("");
     // const [confirmpassword, setConfirmPasswoprd] = useSate("");
 
-
     const [newStaffMember, setNewStaffMember] = useState({
         firstName:'',
         lastName:'',
@@ -28,6 +27,14 @@ export default function RegisterStaff() {
         password:'',
         cpassword:''
     })
+
+    // const allert = (
+    //     <div className="alert alert-danger d-flex align-items-center" role="alert">
+    //         <div>
+    //             {error}
+    //         </div>
+    //     </div>
+    // )
 
     const onChange = (e) => {
         setNewStaffMember({ ...newStaffMember, [e.target.name]: e.target.value })
@@ -54,7 +61,7 @@ export default function RegisterStaff() {
             console.log(newStaff);
             alert("successful");
         }).catch((e) =>{
-            alert(e);
+            setError(err.response.data.error)
         })
     } else {
         window.alert("Passwords do not match.")
@@ -82,29 +89,32 @@ export default function RegisterStaff() {
                                             <center><h3 className="mb-4 pb-2 pb-md-0 mb-md-5">Staff Registration Form</h3></center>
 
                                             <form onSubmit={sendData}>
+
                                             <div className="row">
                                                 <div className="col-md-6 mb-4">
 
-                                                <div className="form-outline">
-                                                    <label className="form-label" for="firstName">First Name</label>
+                                                <div className="form-floating">
                                                     <input type="text" 
                                                     id="firstName"
-                                                    name="firstName" 
-                                                    className="form-control form-control-lg" 
+                                                    name="firstName"
+                                                    placeholder="First name"
+                                                    className="form-control" 
                                                     onChange={onChange} />
+                                                    <label className="ms-2 text-secondary" for="firstName">First Name</label>
 
                                                 </div>
 
                                                 </div>
                                                 <div className="col-md-6 mb-4">
 
-                                                <div className="form-outline">
-                                                    <label className="form-label" for="lastName">Last Name</label>
+                                                <div className="form-floating">
                                                     <input type="text" 
                                                     id="lastName"
                                                     name="lastName" 
-                                                    className="form-control form-control-lg"
+                                                    placeholder="Last name"
+                                                    className="form-control"
                                                     onChange={onChange} />
+                                                    <label className="ms-2 text-secondary" for="lastName">Last Name</label>
                                                 </div>
 
                                                 </div>
@@ -113,25 +123,27 @@ export default function RegisterStaff() {
                                             <div className="row">
                                                 <div className="col-md-6 mb-4 d-flex align-items-center">
 
-                                                <div className="form-outline datepicker w-100">
-                                                    <label for="birthdayDate" className="form-label">Username</label>
+                                                <div className="form-floating datepicker w-100">
                                                     <input type="text" 
-                                                    className="form-control form-control-lg" 
+                                                    className="form-control" 
                                                     id="username"
                                                     name="username"
+                                                    placeholder="Username"
                                                     onChange={onChange} />
+                                                    <label for="username" className="ms-2 text-secondary">Username</label>
                                                 </div>
 
                                                 </div>
                                                 <div className="col-md-6 mb-4">
 
-                                                <div className="form-outline">
-                                                    <label className="form-label" for="telephone">Phone Number</label>
+                                                <div className="form-floating">
                                                     <input type="tel" 
                                                     id="telephone"
                                                     name="telephone" 
-                                                    className="form-control form-control-lg"
+                                                    placeholder="Telephone No"
+                                                    className="form-control"
                                                     onChange={onChange} />
+                                                    <label className="ms-2 text-secondary" for="telephone">Phone Number</label>
                                                 </div>
                                                 </div>
                                             </div>
@@ -139,25 +151,27 @@ export default function RegisterStaff() {
                                             <div className="row">
                                                 <div className="col-md-6 mb-4 pb-2">
 
-                                                <div className="form-outline">
-                                                    <label className="form-label" for="emailAddress">Email</label>
+                                                <div className="form-floating">
                                                     <input type="email" 
                                                     id="emailAddress"
-                                                    name="email" 
-                                                    className="form-control form-control-lg" 
+                                                    name="email"
+                                                    placeholder="Email" 
+                                                    className="form-control" 
                                                     onChange={onChange}/>
+                                                    <label className="ms-2 text-secondary" for="emailAddress">Email</label>
                                                 </div>
 
                                                 </div>
                                                 <div className="col-md-6 mb-4 pb-2">
 
-                                                <div className="form-outline">
-                                                    <label className="form-label" for="researchArea">Research Area</label>
+                                                <div className="form-floating">
                                                     <input type="text" 
                                                     id="researchArea"
-                                                    name="researchArea" 
-                                                    className="form-control form-control-lg" 
+                                                    name="researchArea"
+                                                    placeholder="Research Area" 
+                                                    className="form-control" 
                                                     onChange={onChange}/>
+                                                    <label className="ms-2 text-secondary" for="researchArea">Research Area</label>
                                                 </div>
 
                                                 </div>
@@ -166,25 +180,27 @@ export default function RegisterStaff() {
                                             <div className="row">
                                                 <div className="col-md-6 mb-4 pb-2">
 
-                                                <div className="form-outline">
-                                                    <label className="form-label" for="password">Password</label>
+                                                <div className="form-floating">
                                                     <input type="password" 
                                                     id="password"
                                                     name="password" 
-                                                    className="form-control form-control-lg"
+                                                    placeholder="Password"
+                                                    className="form-control"
                                                     onChange={onChange} />
+                                                    <label className="ms-2 text-secondary" for="password">Password</label>
                                                 </div>
 
                                                 </div>
                                                 <div className="col-md-6 mb-4 pb-2">
 
-                                                <div className="form-outline">
-                                                    <label className="form-label" for="confirm-password">Confirm Password</label>
+                                                <div className="form-floating">
                                                     <input type="password" 
                                                     id="confirm-password" 
                                                     name="cpassword"
-                                                    className="form-control form-control-lg"
+                                                    placeholder="Confirm Password"
+                                                    className="form-control"
                                                     onChange={onChange} />
+                                                    <label className="ms-2 text-secondary" for="confirm-password">Confirm Password</label>
                                                 </div>
 
                                                 </div>
