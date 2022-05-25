@@ -21,6 +21,7 @@ import MarkingSchemes from './src/pages/MarkingSchemes/markingSchemes'
 import UserManagement from './src/pages/userManagement'
 import AdminsManagement from './src/pages/UserManagement/admins'
 import NewAdmin from './src/pages/UserManagement/newAdmin'
+import AcceptTopics from './src/components/staff/AcceptTopics';
 
 
 createRoot(document.getElementById('app')).render(
@@ -33,6 +34,7 @@ createRoot(document.getElementById('app')).render(
 
 
                 <Route path='/register' element={<StaffRegister />} />
+                <Route path='/accepttopics' element={<AcceptTopics />} />
 
 
                 <Route path='/usermanagement' element={< UserManagement />} />
