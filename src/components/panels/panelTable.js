@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
 
 
 import { getAllPanels } from '../../index.api'
@@ -15,6 +14,9 @@ function PanelTable() {
             .then((res) => {
                 setDatatable(res.data)
                 // console.log(res.data[0].panelMembers);
+            })
+            .catch(err => {
+                console.log(err.message);
             })
     }, []);
 
@@ -33,7 +35,7 @@ function PanelTable() {
                         // console.log(row._id);
                         return (
                             // <tr key={row._id} id={row._id} onClick={(e) => { onClickRow(e) }}>
-                            <tr key={row._id} id={row._id} onClick={()=>{navigate(`/panels/${row._id}`)}}>
+                            <tr key={row._id} id={row._id} onClick={() => { navigate(`/panels/${row._id}`) }}>
                                 <td>{row.panelName}</td>
                                 <td>{row.panelMembers.length}</td>
                                 <td>{row.panelDesc}</td>
