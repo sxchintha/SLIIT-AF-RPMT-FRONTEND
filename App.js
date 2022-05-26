@@ -26,7 +26,7 @@ import AdminsManagement from './src/pages/UserManagement/admins'
 import NewAdmin from './src/pages/UserManagement/newAdmin'
 import AcceptTopics from './src/components/staff/AcceptTopics';
 
-import NewPanel from './src/pages/Panels/newPanel'
+// import NewPanel from './src/pages/Panels/newPanel'
 
 
 createRoot(document.getElementById('app')).render(
@@ -49,7 +49,7 @@ createRoot(document.getElementById('app')).render(
                 <Route path='/markingschemes' element={< MarkingSchemes />} />
                 <Route path='/markingschemes/create' element={<CreateMarking />} />
 
-                <Route path='/panels/new' element={<NewPanel />} />
+                {/* <Route path='/panels/new' element={<NewPanel />} /> */}
 
             </Routes>
 
