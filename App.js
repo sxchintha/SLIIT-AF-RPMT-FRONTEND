@@ -31,6 +31,7 @@ import NewPanel from './src/pages/Panels/newPanel'
 import PanelManagement from './src/pages/Panels/panels'
 import StudentDashboard from "./src/pages/studentDashboard";
 import GroupCard from "./src/components/GroupDetails/GroupDetails";
+import StudentRegsiter from "./src/pages/Student/studentRegister";
 
 
 createRoot(document.getElementById('app')).render(
@@ -56,7 +57,8 @@ createRoot(document.getElementById('app')).render(
                 <Route path='/panels' element={<PanelManagement />} />
                 <Route path='/panels/new' element={<NewPanel />} />
                 <Route path="/student/dashboard" element={<StudentDashboard />} />
-                <Route path="/student/group" element={<GroupCard />} />  
+                <Route path="/student/group" element={<GroupCard />} />
+                <Route path="/student/register" element={<StudentRegsiter />} />    
 
             </Routes>
 
