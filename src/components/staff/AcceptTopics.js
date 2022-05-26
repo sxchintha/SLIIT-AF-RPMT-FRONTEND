@@ -5,18 +5,17 @@ import Footer from "../Footer";
 import Sidebar from "../Sidebar";
 
 
-export default function AcceptTopics () {
+export default function AcceptTopics() {
 
     const [topics, setTopics] = useState([]);
 
-    useEffect(() =>{
-        const getTopics = () =>{
-            axios.get("http://localhost:8070/student/topics").then((res) =>{
-                //console.log(res.data)
+    useEffect(() => {
+        const getTopics = () => {
+            axios.get("http://localhost:8070/student/topics").then((res) => {
+                console.log(res)
                 setTopics(res.data)
-                console.log(setTopics)
 
-            }).catch((er) =>{
+            }).catch((er) => {
                 alert(er.message)
             })
         }
@@ -26,7 +25,7 @@ export default function AcceptTopics () {
 
 
 
-    return(
+    return (
         <div>
             <div className="container-fluid overflow-hidden">
                 <div className="row vh-100 overflow-auto">
@@ -38,45 +37,44 @@ export default function AcceptTopics () {
                                 {/* Body */}
                                 <h2>Accept Topics</h2>
 
-                                <table class="table table-striped">
+                                <table className="table table-striped">
                                     <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Research Topic</th>
-                                                <th>Group ID</th>
-                                                <th>Status</th>
-                                                <th>Response</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {/* {
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Research Topic</th>
+                                            <th>Group ID</th>
+                                            <th>Status</th>
+                                            <th>Response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
                                             topics.map((items, key) => (
                                                 <tr key={key}>
-                                                <td>{items.data.groupId}</td>
-                                                <td>{items.data.name}</td>
-                                                <td>{items.data.researchTopicStatus}</td>
-                                                <td>{items.data.topic}</td>
+                                                    <td>{items.groupId}</td>
+                                                    <td>{items.name}</td>
+                                                    <td>{items.researchTopicStatus}</td>
+                                                    <td>{items.topic}</td>
 
-                                                <td><button type="button" class="btn btn-danger">Reject</button></td>
-                                                <td><button type="button" class="btn btn-success">Success</button></td>
-                                            </tr>
-
+                                                    <td><button type="button" className="btn btn-danger">Reject</button></td>
+                                                    <td><button type="button" className="btn btn-success">Success</button></td>
+                                                </tr>
                                             ))
-                                        }    */}
+                                        }
 
-                                            <tr>
+                                        {/* <tr>
                                                 <td>Mark</td>
                                                 <td>Mark</td>
                                                 <td>Otto</td>
                                                 <td>@mdo</td>
                                                 <td>
-                                                <button type="button" class="btn btn-danger">Reject</button>
-                                                <button type="button" class="btn btn-success">Success</button>
+                                                <button type="button" className="btn btn-danger">Reject</button>
+                                                <button type="button" className="btn btn-success">Success</button>
                                                 </td>
-                                            </tr>
+                                            </tr> */}
 
-                                        </tbody>
-                                    </table>
+                                    </tbody>
+                                </table>
                             </div>
                             <footer className="row bg-light py-4 mt-auto">
                                 <Footer />
