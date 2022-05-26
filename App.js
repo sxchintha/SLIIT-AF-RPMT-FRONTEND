@@ -28,6 +28,7 @@ import NewAdmin from './src/pages/UserManagement/newAdmin'
 import AcceptTopics from './src/components/staff/AcceptTopics';
 
 import NewPanel from './src/pages/Panels/newPanel'
+import PanelManagement from './src/pages/Panels/panels'
 import StudentDashboard from "./src/pages/studentDashboard";
 import GroupCard from "./src/components/GroupDetails/GroupDetails";
 
@@ -52,6 +53,7 @@ createRoot(document.getElementById('app')).render(
                 <Route path='/markingschemes' element={< MarkingSchemes />} />
                 <Route path='/markingschemes/create' element={<CreateMarking />} />
 
+                <Route path='/panels' element={<PanelManagement />} />
                 <Route path='/panels/new' element={<NewPanel />} />
                 <Route path="/student/dashboard" element={<StudentDashboard />} />
                 <Route path="/student/group" element={<GroupCard />} />  
