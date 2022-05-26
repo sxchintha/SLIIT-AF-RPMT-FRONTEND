@@ -21,7 +21,7 @@ export default function GroupCard() {
 
   return (
     <>
-      {/* <div class="card text-white bg-primary mb-3">
+      <div class="card text-white bg-primary mb-3">
         <div class="card-header">Your Group Details</div>
         <div class="card-body">
           <h3 class="card-title">Leader - {GroupDetails.student.leaderName}</h3>
@@ -37,7 +37,7 @@ export default function GroupCard() {
             </li>
           </ul>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
