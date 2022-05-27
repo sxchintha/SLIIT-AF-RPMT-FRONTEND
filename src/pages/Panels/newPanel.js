@@ -93,7 +93,7 @@ function NewPanel() {
                         <main className="row overflow-auto h-100">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>New Panel</h1>
+                                <h2>New Panel</h2>
                                 <hr />
 
                                 <div className="d-flex justify-content-center m-5">
@@ -111,7 +111,7 @@ function NewPanel() {
                                         <div className="form-floating">
                                             <textarea className="form-control" placeholder="Leave a note here"
                                                 id="panelDesc" name="panelDesc" onChange={handlePanelDesc}></textarea>
-                                            <label htmlFor="floatingTextarea">Description / Notes</label>
+                                            <label htmlFor="floatingTextarea" className="text-secondary">Description / Notes</label>
                                         </div>
 
                                         <Select
