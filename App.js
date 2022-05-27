@@ -23,8 +23,8 @@ import Header from "./src/components/Header";
 import CreateMarking from "./src/pages/MarkingSchemes/createMarking";
 import MarkingSchemes from "./src/pages/MarkingSchemes/markingSchemes";
 
-import CreateSubmission from './src/pages/Submissions/newSubmission'
-import SubmissionManagement from './src/pages/Submissions/submissions'
+import CreateSubmission from "./src/pages/Submissions/newSubmission";
+import SubmissionManagement from "./src/pages/Submissions/submissions";
 
 import UserManagement from "./src/pages/userManagement";
 import AdminsManagement from "./src/pages/UserManagement/admins";
@@ -40,6 +40,7 @@ import StudentDashboard from "./src/pages/studentDashboard";
 import GroupCard from "./src/components/GroupDetails/GroupDetails";
 import StudentRegsiter from "./src/pages/Student/studentRegister";
 import GroupRegister from "./src/pages/Student/groupRegister";
+import MyGroup from "./src/pages/Student/groupDetails";
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -72,6 +73,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/student/group" element={<GroupCard />} />
         <Route path="/student/register" element={<StudentRegsiter />} />
         <Route path="/student/groupRegister" element={<GroupRegister />} />
+        <Route path="/student/groupDetails" element={<MyGroup />} />
       </Routes>
     </div>
   </BrowserRouter>

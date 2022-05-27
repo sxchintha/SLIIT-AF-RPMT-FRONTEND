@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-export default function GroupCard() {
+export default function GroupDetails() {
   const [StudentDetails, SetStudentDetails] = useState({
     hasGroup: "",
     groupId: "",
