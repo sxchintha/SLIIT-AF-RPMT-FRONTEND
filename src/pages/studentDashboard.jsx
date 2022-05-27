@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import GroupCard from "../components/GroupDetails/GroupDetails";
 import Sidebar from "../components/Sidebar";
+import SupervisorStatus from "../components/SupervisorRequestStatus/supervisorStatus";
 
 
 
@@ -39,7 +40,19 @@ import Sidebar from "../components/Sidebar";
   </div>
 </div> 
 
-<GroupCard/>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <GroupCard/>
+    </div>
+    <div class="col-sm">
+     <SupervisorStatus/>
+    </div>
+    <div class="col-sm">
+       <GroupCard/>
+    </div>
+  </div>
+</div>
 
 
                             </div>
