@@ -41,6 +41,7 @@ import GroupCard from "./src/components/GroupDetails/GroupDetails";
 import StudentRegsiter from "./src/pages/Student/studentRegister";
 import GroupRegister from "./src/pages/Student/groupRegister";
 import MyGroup from "./src/pages/Student/groupDetails";
+import SupervisorRequest from "./src/pages/Student/supervisorRequest";
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -74,6 +75,10 @@ createRoot(document.getElementById("app")).render(
         <Route path="/student/register" element={<StudentRegsiter />} />
         <Route path="/student/groupRegister" element={<GroupRegister />} />
         <Route path="/student/groupDetails" element={<MyGroup />} />
+        <Route
+          path="/student/supervisorRequest"
+          element={<SupervisorRequest />}
+        />
       </Routes>
     </div>
   </BrowserRouter>
