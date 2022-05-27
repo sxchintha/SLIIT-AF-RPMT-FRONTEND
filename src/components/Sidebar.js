@@ -37,6 +37,11 @@ function Sidebar() {
                             <i className="bi bi-person-video2"></i><span className="ms-1 d-none d-sm-inline"> Panels</span>
                         </Link>
                     </li>
+                    <li>
+                        <Link to='/submissions' className="nav-link px-sm-0 px-2">
+                            <i className="bi bi-upload"></i><span className="ms-1 d-none d-sm-inline"> Submissions</span>
+                        </Link>
+                    </li>
                     {/* <li>
                         <Link to='/usermanagement' className="nav-link px-sm-0 px-2">
                             <i className="bi bi-people-fill"></i><span className="ms-1 d-none d-sm-inline"> User Management</span>

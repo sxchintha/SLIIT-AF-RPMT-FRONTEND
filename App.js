@@ -19,11 +19,17 @@ import StaffManagement from "./src/pages/UserManagement/staff";
 
 import App from "./src/components/main";
 import Header from "./src/components/Header";
+
 import CreateMarking from "./src/pages/MarkingSchemes/createMarking";
 import MarkingSchemes from "./src/pages/MarkingSchemes/markingSchemes";
+
+import CreateSubmission from './src/pages/Submissions/newSubmission'
+import SubmissionManagement from './src/pages/Submissions/submissions'
+
 import UserManagement from "./src/pages/userManagement";
 import AdminsManagement from "./src/pages/UserManagement/admins";
 import NewAdmin from "./src/pages/UserManagement/newAdmin";
+
 import AcceptTopics from "./src/components/staff/AcceptTopics";
 
 import NewPanel from "./src/pages/Panels/newPanel";
@@ -49,14 +55,18 @@ createRoot(document.getElementById("app")).render(
         <Route path="/accepttopics" element={<AcceptTopics />} />
 
         <Route path="/usermanagement" element={<UserManagement />} />
-        <Route path="/admins" element={<AdminsManagement />} />
         <Route path="/admins/new" element={<NewAdmin />} />
-        <Route path="/markingschemes" element={<MarkingSchemes />} />
-        <Route path="/markingschemes/create" element={<CreateMarking />} />
+        <Route path="/admins" element={<AdminsManagement />} />
 
-        <Route path="/panels" element={<PanelManagement />} />
+        <Route path="/markingschemes/create" element={<CreateMarking />} />
+        <Route path="/markingschemes" element={<MarkingSchemes />} />
+
+        <Route path="/submissions/new" element={<CreateSubmission />} />
+        <Route path="/submissions" element={<SubmissionManagement />} />
+
         <Route path="/panels/:panelId" element={<PanelDetails />} />
         <Route path="/panels/new" element={<NewPanel />} />
+        <Route path="/panels" element={<PanelManagement />} />
 
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/group" element={<GroupCard />} />
