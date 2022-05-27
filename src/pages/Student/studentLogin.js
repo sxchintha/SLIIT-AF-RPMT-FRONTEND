@@ -1,51 +1,28 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Footer from "../../components/Footer";
-import Sidebar from "../../components/Sidebar";
 
-export default function StudentRegsiter() {
-  const [newStudent, setnewStudent] = useState({
-    name: "",
-    itNumber: "",
-    email: "",
-    password: "",
-    cpassword: "",
-  });
-
-  const onChange = (e) => {
-    setnewStudent({
-      ...newStudent,
-      [e.target.name]: e.target.value,
-    });
-    //console.log(newStaffMember);
-  };
-
+export default function StudentLogin() {
   function sendData(e) {
     e.preventDefault();
+    const newStudentGroup = {
+      leaderName: newGroup.leaderName,
 
-    if (newStudent.password === newStudent.cpassword) {
-      //console.log(newStaffMember)
+      firstMember: newGroup.firstMember,
+      secondMember: newGroup.secondMember,
+      thirdMember: newGroup.thirdMember,
+    };
 
-      const newStudentDetails = {
-        name: newStudent.name,
-
-        itNumber: newStudent.itNumber,
-        email: newStudent.email,
-        password: newStudent.password,
-      };
-
-      axios
-        .post("http://localhost:8070/student/add", newStudentDetails)
-        .then(() => {
-          console.log(newStudentDetails);
-          alert("successful");
-        })
-        .catch((e) => {
-          alert(e.response.data.error);
-        });
-    } else {
-      window.alert("Passwords do not match.");
-    }
+    axios
+      .post("http://localhost:8070/student/groupRegister", newStudentGroup)
+      .then(() => {
+        console.log(`Hello${newStudentGroup}`);
+        alert("successful");
+      })
+      .catch((e) => {
+        console.log(newStudentGroup);
+        console.log(e);
+        alert(e.response.data.status);
+      });
   }
   return (
     <>
@@ -85,24 +62,6 @@ export default function StudentRegsiter() {
                                       for="firstName"
                                     >
                                       Student Name
-                                    </label>
-                                  </div>
-                                </div>
-                                <div className="col-md-6 mb-4">
-                                  <div className="form-floating">
-                                    <input
-                                      type="text"
-                                      id="lastName"
-                                      name="itNumber"
-                                      placeholder="Last name"
-                                      className="form-control"
-                                      onChange={onChange}
-                                    />
-                                    <label
-                                      className="ms-2 text-secondary"
-                                      for="lastName"
-                                    >
-                                      IT Number
                                     </label>
                                   </div>
                                 </div>
