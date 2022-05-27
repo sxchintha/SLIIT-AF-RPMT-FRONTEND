@@ -53,11 +53,7 @@ export default function MyGroup() {
   }, [StudentDetails]);
 
   function onTapSupervisorRequest() {
-    if (GroupDetails.hasRequestedSupervisor) {
-      alert("Supevisor Already Requested");
-    } else {
-      navigate("/student/supervisorRequest");
-    }
+    navigate("/student/coSupervisorRequest");
   }
 
   console.log(GroupDetails.hasRequestedSupervisor);
@@ -78,37 +74,43 @@ export default function MyGroup() {
                         <div className="card shadow-2-strong card-registration">
                           <div className="card-body p-4 p-md-5 sxch-glass-back">
                             <div className="d-flex justify-content-around">
-                              {GroupDetails.hasRequestedSupervisor ? (
+                              {StudentDetails.hasGroup ? (
                                 <>
-                                  <button
-                                    type="button"
-                                    class="btn btn-success mb-5"
-                                    onClick={onTapSupervisorRequest}
-                                  >
-                                    Chat With Supervisor
-                                  </button>
-                                  {GroupDetails.hasRequestedCoSupervisor ? (
-                                    <></>
-                                  ) : (
+                                  {GroupDetails.hasRequestedSupervisor ? (
                                     <>
                                       <button
                                         type="button"
-                                        class="btn btn-secondary mb-5"
+                                        class="btn btn-success mb-5"
                                         onClick={onTapSupervisorRequest}
                                       >
-                                        Request Co Supervisor
+                                        Chat With Supervisor
                                       </button>
+                                      {GroupDetails.hasRequestedCoSupervisor ? (
+                                        <></>
+                                      ) : (
+                                        <>
+                                          <button
+                                            type="button"
+                                            class="btn btn-secondary mb-5"
+                                            onClick={onTapSupervisorRequest}
+                                          >
+                                            Request Co Supervisor
+                                          </button>
+                                        </>
+                                      )}
                                     </>
+                                  ) : (
+                                    <button
+                                      type="button"
+                                      class="btn btn-secondary mb-5"
+                                      onClick={onTapSupervisorRequest}
+                                    >
+                                      Request Supervisor
+                                    </button>
                                   )}
                                 </>
                               ) : (
-                                <button
-                                  type="button"
-                                  class="btn btn-secondary mb-5"
-                                  onClick={onTapSupervisorRequest}
-                                >
-                                  Request Supervisor
-                                </button>
+                                <h1>No Group</h1>
                               )}
                             </div>
 

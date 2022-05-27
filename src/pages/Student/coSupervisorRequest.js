@@ -5,7 +5,7 @@ import Select from "react-select";
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
 
-export default function SupervisorRequest() {
+export default function CoSupervisorRequest() {
   const [StudentDetails, SetStudentDetails] = useState({
     hasGroup: "",
     groupId: "",
