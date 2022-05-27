@@ -34,6 +34,7 @@ export default function MyGroup() {
     secondMember: "",
     thirdMember: "",
     hasRequestedSupervisor: "",
+    hasRequestedCoSupervisor: "",
   });
 
   useEffect(() => {
@@ -78,13 +79,28 @@ export default function MyGroup() {
                           <div className="card-body p-4 p-md-5 sxch-glass-back">
                             <div className="d-flex justify-content-around">
                               {GroupDetails.hasRequestedSupervisor ? (
-                                <button
-                                  type="button"
-                                  class="btn btn-danger mb-5"
-                                  onClick={onTapSupervisorRequest}
-                                >
-                                  Request Co-Supervisor
-                                </button>
+                                <>
+                                  <button
+                                    type="button"
+                                    class="btn btn-success mb-5"
+                                    onClick={onTapSupervisorRequest}
+                                  >
+                                    Chat With Supervisor
+                                  </button>
+                                  {GroupDetails.hasRequestedCoSupervisor ? (
+                                    <></>
+                                  ) : (
+                                    <>
+                                      <button
+                                        type="button"
+                                        class="btn btn-secondary mb-5"
+                                        onClick={onTapSupervisorRequest}
+                                      >
+                                        Request Co Supervisor
+                                      </button>
+                                    </>
+                                  )}
+                                </>
                               ) : (
                                 <button
                                   type="button"
@@ -94,14 +110,6 @@ export default function MyGroup() {
                                   Request Supervisor
                                 </button>
                               )}
-
-                              <button
-                                type="button"
-                                class="btn btn-success mb-5"
-                                onClick={onTapSupervisorRequest}
-                              >
-                                Chat With Supervisor
-                              </button>
                             </div>
 
                             <br></br>
