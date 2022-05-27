@@ -7,6 +7,10 @@ const API = axios.create({
 export const getAllMarkings = () => API.get('/marking-schemes')
 export const createNewMarking = (data) => API.post('/marking-schemes/create', data)
 
+export const creatSubmission = (data) => API.post('/submissions/create', data)
+export const getAllSubmissions = () => API.get('/submissions')
+export const getSubmission = (id) => API.get(`/submissions:${id}`)
+
 export const getAllPanels = () => API.get('/panels')
 export const getPanelDetails = (id) => API.get(`/panels/${id}`)
 export const createNewPanel = (data) => API.post('/panels/new', data)

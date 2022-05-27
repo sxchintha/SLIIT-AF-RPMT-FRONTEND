@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { MDBDataTableV5 } from 'mdbreact'
 
-import * as api from '../../index.api'
+import {getAllAdmins} from '../../index.api'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
@@ -51,9 +51,9 @@ function AdminsManagement() {
     });
 
     useEffect(() => {
-        api.getAllAdmins()
+        getAllAdmins()
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 res.data.forEach(row => {
                     row.clickEvent = () => {
                         navigate(`/admin/profile/${row._id}`)
