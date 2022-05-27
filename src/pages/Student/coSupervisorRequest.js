@@ -86,7 +86,7 @@ export default function SupervisorRequest() {
     };
 
     axios
-      .post("http://localhost:8070/student/requestSupervisor", newRequest)
+      .post("http://localhost:8070/student/requestCoSupervisor", newRequest)
       .then((e) => {
         console.log(newRequest);
         console.log(e);
@@ -114,7 +114,7 @@ export default function SupervisorRequest() {
                           <div className="card-body p-4 p-md-5">
                             <center>
                               <h3 className="mb-4 pb-2 pb-md-0 mb-md-5">
-                                Request Supervisor
+                                Request CoSupervisor
                               </h3>
                             </center>
 

@@ -27,12 +27,15 @@ export default function SupervisorStatus() {
 
   const [GroupDetails, SetGroupDetails] = useState({
     supervisorRequestStatus: "",
+    requestedDate: "",
   });
 
   useEffect(() => {
     const fetchUser = async () => {
       await axios
-        .get(`http://localhost:8070/student/getSupervisorStatus/group_69`)
+        .get(
+          `http://localhost:8070/student/getSupervisorStatus/${StudentDetails.groupId}`
+        )
         .then((res) => {
           SetGroupDetails(res.data);
 
@@ -45,8 +48,6 @@ export default function SupervisorStatus() {
     fetchUser();
   }, [StudentDetails]);
 
-  console.log(GroupDetails.supervisorRequestStatus);
-
   return (
     <>
       <div className="card bg-light mb-3 ">
@@ -56,19 +57,26 @@ export default function SupervisorStatus() {
             <>
               {GroupDetails.supervisorRequestStatus == "Pending" ? (
                 <>
-                  <i
-                    class="bi bi-question-circle-fill"
-                    style={{
-                      color: "yellow",
-                      fontSize: 67,
-                      alignItems: "center",
-                      textAlign: "center",
-                    }}
-                  ></i>
+                  <center>
+                    <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
+
+                    <i
+                      class="bi bi-question-circle-fill"
+                      style={{
+                        color: "yellow",
+                        fontSize: 70,
+                        alignItems: "center",
+                        textAlign: "center",
+                      }}
+                    ></i>
+                  </center>
                 </>
               ) : GroupDetails.supervisorRequestStatus == "Approved" ? (
                 <>
-                  <h2>Status - Approved</h2>
+                  <center>
+                    <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
+                  </center>
+
                   <div style={{ alignItems: "center", textAlign: "center" }}>
                     <i
                       class="bi bi-check-circle-fill"
@@ -83,7 +91,9 @@ export default function SupervisorStatus() {
                 </>
               ) : (
                 <>
-                  <h2>Status - Rejected</h2>
+                  <center>
+                    <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
+                  </center>
                   <div style={{ alignItems: "center", textAlign: "center" }}>
                     <i
                       class="bi bi-x-circle-fill"

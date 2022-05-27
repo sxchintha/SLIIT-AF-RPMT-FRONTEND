@@ -56,7 +56,7 @@ export default function MyGroup() {
     if (GroupDetails.hasRequestedSupervisor) {
       alert("Supevisor Already Requested");
     } else {
-      navigate("/panels");
+      navigate("/student/supervisorRequest");
     }
   }
 
