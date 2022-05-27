@@ -42,6 +42,9 @@ import GroupCard from "./src/components/GroupDetails/GroupDetails";
 import StudentRegsiter from "./src/pages/Student/studentRegister";
 import GroupRegister from "./src/pages/Student/groupRegister";
 import MyGroup from "./src/pages/Student/groupDetails";
+import SupervisorRequest from "./src/pages/Student/supervisorRequest";
+import CoSupervisorRequest from "./src/pages/Student/coSupervisorRequest";
+import CoSupervisorStatus from "./src/components/CoSupervisorStatus/coSupervisorStatus";
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -76,6 +79,18 @@ createRoot(document.getElementById("app")).render(
         <Route path="/student/register" element={<StudentRegsiter />} />
         <Route path="/student/groupRegister" element={<GroupRegister />} />
         <Route path="/student/groupDetails" element={<MyGroup />} />
+        <Route
+          path="/student/supervisorRequest"
+          element={<SupervisorRequest />}
+        />
+        <Route
+          path="/student/coSupervisorRequest"
+          element={<CoSupervisorRequest />}
+        />
+        <Route
+          path="/student/groupDetailsCo"
+          element={<CoSupervisorStatus />}
+        />
       </Routes>
     </div>
   </BrowserRouter>

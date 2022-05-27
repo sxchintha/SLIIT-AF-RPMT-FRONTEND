@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-export default function SupervisorStatus() {
+export default function CoSupervisorStatus() {
   const [StudentDetails, SetStudentDetails] = useState({
     hasGroup: "",
     groupId: "",
@@ -34,7 +34,7 @@ export default function SupervisorStatus() {
     const fetchUser = async () => {
       await axios
         .get(
-          `http://localhost:8070/student/getSupervisorStatus/${StudentDetails.groupId}`
+          `http://localhost:8070/student/getCoSupervisorStatus/${StudentDetails.groupId}`
         )
         .then((res) => {
           SetGroupDetails(res.data);
@@ -50,8 +50,8 @@ export default function SupervisorStatus() {
 
   return (
     <>
-      <div className="card bg-light mb-3 ">
-        <div className="card-header">Supervisor Request Status</div>
+      <div className="card text-white bg-secondary mb-3">
+        <div className="card-header">CoSupervisor Request Status</div>
         <div className="card-body">
           {StudentDetails.hasGroup ? (
             <>
