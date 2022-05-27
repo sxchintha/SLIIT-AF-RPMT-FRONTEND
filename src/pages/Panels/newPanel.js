@@ -94,6 +94,7 @@ function NewPanel() {
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
                                 <h1>New Panel</h1>
+                                <hr />
 
                                 <div className="d-flex justify-content-center m-5">
                                     <form className="row w-75 g-3 sxch-glass-back " onSubmit={onSubmit}>
