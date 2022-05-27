@@ -25,6 +25,7 @@ import MarkingSchemes from "./src/pages/MarkingSchemes/markingSchemes";
 
 import CreateSubmission from "./src/pages/Submissions/newSubmission";
 import SubmissionManagement from "./src/pages/Submissions/submissions";
+import UpdateSubmission from "./src/pages/Submissions/updateSubmission";
 
 import UserManagement from "./src/pages/userManagement";
 import AdminsManagement from "./src/pages/UserManagement/admins";
@@ -64,6 +65,7 @@ createRoot(document.getElementById("app")).render(
 
         <Route path="/submissions/new" element={<CreateSubmission />} />
         <Route path="/submissions" element={<SubmissionManagement />} />
+        <Route path="/submissions/:submissionId" element={<UpdateSubmission />} />
 
         <Route path="/panels/:panelId" element={<PanelDetails />} />
         <Route path="/panels/new" element={<NewPanel />} />
