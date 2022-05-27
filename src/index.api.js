@@ -9,7 +9,8 @@ export const createNewMarking = (data) => API.post('/marking-schemes/create', da
 
 export const creatSubmission = (data) => API.post('/submissions/create', data)
 export const getAllSubmissions = () => API.get('/submissions')
-export const getSubmission = (id) => API.get(`/submissions:${id}`)
+export const getSubmission = (id) => API.get(`/submissions/${id}`)
+export const updateSubmission = (id, data) => API.put(`/submissions/update/${id}`, data)
 
 export const getAllPanels = () => API.get('/panels')
 export const getPanelDetails = (id) => API.get(`/panels/${id}`)

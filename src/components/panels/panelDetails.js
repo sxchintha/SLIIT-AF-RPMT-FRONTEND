@@ -29,16 +29,9 @@ function PanelDetails() {
 
                 var memberDetails = []
                 const complete = panelData.panelMembers.map(async (member) => {
-                    // console.log(member)
-                    // console.log(Object.keys(getStaffMember(member)))
                     await getStaffMember(member)
                         .then(async memberData => {
                             memberDetails.push(memberData.data.staff)
-                            // setMemberDetails([...memberDetails, memberData])
-                            // console.log("athule");
-                        })
-                        .then(() => {
-                            // console.log("hi");
                         })
 
 
@@ -46,15 +39,10 @@ function PanelDetails() {
 
                 // Wait for all requests, and then setState
                 Promise.all(complete).then(() => {
-                    // console.log(memberDetails.length);
-                    // console.log(memberDetails);
                     setMemberDetails(memberDetails)
-                    // console.log("bye");
                     setIsLoaded(true)
                 })
 
-                // console.log("Data fetchin over.......");
-                // PanelMemberDetails()
             })
             .catch(err => {
                 console.log(err.message);
@@ -73,39 +61,39 @@ function PanelDetails() {
             {
                 isLoaded ?
                     <div>
-                        <h1>Panel Details</h1>
+                        <h2>Panel Details</h2>
                         <hr />
                         {/* <div className="d-flex justify-content-center m-5"> */}
-                            <div className="sxch-container w-75 p-2">
-                                <h5>Panel name: {panelDetails.panelName}</h5>
-                                <h5>Description: {panelDetails.panelDesc}</h5>
-                                <h5>Members:</h5>
+                        <div className="sxch-container w-75 p-2">
+                            <h5>Panel name: {panelDetails.panelName}</h5>
+                            <h5>Description: {panelDetails.panelDesc}</h5>
+                            <h5>Members:</h5>
 
-                                <div className="member-list">
-                                    {
-                                        panelDetails.panelMembers.map((member, key) => {
-                                            return (
-                                                memberDetails[key] ?
-                                                    <div className="card w-50" key={key} name={key}>
-                                                        {/* <div className="card-header">
+                            <div className="member-list">
+                                {
+                                    panelDetails.panelMembers.map((member, key) => {
+                                        return (
+                                            memberDetails[key] ?
+                                                <div className="card w-50" key={key} name={key}>
+                                                    {/* <div className="card-header">
                                                             <h5 className="mb-0"> */}
-                                                                <button className="btn card-header" onClick={() => { cardShow(key) }}>
-                                                                    {memberDetails[key].firstname + " " + memberDetails[key].lastname}
-                                                                </button>
-                                                            {/* </h5>
+                                                    <button className="btn card-header" onClick={() => { cardShow(key) }}>
+                                                        {memberDetails[key].firstname + " " + memberDetails[key].lastname}
+                                                    </button>
+                                                    {/* </h5>
                                                         </div> */}
-                                                        <div id={key} className="collapse">
-                                                            <div className="card-body">
-                                                                <p>Research area: {memberDetails[key].researcharea}</p>
-                                                                <p>Email: {memberDetails[key].email}</p>
-                                                            </div>
+                                                    <div id={key} className="collapse">
+                                                        <div className="card-body">
+                                                            <p>Research area: {memberDetails[key].researcharea}</p>
+                                                            <p>Email: {memberDetails[key].email}</p>
                                                         </div>
                                                     </div>
-                                                    : ""
-                                            )
-                                        })
-                                    }
-                                </div>
+                                                </div>
+                                                : ""
+                                        )
+                                    })
+                                }
+                            </div>
 
                             {/* </div> */}
                         </div>
