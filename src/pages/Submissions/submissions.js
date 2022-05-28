@@ -29,6 +29,7 @@ const tableColumns = [
 function Submission() {
 
     const navigate = useNavigate()
+    const [forwardMessage, setForwardMessage] = useState("")
     const [datatable, setDatatable] = useState({
         columns: [],
         rows: []
@@ -42,11 +43,6 @@ function Submission() {
                     row.clickEvent = () => {
                         navigate(`/submissions/${row._id}`)
                     }
-                    // row.available ?
-                    //     row.available = [
-                    //         <i className="bi bi-check-circle-fill green" key={row._id}></i>, '']
-                    //     : row.available = [
-                    //         <i className="bi bi-x-circle red" key={row._id}></i>, '']
 
                     // Set toggle icon for availability
                     row.available ?
@@ -62,9 +58,13 @@ function Submission() {
                             </label>, '']
 
                     // Format date to show
+                    let hours = 0
+                    let minutes = 0
                     d = new Date(row.deadline)
-                    row.deadline = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate()
-                        + ' ' + d.getHours() + '.' + d.getMinutes()
+                    d.getHours() < 10 ? hours = '0' + d.getHours() : hours = String(d.getHours())
+                    d.getMinutes() < 10 ? minutes = '0' + d.getMinutes() : minutes = String(d.getMinutes())
+
+                    row.deadline = d.toDateString() + ', ' + hours + ':' + minutes
                 })
 
                 setDatatable({

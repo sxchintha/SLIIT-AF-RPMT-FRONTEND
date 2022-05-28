@@ -67,6 +67,23 @@ body {
     color: green;
 }
 
+.bi-arrow-left-circle {
+    color: #323A45;
+
+    &:hover {
+        color: #2196F3;
+        cursor: pointer;
+    }
+}
+
+.mydatepicker {
+    font-size: 16px;
+    line-height: 48px;
+    border-radius: 8px;
+    border: #ccc solid 1px;
+    color: #323A45;
+}
+
 // ==================================== Toggle button =======================================
 .switch {
     position: relative;

@@ -32,7 +32,7 @@ function MarkingSchemes() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>Available Marking Schemes</h1>
+                                <h2>Available Marking Schemes</h2>
                                 <Link to='/markingschemes/create' className="btn btn-outline-sliit-primary">
                                     <i className="bi bi-plus-circle"></i> New
                                 </Link>

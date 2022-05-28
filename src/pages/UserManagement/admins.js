@@ -76,7 +76,7 @@ function AdminsManagement() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>Admins</h1>
+                                <h2>Admins</h2>
                                 <Link to='/admins/new' className="btn btn-outline-sliit-primary">
                                     <i className="bi bi-plus-circle"></i> Add new Admin
                                 </Link>
