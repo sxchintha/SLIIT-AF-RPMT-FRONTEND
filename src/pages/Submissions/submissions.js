@@ -29,6 +29,7 @@ const tableColumns = [
 function Submission() {
 
     const navigate = useNavigate()
+    const [forwardMessage, setForwardMessage] = useState("")
     const [datatable, setDatatable] = useState({
         columns: [],
         rows: []

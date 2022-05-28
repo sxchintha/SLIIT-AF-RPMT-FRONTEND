@@ -57,7 +57,7 @@ function NewAdmin() {
                             <div className="col p-4">
                                 {/* Body */}
 
-                                <h1>New Admin</h1>
+                                <h2>New Admin</h2>
                                 <hr />
                                 <div className="d-flex justify-content-center m-5">
                                     <form className="row w-75 g-3 sxch-glass-back " onSubmit={onSubmit}>

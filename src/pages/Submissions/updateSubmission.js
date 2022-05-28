@@ -4,7 +4,8 @@ import Select from 'react-select'
 import Swal from 'sweetalert2'
 import LoadingSpinner from '../../components/LoadingSpinner'
 
-import { getSubmission, updateSubmission } from '../../index.api'
+import { getSubmission, updateSubmission, deleteSubmission } from '../../index.api'
+import { alertError } from '../../components/Alerts'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
@@ -15,16 +16,16 @@ const subSelect = [
         value: "Final Thesis"
     },
     {
+        label: "Presentation",
+        value: "Presentation"
+    },
+    {
         label: "Proposal Document",
         value: "Proposal Document"
     },
     {
         label: "Topic Assessment",
         value: "Topic Assessment"
-    },
-    {
-        label: "Presentation",
-        value: "Presentation"
     },
     {
         label: "Other",
@@ -39,16 +40,16 @@ const fileTypes = [
         value: "any"
     },
     {
+        label: "DOCX / DOC",
+        value: ".docx, .doc"
+    },
+    {
         label: "PDF",
         value: ".pdf"
     },
     {
         label: "PPTX / PPT",
         value: ".pptx, .ppt"
-    },
-    {
-        label: "DOCX / DOC",
-        value: ".docx, .doc"
     },
     {
         label: "ZIP / RAR",
@@ -169,6 +170,7 @@ function NewSubmission() {
                     'Submission successfully updated!',
                     'success'
                 )
+                // console.log(res.data.status);
                 navigate("/submissions")
             })
             .catch(err => {
@@ -176,6 +178,36 @@ function NewSubmission() {
                 console.log(err.response.data.error);
             })
     }
+
+    const onDelete = (e) => {
+        e.preventDefault()
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteSubmission(submissionId)
+                    .then(res => {
+                        // console.log(res)
+                        navigate("/submissions")
+                    })
+                    .catch(err => {
+                        console.log(err.message.data.error)
+                        setError(err.message.data.error)
+                    })
+            }
+        })
+
+
+    }
+
     return (
         <div>
             {
@@ -193,15 +225,16 @@ function NewSubmission() {
 
                                         <div className="d-flex justify-content-center m-5">
                                             <form className="w-75 g-3 sxch-glass-back" onSubmit={onSubmit}>
-                                                <div className="row g-3">
+                                                <i className="bi bi-arrow-left-circle fs-4" onClick={() => navigate(-1)}> Go back</i>
+                                                <div className="row g-3 mt-3">
                                                     {
-                                                        error ? allert : ""
+                                                        error ? alertError(error) : ""
                                                     }
 
                                                     <div className="form-floating col-6">
                                                         <input type="text" className="form-control" id="submissionName" name="submissionName"
                                                             placeholder="Panel name" required onChange={handleSubmissionData} value={submissionData.submissionName} />
-                                                        <label htmlFor="panelname" className="ms-2 text-secondary">Submission name</label>
+                                                        <label htmlFor="panelname" className="ms-2 text-secondary">Name</label>
                                                     </div>
                                                     <Select
                                                         closeMenuOnSelect={true}
@@ -241,7 +274,8 @@ function NewSubmission() {
                                                 </label>
                                                 <br />
 
-                                                <button type="submit" className="btn btn-outline-primary col-2 ms-2 mt-4">Update</button>
+                                                <button type="submit" className="btn btn-outline-primary ms-2 mt-4">Update</button>
+                                                <button type="button" className="btn btn-outline-danger ms-2 mt-4" onClick={onDelete}>Remove</button>
                                             </form>
                                         </div>
 

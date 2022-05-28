@@ -14,16 +14,16 @@ const subSelect = [
         value: "Final Thesis"
     },
     {
+        label: "Presentation",
+        value: "Presentation"
+    },
+    {
         label: "Proposal Document",
         value: "Proposal Document"
     },
     {
         label: "Topic Assessment",
         value: "Topic Assessment"
-    },
-    {
-        label: "Presentation",
-        value: "Presentation"
     },
     {
         label: "Other",
@@ -38,16 +38,16 @@ const fileTypes = [
         value: "any"
     },
     {
+        label: "DOCX / DOC",
+        value: ".docx, .doc"
+    },
+    {
         label: "PDF",
         value: ".pdf"
     },
     {
         label: "PPTX / PPT",
         value: ".pptx, .ppt"
-    },
-    {
-        label: "DOCX / DOC",
-        value: ".docx, .doc"
     },
     {
         label: "ZIP / RAR",
@@ -138,7 +138,8 @@ function NewSubmission() {
 
                                 <div className="d-flex justify-content-center m-5">
                                     <form className="w-75 g-3 sxch-glass-back" onSubmit={onSubmit}>
-                                        <div className="row g-3">
+                                        <i className="bi bi-arrow-left-circle fs-4" onClick={() => navigate(-1)}> Go back</i>
+                                        <div className="row g-3 mt-3">
 
                                             {
                                                 error ? allert : ""
@@ -147,7 +148,7 @@ function NewSubmission() {
                                             <div className="form-floating col-6">
                                                 <input type="text" className="form-control" id="submissionName" name="submissionName"
                                                     placeholder="Panel name" required onChange={handleSubmissionData} />
-                                                <label htmlFor="panelname" className="ms-2 text-secondary">Submission name</label>
+                                                <label htmlFor="panelname" className="ms-2 text-secondary">Name</label>
                                             </div>
                                             <Select
                                                 closeMenuOnSelect={true}
@@ -172,7 +173,7 @@ function NewSubmission() {
                                             />
 
                                             <label className="form-label">Deadline:</label>
-                                            <input type="datetime-local" className="col-5 m-1"
+                                            <input type="datetime-local" className="col-5 m-1 mydatepicker"
                                                 name="deadline" id="deadline" onChange={handleSubmissionData} />
 
                                             <div className="form-floating">
@@ -188,7 +189,7 @@ function NewSubmission() {
                                             <span className="slider round"></span>
                                         </label>
                                         <br />
-                                        <button type="submit" className="btn btn-outline-primary col-2 ms-2 mt-4">Submit</button>
+                                        <button type="submit" className="btn btn-outline-primary ms-2 mt-4">Submit</button>
                                     </form>
                                 </div>
 
