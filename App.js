@@ -45,6 +45,8 @@ import MyGroup from "./src/pages/Student/groupDetails";
 import SupervisorRequest from "./src/pages/Student/supervisorRequest";
 import CoSupervisorRequest from "./src/pages/Student/coSupervisorRequest";
 import CoSupervisorStatus from "./src/components/CoSupervisorStatus/coSupervisorStatus";
+import Submissions from "./src/components/SubmissionDetails/submissionItems";
+import SubmissionDetails from "./src/components/SubmissionDetails/submissionDetails";
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -68,7 +70,10 @@ createRoot(document.getElementById("app")).render(
 
         <Route path="/submissions/new" element={<CreateSubmission />} />
         <Route path="/submissions" element={<SubmissionManagement />} />
-        <Route path="/submissions/:submissionId" element={<UpdateSubmission />} />
+        <Route
+          path="/submissions/:submissionId"
+          element={<UpdateSubmission />}
+        />
 
         <Route path="/panels/:panelId" element={<PanelDetails />} />
         <Route path="/panels/new" element={<NewPanel />} />
@@ -91,6 +96,8 @@ createRoot(document.getElementById("app")).render(
           path="/student/groupDetailsCo"
           element={<CoSupervisorStatus />}
         />
+        <Route path="/student/submissions" element={<Submissions />} />
+        <Route path="/student/submission/:id" element={<SubmissionDetails />} />
       </Routes>
     </div>
   </BrowserRouter>
