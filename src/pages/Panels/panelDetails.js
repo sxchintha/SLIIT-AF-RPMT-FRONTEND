@@ -12,35 +12,7 @@ import PanelDetails from '../../components/panels/panelDetails'
 function ShowPanelDetails() {
 
     const navigate = useNavigate()
-    const { panelId } = useParams()
     const [error, setError] = useState("");
-
-    const onDelete = (e) => {
-        e.preventDefault()
-        // console.log(e);
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-
-        }).then((result) => {
-            if (result.isConfirmed) {
-                deletePanel(panelId)
-                    .then(res => {
-                        console.log(res)
-                        navigate("/panels")
-                    })
-                    .catch(err => {
-                        console.log(err.message.data.error)
-                        setError(err.message.data.error)
-                    })
-            }
-        })
-    }
 
     return (
         <div>
@@ -58,8 +30,7 @@ function ShowPanelDetails() {
                                     error ? alertError(error) : ""
                                 }
                                 <PanelDetails />
-                                <Link to={`/panels/edit/${panelId}`} className="btn btn-outline-primary ms-2 me-4 mt-4"><i className="bi bi-pencil-square"></i> Edit</Link>
-                                <button onClick={onDelete} className="btn btn-outline-danger mt-4"><i className="bi bi-trash3-fill"></i> Delete</button>
+                                
                             </div>
                         </main>
                         <Footer />

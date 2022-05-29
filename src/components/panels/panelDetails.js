@@ -1,8 +1,9 @@
 import React, { useState, useEffect, Suspense } from "react";
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import LoadingSpinner from '../../components/LoadingSpinner'
+import Swal from 'sweetalert2'
 
-import { getPanelDetails, getStaffMember } from '../../index.api'
+import { getPanelDetails, getStaffMember, deletePanel } from '../../index.api'
 
 import '../../style/PanelDetails.scss'
 
@@ -24,7 +25,7 @@ function PanelDetails() {
         setIsLoaded(false)
         getPanelDetails(panelId)
             .then(async res => {
-                panelData = res.data.panel
+                var panelData = res.data.panel
                 setPanelDetails(panelData)
 
                 var memberDetails = []
@@ -54,6 +55,34 @@ function PanelDetails() {
             document.getElementById(e).classList.remove('show');
         else
             document.getElementById(e).classList.add('show');
+    }
+
+
+    const onDelete = (e) => {
+        e.preventDefault()
+        // console.log(e);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deletePanel(panelId)
+                    .then(res => {
+                        console.log(res)
+                        navigate("/panels")
+                    })
+                    .catch(err => {
+                        console.log(err.message.data.error)
+                        setError(err.message.data.error)
+                    })
+            }
+        })
     }
 
     return (
@@ -95,6 +124,12 @@ function PanelDetails() {
 
                             {/* </div> */}
                         </div>
+                        {/* <Link to={{
+                            pathname: `/panels/edit/${panelId}`,
+                            state: {name: "sachintha"}
+                        }} className="btn btn-outline-primary ms-2 me-4 mt-4"><i className="bi bi-pencil-square"></i> Edit</Link> */}
+                        <Link to={`/panels/edit/${panelId}`} state={{ panelDetails }} className="btn btn-outline-primary ms-2 me-4 mt-4"><i className="bi bi-pencil-square"></i> Edit</Link>
+                        <button onClick={onDelete} className="btn btn-outline-danger mt-4"><i className="bi bi-trash3-fill"></i> Delete</button>
                     </div>
                     : <LoadingSpinner />
             }

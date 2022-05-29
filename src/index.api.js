@@ -17,6 +17,7 @@ export const getAllPanels = () => API.get('/panels')
 export const getPanelDetails = (id) => API.get(`/panels/${id}`)
 export const createNewPanel = (data) => API.post('/panels/new', data)
 export const deletePanel = (id) => API.delete(`panels/delete/${id}`)
+export const updatePanel = (id, data) => API.put(`/panels/update/${id}`, data)
 
 export const getAllAdmins = () => API.get('/admins')
 export const addNewAdmin = (data) => API.post('/admins/add', data)

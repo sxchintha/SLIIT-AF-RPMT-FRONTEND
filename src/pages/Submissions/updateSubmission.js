@@ -122,7 +122,7 @@ function NewSubmission() {
                     const temptype = fileTypes.filter((file) => {
                         return file.value == ftype
                     })
-                    // console.log(temptype);
+                    // console.log(temptype[0]);
                     filetype.push(temptype[0])
 
                 })
@@ -131,7 +131,7 @@ function NewSubmission() {
 
                 setSubmissionData(submission)
                 setIsLoaded(true)
-                console.log(dateTempSet);
+                // console.log(dateTempSet);
                 // console.log(submissionData);
             })
     }, [])
@@ -276,7 +276,7 @@ function NewSubmission() {
 
                                                 <button type="submit" className="btn btn-outline-primary ms-2 mt-4">Update</button>
                                                 <button type="button" className="btn btn-outline-danger ms-2 mt-4" onClick={onDelete}>
-                                                    <i class="bi bi-trash3-fill"></i> Remove
+                                                    <i className="bi bi-trash3-fill"></i> Remove
                                                     </button>
                                             </form>
                                         </div>
