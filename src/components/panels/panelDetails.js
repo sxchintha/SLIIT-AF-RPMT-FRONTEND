@@ -61,8 +61,6 @@ function PanelDetails() {
             {
                 isLoaded ?
                     <div>
-                        <h2>Panel Details</h2>
-                        <hr />
                         {/* <div className="d-flex justify-content-center m-5"> */}
                         <div className="sxch-container w-75 p-2">
                             <h5>Panel name: {panelDetails.panelName}</h5>

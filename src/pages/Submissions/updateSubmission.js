@@ -257,7 +257,7 @@ function NewSubmission() {
                                                     />
 
                                                     <label className="form-label">Deadline:</label>
-                                                    <input type="datetime-local" className="col-5 m-1" defaultValue={dateTempSet}
+                                                    <input type="datetime-local" className="col-5 m-1 mydatepicker" defaultValue={dateTempSet}
                                                         name="deadline" id="deadline" onChange={handleSubmissionData} />
 
                                                     <div className="form-floating">
@@ -275,7 +275,9 @@ function NewSubmission() {
                                                 <br />
 
                                                 <button type="submit" className="btn btn-outline-primary ms-2 mt-4">Update</button>
-                                                <button type="button" className="btn btn-outline-danger ms-2 mt-4" onClick={onDelete}>Remove</button>
+                                                <button type="button" className="btn btn-outline-danger ms-2 mt-4" onClick={onDelete}>
+                                                    <i class="bi bi-trash3-fill"></i> Remove
+                                                    </button>
                                             </form>
                                         </div>
 
