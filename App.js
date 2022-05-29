@@ -36,6 +36,7 @@ import AcceptTopics from "./src/components/staff/AcceptTopics";
 import NewPanel from "./src/pages/Panels/newPanel";
 import PanelManagement from "./src/pages/Panels/panels";
 import PanelDetails from "./src/pages/Panels/panelDetails";
+import EditPanel from './src/pages/Panels/editPanel';
 
 import StudentDashboard from "./src/pages/studentDashboard";
 import GroupCard from "./src/components/GroupDetails/GroupDetails";
@@ -70,32 +71,21 @@ createRoot(document.getElementById("app")).render(
 
         <Route path="/submissions/new" element={<CreateSubmission />} />
         <Route path="/submissions" element={<SubmissionManagement />} />
-        <Route
-          path="/submissions/:submissionId"
-          element={<UpdateSubmission />}
-        />
+        <Route path="/submissions/:submissionId" element={<UpdateSubmission />} />
 
-        <Route path="/panels/:panelId" element={<PanelDetails />} />
-        <Route path="/panels/new" element={<NewPanel />} />
         <Route path="/panels" element={<PanelManagement />} />
+        <Route path="/panels/new" element={<NewPanel />} />
+        <Route path="/panels/:panelId" element={<PanelDetails />} />
+        <Route path="/panels/edit/:panelId" element={<EditPanel />} />
 
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/group" element={<GroupCard />} />
         <Route path="/student/register" element={<StudentRegsiter />} />
         <Route path="/student/groupRegister" element={<GroupRegister />} />
         <Route path="/student/groupDetails" element={<MyGroup />} />
-        <Route
-          path="/student/supervisorRequest"
-          element={<SupervisorRequest />}
-        />
-        <Route
-          path="/student/coSupervisorRequest"
-          element={<CoSupervisorRequest />}
-        />
-        <Route
-          path="/student/groupDetailsCo"
-          element={<CoSupervisorStatus />}
-        />
+        <Route path="/student/supervisorRequest" element={<SupervisorRequest />} />
+        <Route path="/student/coSupervisorRequest" element={<CoSupervisorRequest />} />
+        <Route path="/student/groupDetailsCo" element={<CoSupervisorStatus />} />
         <Route path="/student/submissions" element={<Submissions />} />
         <Route path="/student/submission/:id" element={<SubmissionDetails />} />
       </Routes>
