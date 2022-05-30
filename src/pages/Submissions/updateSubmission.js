@@ -277,7 +277,7 @@ function NewSubmission() {
                                                 <button type="submit" className="btn btn-outline-primary ms-2 mt-4">Update</button>
                                                 <button type="button" className="btn btn-outline-danger ms-2 mt-4" onClick={onDelete}>
                                                     <i className="bi bi-trash3-fill"></i> Remove
-                                                    </button>
+                                                </button>
                                             </form>
                                         </div>
 

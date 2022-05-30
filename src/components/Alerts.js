@@ -1,15 +1,10 @@
 // Bootstrap alerts
-// window.setTimeout(function () {
-//     $(".alert").fadeTo(500, 0).slideUp(500, function () {
-//         $(this).remove();
-//     });
-// }, 1000);
 
 export const alertSuccess = (message) => {
     return (
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div className="alert alert-success alert-dismissible fade show" role="alert">
             {message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     )
 }
