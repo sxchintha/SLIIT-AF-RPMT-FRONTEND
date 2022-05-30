@@ -20,7 +20,7 @@ function MarkingSchemes() {
     // const [markings, setMarkings] = useState([{_id: '34'}, {_id: '53'}]);
 
     useEffect(() => {
-        console.log(location.state);
+        // console.log(location.state);
         location.state && location.state.message ?
             setAlert(location.state.message) : setAlert("")
 
@@ -31,6 +31,11 @@ function MarkingSchemes() {
             })
 
     }, [])
+
+    const changeVisibility = (e) => {
+        e.preventDefault()
+        console.log(e);
+    }
 
     return (
         <div>
@@ -59,9 +64,10 @@ function MarkingSchemes() {
                                                 }
 
                                                 {
+                                                    markings.length>0 ?
                                                     markings.map((marking) => (
                                                         <div className="col-sm-4" key={marking._id}>
-                                                            <Link to={`/markingschemes/update/${marking._id}`} state={marking} className="text-decoration-none">
+                                                            <Link to={`/markingschemes/update/${marking._id}`} state={marking} className="text-decoration-none text-reset">
 
                                                                 <SunEditor
                                                                     disable={true}
@@ -71,18 +77,27 @@ function MarkingSchemes() {
                                                                     // width="40%"
                                                                     height="400px"
                                                                 />
+                                                                <div>
+                                                                    <p className="m-1 mb-4 float-start">{marking.name}</p>
+                                                                    {
+                                                                        marking.available ?
+                                                                            <label className="switch float-end m-1" key={marking._id}>
+                                                                                <input type="checkbox" checked disabled />
+                                                                                <span className="slider round"></span>
+                                                                            </label>
+                                                                            :
+                                                                            <label className="switch float-end m-1" key={marking._id}>
+                                                                                <input type="checkbox" disabled />
+                                                                                <span className="slider round"></span>
+                                                                            </label>
+                                                                    }
+                                                                </div>
+                                                                <div style={{ clear: "both" }}></div>
                                                             </Link>
-                                                            <div>
-                                                                <p style={{ float: "left" }} className="m-1 mb-4">{marking.name}</p>
-                                                                <label style={{ float: "right" }} className="switch m-1">
-                                                                    <input type="checkbox" name="available" id="available" />
-                                                                    <span className="slider round"></span>
-                                                                </label>
-                                                            </div>
-                                                            <div style={{ clear: "both" }}></div>
 
                                                         </div>
                                                     ))
+                                                    :<h4>No data available!</h4>
                                                 }
 
                                             </div>

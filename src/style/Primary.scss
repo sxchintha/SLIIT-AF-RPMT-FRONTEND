@@ -76,6 +76,12 @@ body {
     }
 }
 
+.bi-trash3-fill {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .mydatepicker {
     font-size: 16px;
     line-height: 48px;
