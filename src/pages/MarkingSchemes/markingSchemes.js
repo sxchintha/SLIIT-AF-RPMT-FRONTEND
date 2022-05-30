@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom"
 
-import * as api from '../../index.api'
+import { getAllMarkings } from '../../index.api'
+import { alertSuccess } from '../../components/Alerts'
 
+import LoadingSpinner from '../../components/LoadingSpinner'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import SunEditor from 'suneditor-react'
@@ -13,17 +15,27 @@ function MarkingSchemes() {
 
     const location = useLocation();
     const [markings, setMarkings] = useState([]);
+    const [alert, setAlert] = useState("")
+    const [isLoaded, setIsLoaded] = useState(false)
     // const [markings, setMarkings] = useState([{_id: '34'}, {_id: '53'}]);
 
     useEffect(() => {
-        api.getAllMarkings()
+        console.log(location.state);
+        location.state && location.state.message ?
+            setAlert(location.state.message) : setAlert("")
+
+        getAllMarkings()
             .then((res) => {
                 setMarkings(res.data.markings)
+                setIsLoaded(true)
             })
+
     }, [])
 
     return (
         <div>
+
+
             <div className="container-fluid overflow-hidden">
                 <div className="row vh-100 overflow-auto">
                     <Sidebar />
@@ -38,27 +50,45 @@ function MarkingSchemes() {
                                 </Link>
 
                                 <hr />
-                                <div className="container-fluid">
-                                    <div className="row">
+                                {
+                                    isLoaded ?
+                                        <div className="container-fluid">
+                                            <div className="row">
+                                                {
+                                                    alert ? alertSuccess(alert) : ""
+                                                }
 
-                                        {
-                                            markings.map((marking) => (
-                                                <div className="col-sm-4" key={marking._id}>
-                                                    <SunEditor
-                                                        disable={true}
-                                                        disableToolbar={true}
-                                                        hideToolbar={true}
-                                                        defaultValue={marking.marking}
-                                                        // width="40%"
-                                                        height="400px"
-                                                    />
-                                                    <p>{marking.name}</p>
-                                                </div>
-                                            ))
-                                        }
+                                                {
+                                                    markings.map((marking) => (
+                                                        <div className="col-sm-4" key={marking._id}>
+                                                            <Link to={`/markingschemes/update/${marking._id}`} state={marking} className="text-decoration-none">
 
-                                    </div>
-                                </div>
+                                                                <SunEditor
+                                                                    disable={true}
+                                                                    disableToolbar={true}
+                                                                    hideToolbar={true}
+                                                                    defaultValue={marking.marking}
+                                                                    // width="40%"
+                                                                    height="400px"
+                                                                />
+                                                            </Link>
+                                                            <div>
+                                                                <p style={{ float: "left" }} className="m-1 mb-4">{marking.name}</p>
+                                                                <label style={{ float: "right" }} className="switch m-1">
+                                                                    <input type="checkbox" name="available" id="available" />
+                                                                    <span className="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                            <div style={{ clear: "both" }}></div>
+
+                                                        </div>
+                                                    ))
+                                                }
+
+                                            </div>
+                                        </div>
+                                        : <LoadingSpinner />
+                                }
 
 
                             </div>
@@ -67,6 +97,7 @@ function MarkingSchemes() {
                     </div>
                 </div>
             </div>
+
         </div>
     )
 }

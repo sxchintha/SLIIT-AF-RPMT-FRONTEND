@@ -22,6 +22,7 @@ import Header from "./src/components/Header";
 
 import CreateMarking from "./src/pages/MarkingSchemes/createMarking";
 import MarkingSchemes from "./src/pages/MarkingSchemes/markingSchemes";
+import UpdateMarking from './src/pages/MarkingSchemes/updateMarking'
 
 import CreateSubmission from "./src/pages/Submissions/newSubmission";
 import SubmissionManagement from "./src/pages/Submissions/submissions";
@@ -68,6 +69,7 @@ createRoot(document.getElementById("app")).render(
 
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />
+        <Route path="/markingschemes/update/:markingId" element={<UpdateMarking />} />
 
         <Route path="/submissions/new" element={<CreateSubmission />} />
         <Route path="/submissions" element={<SubmissionManagement />} />

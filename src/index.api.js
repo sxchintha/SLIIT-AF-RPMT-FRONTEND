@@ -6,6 +6,8 @@ const API = axios.create({
 
 export const getAllMarkings = () => API.get('/marking-schemes')
 export const createNewMarking = (data) => API.post('/marking-schemes/create', data)
+export const updateMarking = (id, data) => API.put(`marking-schemes/update/${id}`, data)
+export const deleteMarking = (id) => API.delete(`/marking-schemes/${id}`)
 
 export const creatSubmission = (data) => API.post('/submissions/create', data)
 export const getAllSubmissions = () => API.get('/submissions')
