@@ -48,7 +48,7 @@ function StudentManagement() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>Students</h1>
+                                <h2>Students</h2>
 
                                 <hr />
 

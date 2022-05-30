@@ -60,7 +60,7 @@ function StaffManagement() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>Staff</h1>
+                                <h2>Staff</h2>
 
                                 <hr />
 
