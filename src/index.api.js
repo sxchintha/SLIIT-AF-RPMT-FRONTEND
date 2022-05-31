@@ -11,6 +11,7 @@ export const deleteMarking = (id) => API.delete(`/marking-schemes/delete/${id}`)
 
 export const creatSubmission = (data) => API.post('/submissions/create', data)
 export const getAllSubmissions = () => API.get('/submissions')
+export const getAvailableSubmissions = () => API.get('/submissions/availableSubmissions')
 export const getSubmission = (id) => API.get(`/submissions/${id}`)
 export const updateSubmission = (id, data) => API.put(`/submissions/update/${id}`, data)
 export const deleteSubmission = (id) => API.delete(`submissions/delete/${id}`)
