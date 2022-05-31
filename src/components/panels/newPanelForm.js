@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import Select from 'react-select'
 
-import { getAllStaff, createNewPanel } from '../../index.api'
+import { getAcceptedStaff, createNewPanel } from '../../index.api'
 import { alertError } from '../../components/Alerts'
 
 function NewPanelComp() {
@@ -18,7 +18,7 @@ function NewPanelComp() {
     })
 
     useEffect(() => {
-        getAllStaff()
+        getAcceptedStaff()
             .then((res) => {
                 setStaff(res.data)
 
