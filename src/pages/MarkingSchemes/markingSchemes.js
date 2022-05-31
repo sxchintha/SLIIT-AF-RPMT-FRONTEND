@@ -57,45 +57,45 @@ function MarkingSchemes() {
                                                 }
 
                                                 {
-                                                    markings.length>0 ?
-                                                    markings.map((marking) => (
-                                                        <div className="col-sm-4" key={marking._id}>
-                                                            <Link to={`/markingschemes/update/${marking._id}`} state={marking} className="text-decoration-none text-reset">
+                                                    markings.length > 0 ?
+                                                        markings.map((marking) => (
+                                                            <div className="col-sm-4" key={marking._id}>
+                                                                <Link to={`/markingschemes/update/${marking._id}`} state={marking} className="text-decoration-none text-reset">
 
-                                                                <SunEditor
-                                                                    disable={true}
-                                                                    disableToolbar={true}
-                                                                    hideToolbar={true}
-                                                                    defaultValue={marking.marking}
-                                                                    // width="40%"
-                                                                    height="400px"
-                                                                />
-                                                                <div>
-                                                                    <div className="float-start">
+                                                                    <SunEditor
+                                                                        disable={true}
+                                                                        disableToolbar={true}
+                                                                        hideToolbar={true}
+                                                                        defaultValue={marking.marking}
+                                                                        // width="40%"
+                                                                        height="400px"
+                                                                    />
+                                                                    <div>
+                                                                        <div className="float-start">
 
-                                                                    <p className="m-0 mt-2 ms-2">{marking.name}</p>
-                                                                    <p className="m-0 ms-2 mb-3">Updated on: {new Date(marking.lastModified).toDateString()}</p>
+                                                                            <p className="m-0 mt-2 ms-2">{marking.name}</p>
+                                                                            <p className="m-0 ms-2 mb-3">Updated on: {new Date(marking.lastModified).toDateString()}</p>
+                                                                        </div>
+                                                                        {
+                                                                            marking.available ?
+                                                                                <label className="switch float-end m-2" key={marking._id}>
+                                                                                    <input type="checkbox" checked disabled />
+                                                                                    <span className="slider round"></span>
+                                                                                </label>
+                                                                                :
+                                                                                <label className="switch float-end m-2" key={marking._id}>
+                                                                                    <input type="checkbox" disabled />
+                                                                                    <span className="slider round"></span>
+                                                                                </label>
+                                                                        }
                                                                     </div>
-                                                                    {
-                                                                        marking.available ?
-                                                                            <label className="switch float-end m-2" key={marking._id}>
-                                                                                <input type="checkbox" checked disabled />
-                                                                                <span className="slider round"></span>
-                                                                            </label>
-                                                                            :
-                                                                            <label className="switch float-end m-2" key={marking._id}>
-                                                                                <input type="checkbox" disabled />
-                                                                                <span className="slider round"></span>
-                                                                            </label>
-                                                                    }
-                                                                </div>
-                                                                <div style={{ clear: "both" }}></div>
-                                                                
-                                                            </Link>
+                                                                    <div style={{ clear: "both" }}></div>
 
-                                                        </div>
-                                                    ))
-                                                    :<h4>No data available!</h4>
+                                                                </Link>
+
+                                                            </div>
+                                                        ))
+                                                        : <h4>No data available!</h4>
                                                 }
 
                                             </div>

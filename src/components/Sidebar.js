@@ -23,9 +23,9 @@ function Sidebar() {
                 <div className="mt-5"></div>
                 <ul className="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
                     <li className="nav-item">
-                        <a href="#" className="nav-link px-sm-0 px-2">
+                        <Link to='/admins/home' className="nav-link px-sm-0 px-2">
                             <i className="fs-5 bi-house"></i><span className="ms-1 d-none d-sm-inline"> Home</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <Link to='/markingschemes' className="nav-link px-sm-0 px-2">
@@ -63,6 +63,11 @@ function Sidebar() {
                         </ul>
                     </li>
                     <li>
+                        <Link to='/studentgroups' className="nav-link px-sm-0 px-2">
+                            <i className="fs-5 bi-people"></i><span className="ms-1 d-none d-sm-inline"> Student Groups</span>
+                        </Link>
+                    </li>
+                    {/* <li>
                         <a href="#submenu1" data-bs-toggle="collapse" className="nav-link px-sm-0 px-2">
                             <i className="fs-5 bi-speedometer2"></i><span className="ms-1 d-none d-sm-inline"> Dashboard</span> </a>
                     </li>
@@ -91,7 +96,7 @@ function Sidebar() {
                     <li>
                         <a href="#" className="nav-link px-sm-0 px-2">
                             <i className="fs-5 bi-people"></i><span className="ms-1 d-none d-sm-inline"> Customers</span> </a>
-                    </li>
+                    </li> */}
                 </ul>
                 <div className="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
                     <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
