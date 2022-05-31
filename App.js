@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // import 'mdbreact/dist/css/mdb.css';
 
 import "./src/style/Primary.scss";
+import "./src/style/Dashboard.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
@@ -32,12 +33,16 @@ import UserManagement from "./src/pages/userManagement";
 import AdminsManagement from "./src/pages/UserManagement/admins";
 import NewAdmin from "./src/pages/UserManagement/newAdmin";
 
+import AdminDashboard from './src/pages/adminDashboard'
+
 import AcceptTopics from "./src/components/staff/AcceptTopics";
 
 import NewPanel from "./src/pages/Panels/newPanel";
 import PanelManagement from "./src/pages/Panels/panels";
 import PanelDetails from "./src/pages/Panels/panelDetails";
 import EditPanel from './src/pages/Panels/editPanel';
+
+import StudentGroups from "./src/pages/StudentGroups/groupManagement"
 
 import StudentDashboard from "./src/pages/studentDashboard";
 import GroupCard from "./src/components/GroupDetails/GroupDetails";
@@ -66,6 +71,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/admins/new" element={<NewAdmin />} />
         <Route path="/admins" element={<AdminsManagement />} />
+        <Route path="/admins/home" element={<AdminDashboard />} />
 
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />
@@ -79,6 +85,8 @@ createRoot(document.getElementById("app")).render(
         <Route path="/panels/new" element={<NewPanel />} />
         <Route path="/panels/:panelId" element={<PanelDetails />} />
         <Route path="/panels/edit/:panelId" element={<EditPanel />} />
+
+        <Route path="/studentgroups" element={<StudentGroups />} />
 
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/group" element={<GroupCard />} />

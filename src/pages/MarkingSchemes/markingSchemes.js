@@ -32,15 +32,8 @@ function MarkingSchemes() {
 
     }, [])
 
-    const changeVisibility = (e) => {
-        e.preventDefault()
-        console.log(e);
-    }
-
     return (
         <div>
-
-
             <div className="container-fluid overflow-hidden">
                 <div className="row vh-100 overflow-auto">
                     <Sidebar />
@@ -64,40 +57,45 @@ function MarkingSchemes() {
                                                 }
 
                                                 {
-                                                    markings.length>0 ?
-                                                    markings.map((marking) => (
-                                                        <div className="col-sm-4" key={marking._id}>
-                                                            <Link to={`/markingschemes/update/${marking._id}`} state={marking} className="text-decoration-none text-reset">
+                                                    markings.length > 0 ?
+                                                        markings.map((marking) => (
+                                                            <div className="col-sm-4" key={marking._id}>
+                                                                <Link to={`/markingschemes/update/${marking._id}`} state={marking} className="text-decoration-none text-reset">
 
-                                                                <SunEditor
-                                                                    disable={true}
-                                                                    disableToolbar={true}
-                                                                    hideToolbar={true}
-                                                                    defaultValue={marking.marking}
-                                                                    // width="40%"
-                                                                    height="400px"
-                                                                />
-                                                                <div>
-                                                                    <p className="m-1 mb-4 float-start">{marking.name}</p>
-                                                                    {
-                                                                        marking.available ?
-                                                                            <label className="switch float-end m-1" key={marking._id}>
-                                                                                <input type="checkbox" checked disabled />
-                                                                                <span className="slider round"></span>
-                                                                            </label>
-                                                                            :
-                                                                            <label className="switch float-end m-1" key={marking._id}>
-                                                                                <input type="checkbox" disabled />
-                                                                                <span className="slider round"></span>
-                                                                            </label>
-                                                                    }
-                                                                </div>
-                                                                <div style={{ clear: "both" }}></div>
-                                                            </Link>
+                                                                    <SunEditor
+                                                                        disable={true}
+                                                                        disableToolbar={true}
+                                                                        hideToolbar={true}
+                                                                        defaultValue={marking.marking}
+                                                                        // width="40%"
+                                                                        height="400px"
+                                                                    />
+                                                                    <div>
+                                                                        <div className="float-start">
 
-                                                        </div>
-                                                    ))
-                                                    :<h4>No data available!</h4>
+                                                                            <p className="m-0 mt-2 ms-2">{marking.name}</p>
+                                                                            <p className="m-0 ms-2 mb-3">Updated on: {new Date(marking.lastModified).toDateString()}</p>
+                                                                        </div>
+                                                                        {
+                                                                            marking.available ?
+                                                                                <label className="switch float-end m-2" key={marking._id}>
+                                                                                    <input type="checkbox" checked disabled />
+                                                                                    <span className="slider round"></span>
+                                                                                </label>
+                                                                                :
+                                                                                <label className="switch float-end m-2" key={marking._id}>
+                                                                                    <input type="checkbox" disabled />
+                                                                                    <span className="slider round"></span>
+                                                                                </label>
+                                                                        }
+                                                                    </div>
+                                                                    <div style={{ clear: "both" }}></div>
+
+                                                                </Link>
+
+                                                            </div>
+                                                        ))
+                                                        : <h4>No data available!</h4>
                                                 }
 
                                             </div>
