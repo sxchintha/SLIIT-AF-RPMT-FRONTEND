@@ -17,6 +17,7 @@ import StudentManagement from "./src/pages/UserManagement/students";
 
 import StaffRegister from "./src/components/staff/StaffRegister";
 import StaffManagement from "./src/pages/UserManagement/staff";
+import StaffProfile from "./src/components/staff/StaffProfile";
 
 import App from "./src/components/main";
 import Header from "./src/components/Header";
@@ -67,6 +68,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
         <Route path="/accepttopics" element={<AcceptTopics />} />
+        <Route path='/staff/profile/:id' element={<StaffProfile />} />
 
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/admins/new" element={<NewAdmin />} />
@@ -76,6 +78,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />
         <Route path="/markingschemes/update/:markingId" element={<UpdateMarking />} />
+
 
         <Route path="/submissions/new" element={<CreateSubmission />} />
         <Route path="/submissions" element={<SubmissionManagement />} />
