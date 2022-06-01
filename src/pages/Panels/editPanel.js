@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
-import Select from 'react-select'
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom"
 
-import { getAllStaff, createNewPanel } from '../../index.api'
+import { getPanelDetails } from '../../index.api'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
-import NewPanelForm from '../../components/panels/newPanelForm'
+import EditPanelForm from '../../components/panels/editPanelForm'
 
-function NewPanel() {
+function EditPanel() {
 
     return (
         <div>
@@ -20,11 +19,9 @@ function NewPanel() {
                         <main className="row overflow-auto h-100">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h2>New Panel</h2>
+                                <h2>Edit Panel</h2>
                                 <hr />
-                                <NewPanelForm />
-
-
+                                <EditPanelForm />
 
                             </div>
                         </main>
@@ -36,4 +33,4 @@ function NewPanel() {
     )
 }
 
-export default NewPanel;
+export default EditPanel;

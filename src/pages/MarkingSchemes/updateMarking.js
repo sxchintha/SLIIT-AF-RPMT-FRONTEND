@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
-import Select from 'react-select'
+import React from "react";
 
-import { getAllStaff, createNewPanel } from '../../index.api'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
-import NewPanelForm from '../../components/panels/newPanelForm'
+import MarkingUpdateEditor from '../../components/marking_scheme/updateMarking'
 
-function NewPanel() {
-
+function UpdateMarking() {
+    
     return (
         <div>
             <div className="container-fluid overflow-hidden">
@@ -17,14 +14,11 @@ function NewPanel() {
                     <Sidebar />
 
                     <div className="col d-flex flex-column h-sm-100">
-                        <main className="row overflow-auto h-100">
+                        <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
-                                {/* Body */}
-                                <h2>New Panel</h2>
+                                <h2>Update Marking Scheme</h2>
                                 <hr />
-                                <NewPanelForm />
-
-
+                                <MarkingUpdateEditor />
 
                             </div>
                         </main>
@@ -36,4 +30,4 @@ function NewPanel() {
     )
 }
 
-export default NewPanel;
+export default UpdateMarking;

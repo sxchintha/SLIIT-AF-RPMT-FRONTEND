@@ -1,51 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Footer from "../../components/Footer";
-import Sidebar from "../../components/Sidebar";
 
-export default function StudentRegsiter() {
-  const [newStudent, setnewStudent] = useState({
-    name: "",
-    itNumber: "",
+export default function StudentLogin() {
+  const [StudentDetails, SetStudentDetails] = useState({
     email: "",
     password: "",
-    cpassword: "",
   });
-
-  const onChange = (e) => {
-    setnewStudent({
-      ...newStudent,
-      [e.target.name]: e.target.value,
-    });
-    //console.log(newStaffMember);
-  };
 
   function sendData(e) {
     e.preventDefault();
+    const newStudentLogin = {
+      email: StudentDetails.email,
+      password: StudentDetails.password,
+    };
 
-    if (newStudent.password === newStudent.cpassword) {
-      //console.log(newStaffMember)
-
-      const newStudentDetails = {
-        name: newStudent.name,
-
-        itNumber: newStudent.itNumber,
-        email: newStudent.email,
-        password: newStudent.password,
-      };
-
-      axios
-        .post("http://localhost:8070/student/add", newStudentDetails)
-        .then(() => {
-          console.log(newStudentDetails);
-          alert("successful");
-        })
-        .catch((e) => {
-          alert(e.response.data.error);
-        });
-    } else {
-      window.alert("Passwords do not match.");
-    }
+    axios
+      .post("http://localhost:8070/student/login", newStudentGroup)
+      .then(() => {
+        console.log(`Hello${newStudentGroup}`);
+        alert("successful");
+      })
+      .catch((e) => {
+        console.log(newStudentGroup);
+        console.log(e);
+        alert(e.response.data.status);
+      });
   }
   return (
     <>
@@ -64,7 +43,7 @@ export default function StudentRegsiter() {
                           <div className="card-body p-4 p-md-5">
                             <center>
                               <h3 className="mb-4 pb-2 pb-md-0 mb-md-5">
-                                Student Registration Form
+                                Student Login
                               </h3>
                             </center>
 
@@ -73,10 +52,10 @@ export default function StudentRegsiter() {
                                 <div className="col-md-6 mb-4">
                                   <div className="form-floating">
                                     <input
-                                      type="text"
-                                      id="name"
-                                      name="name"
-                                      placeholder="Student name"
+                                      type="email"
+                                      id="email"
+                                      name="email"
+                                      placeholder="Email"
                                       className="form-control"
                                       onChange={onChange}
                                     />
@@ -84,25 +63,7 @@ export default function StudentRegsiter() {
                                       className="ms-2 text-secondary"
                                       for="firstName"
                                     >
-                                      Student Name
-                                    </label>
-                                  </div>
-                                </div>
-                                <div className="col-md-6 mb-4">
-                                  <div className="form-floating">
-                                    <input
-                                      type="text"
-                                      id="lastName"
-                                      name="itNumber"
-                                      placeholder="Last name"
-                                      className="form-control"
-                                      onChange={onChange}
-                                    />
-                                    <label
-                                      className="ms-2 text-secondary"
-                                      for="lastName"
-                                    >
-                                      IT Number
+                                      Email
                                     </label>
                                   </div>
                                 </div>
@@ -112,18 +73,18 @@ export default function StudentRegsiter() {
                                 <div className="col-md-6 mb-4 d-flex align-items-center w-100">
                                   <div className="form-floating datepicker w-100">
                                     <input
-                                      type="text"
+                                      type="password"
                                       className="form-control"
-                                      id="username"
-                                      name="email"
-                                      placeholder="Username"
+                                      id="password"
+                                      name="password"
+                                      placeholder="Password"
                                       onChange={onChange}
                                     />
                                     <label
                                       for="username"
                                       className="ms-2 text-secondary"
                                     >
-                                      Email
+                                      Password
                                     </label>
                                   </div>
                                 </div>
@@ -145,24 +106,6 @@ export default function StudentRegsiter() {
                                       for="password"
                                     >
                                       Password
-                                    </label>
-                                  </div>
-                                </div>
-                                <div className="col-md-6 mb-4 pb-2">
-                                  <div className="form-floating">
-                                    <input
-                                      type="password"
-                                      id="confirm-password"
-                                      name="cpassword"
-                                      placeholder="Confirm Password"
-                                      className="form-control"
-                                      onChange={onChange}
-                                    />
-                                    <label
-                                      className="ms-2 text-secondary"
-                                      for="confirm-password"
-                                    >
-                                      Confirm Password
                                     </label>
                                   </div>
                                 </div>

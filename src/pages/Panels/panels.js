@@ -25,7 +25,7 @@ function PanelsManagement() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>Panels</h1>
+                                <h2>Panels</h2>
                                 <Link to='/panels/new' className="btn btn-outline-sliit-primary">
                                     <i className="bi bi-plus-circle"></i> New Panel
                                 </Link>
