@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
-import Select from 'react-select'
-
-import { getAllStaff, createNewPanel } from '../../index.api'
+import React from "react";
+import { Link } from "react-router-dom"
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
-import NewPanelForm from '../../components/panels/newPanelForm'
+import Alert from '../../components/Alerts'
+import GroupData from '../../components/StudentGroups/groupsTable'
 
-function NewPanel() {
-
+function Blank() {
     return (
         <div>
             <div className="container-fluid overflow-hidden">
@@ -17,14 +14,12 @@ function NewPanel() {
                     <Sidebar />
 
                     <div className="col d-flex flex-column h-sm-100">
-                        <main className="row overflow-auto h-100">
+                        <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h2>New Panel</h2>
+                                <h2>Student Groups</h2>
                                 <hr />
-                                <NewPanelForm />
-
-
+                                <GroupData />
 
                             </div>
                         </main>
@@ -36,4 +31,4 @@ function NewPanel() {
     )
 }
 
-export default NewPanel;
+export default Blank;

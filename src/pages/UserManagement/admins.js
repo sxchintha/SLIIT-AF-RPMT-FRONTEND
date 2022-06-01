@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { MDBDataTableV5 } from 'mdbreact'
 
-import * as api from '../../index.api'
+import {getAllAdmins} from '../../index.api'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 
 function AdminsManagement() {
+
+    const navigate = useNavigate()
 
     const tableColumns = [
         {
@@ -49,8 +51,14 @@ function AdminsManagement() {
     });
 
     useEffect(() => {
-        api.getAllAdmins()
+        getAllAdmins()
             .then((res) => {
+                // console.log(res.data);
+                res.data.forEach(row => {
+                    row.clickEvent = () => {
+                        navigate(`/admin/profile/${row._id}`)
+                    }
+                });
                 setDatatable({
                     columns: tableColumns,
                     rows: res.data
@@ -68,7 +76,7 @@ function AdminsManagement() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h1>Admins</h1>
+                                <h2>Admins</h2>
                                 <Link to='/admins/new' className="btn btn-outline-sliit-primary">
                                     <i className="bi bi-plus-circle"></i> Add new Admin
                                 </Link>
