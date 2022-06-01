@@ -17,15 +17,10 @@ import StudentManagement from "./src/pages/UserManagement/students";
 
 import StaffRegister from "./src/components/staff/StaffRegister";
 import StaffManagement from "./src/pages/UserManagement/staff";
-
-<<<<<<< HEAD
-import StaffRegister from './src/components/staff/StaffRegister'
-import StaffManagement from './src/pages/UserManagement/staff'
 import StaffProfile from "./src/components/staff/StaffProfile";
-=======
+
 import App from "./src/components/main";
 import Header from "./src/components/Header";
->>>>>>> d142b3be0f33d9b817c3799268e00eb418b87c45
 
 import CreateMarking from "./src/pages/MarkingSchemes/createMarking";
 import MarkingSchemes from "./src/pages/MarkingSchemes/markingSchemes";
@@ -73,22 +68,17 @@ createRoot(document.getElementById("app")).render(
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
         <Route path="/accepttopics" element={<AcceptTopics />} />
+        <Route path='/staff/profile/:id' element={<StaffProfile />} />
 
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/admins/new" element={<NewAdmin />} />
         <Route path="/admins" element={<AdminsManagement />} />
         <Route path="/admins/home" element={<AdminDashboard />} />
 
-<<<<<<< HEAD
-                <Route path='/staff' element={<StaffManagement />} />
-                <Route path='/register' element={<StaffRegister />} />
-                <Route path='/accepttopics' element={<AcceptTopics />} />
-                <Route path='/staff/profile/:id' element={<StaffProfile />} />
-=======
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />
         <Route path="/markingschemes/update/:markingId" element={<UpdateMarking />} />
->>>>>>> d142b3be0f33d9b817c3799268e00eb418b87c45
+
 
         <Route path="/submissions/new" element={<CreateSubmission />} />
         <Route path="/submissions" element={<SubmissionManagement />} />
