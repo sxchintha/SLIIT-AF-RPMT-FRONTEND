@@ -62,17 +62,6 @@ export default function AcceptTopics() {
                                             ))
                                         }
 
-                                        {/* <tr>
-                                                <td>Mark</td>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>
-                                                <button type="button" className="btn btn-danger">Reject</button>
-                                                <button type="button" className="btn btn-success">Success</button>
-                                                </td>
-                                            </tr> */}
-
                                     </tbody>
                                 </table>
                             </div>
