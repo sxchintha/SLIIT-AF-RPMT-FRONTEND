@@ -9,6 +9,7 @@ export default function GroupRegister() {
     firstMember: "",
     secondMember: "",
     thirdMember: "",
+    groupName: "",
   });
 
   const onChange = (e) => {
@@ -23,17 +24,18 @@ export default function GroupRegister() {
     e.preventDefault();
     const newStudentGroup = {
       leaderName: newGroup.leaderName,
+      groupName: newGroup.groupName,
 
       firstMember: newGroup.firstMember,
       secondMember: newGroup.secondMember,
       thirdMember: newGroup.thirdMember,
     };
-
+    console.log(newStudentGroup);
     axios
       .post("http://localhost:8070/student/groupRegister", newStudentGroup)
-      .then(() => {
+      .then((res) => {
         console.log(`Hello${newStudentGroup}`);
-        alert("successful");
+        alert(res);
       })
       .catch((e) => {
         console.log(newStudentGroup);
@@ -141,7 +143,23 @@ export default function GroupRegister() {
                                     </div>
                                   </div>
                                 </div>
-
+                                <div className="form-floating">
+                                  <input
+                                    type="text"
+                                    id="name"
+                                    name="groupName"
+                                    placeholder="Group  Name"
+                                    className="form-control"
+                                    onChange={onChange}
+                                    required
+                                  />
+                                  <label
+                                    className="ms-2 text-secondary"
+                                    for="firstName"
+                                  >
+                                    Group Name
+                                  </label>
+                                </div>
                                 <div className="mt-4 pt-2">
                                   <center>
                                     <input
