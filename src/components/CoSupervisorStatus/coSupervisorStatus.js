@@ -50,14 +50,37 @@ export default function CoSupervisorStatus() {
 
   return (
     <>
-      <div className="card text-white bg-secondary mb-3">
-        <div className="card-header">CoSupervisor Request Status</div>
+      <div class="card shadow border-0 w-75">
+        {/* <div className="card-header">CoSupervisor Request Status</div> */}
         <div className="card-body">
           {StudentDetails.hasGroup ? (
             <>
               {GroupDetails.supervisorRequestStatus == "Pending" ? (
                 <>
-                  <center>
+                  <div class="row">
+                    <div class="col">
+                      <span class="h6 font-semibold text-muted text-sm d-block mb-2">
+                        <u>Co-Supervisor Request Status</u>
+                      </span>
+                      <span class="h3 font-bold mb-0">
+                        {GroupDetails.supervisorRequestStatus}
+                      </span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                        <i
+                          class="bi bi-question-circle-fill"
+                          style={{
+                            color: "yellow",
+                            fontSize: 40,
+                            alignItems: "center",
+                            textAlign: "center",
+                          }}
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  {/* <center>
                     <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
 
                     <i
@@ -69,11 +92,35 @@ export default function CoSupervisorStatus() {
                         textAlign: "center",
                       }}
                     ></i>
-                  </center>
+                  </center> */}
                 </>
               ) : GroupDetails.supervisorRequestStatus == "Approved" ? (
                 <>
-                  <center>
+                  <div class="row">
+                    <div class="col">
+                      <span class="h6 font-semibold text-muted text-sm d-block mb-2">
+                        <u>Co-Supervisor Request Status</u>
+                      </span>
+                      <span class="h3 font-bold mb-0">
+                        {GroupDetails.supervisorRequestStatus}
+                      </span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                        <i
+                          class="bi bi-check-circle-fill"
+                          style={{
+                            color: "yellow",
+                            fontSize: 40,
+                            alignItems: "center",
+                            textAlign: "center",
+                          }}
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* <center>
                     <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
                   </center>
 
@@ -87,11 +134,35 @@ export default function CoSupervisorStatus() {
                         textAlign: "center",
                       }}
                     ></i>
-                  </div>
+                  </div> */}
                 </>
               ) : (
                 <>
-                  <center>
+                  <div class="row">
+                    <div class="col">
+                      <span class="h6 font-semibold text-muted text-sm d-block mb-2">
+                        <u>Co-Supervisor Request Status</u>
+                      </span>
+                      <span class="h3 font-bold mb-0">
+                        {GroupDetails.supervisorRequestStatus}
+                      </span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                        <i
+                          class="bi bi-x-circle-fill"
+                          style={{
+                            color: "red",
+                            fontSize: 40,
+                            alignItems: "center",
+                            textAlign: "center",
+                          }}
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* <center>
                     <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
                   </center>
                   <div style={{ alignItems: "center", textAlign: "center" }}>
@@ -104,7 +175,7 @@ export default function CoSupervisorStatus() {
                         textAlign: "center",
                       }}
                     ></i>
-                  </div>
+                  </div> */}
                 </>
               )}
             </>
