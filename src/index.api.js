@@ -23,11 +23,13 @@ export const deletePanel = (id) => API.delete(`panels/delete/${id}`)
 export const updatePanel = (id, data) => API.put(`/panels/update/${id}`, data)
 
 export const getAllGroups = () => API.get('/studentGroups')
+export const randomAllocate = () => API.put('/studentGroups/rondomAllocatePanel')
 
 export const getAllAdmins = () => API.get('/admins')
 export const addNewAdmin = (data) => API.post('/admins/add', data)
 export const getAdmin = (data) => API.post(`/admins/profile`, data)
 export const getSummary = () => API.get('/admins/summary')
+export const updateAdmin = (data) => API.put('/admins/update', data)
 
 export const getAllStaff = () => API.get('/staff')
 export const getStaffMember = (id) => API.get(`/staff/get/${id}`)
