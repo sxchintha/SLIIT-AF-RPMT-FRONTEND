@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { getPendingStaff, staffStatus } from '../../index.api'
 
-export default function AcceptStaff() {
+export default function  AcceptStaff() {
 
     const navigate = useNavigate()
     const [datatable, setDatatable] = useState([])
