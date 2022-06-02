@@ -25,7 +25,7 @@ import Header from "./src/components/Header";
 
 import CreateMarking from "./src/pages/MarkingSchemes/createMarking";
 import MarkingSchemes from "./src/pages/MarkingSchemes/markingSchemes";
-import UpdateMarking from './src/pages/MarkingSchemes/updateMarking'
+import UpdateMarking from "./src/pages/MarkingSchemes/updateMarking";
 
 import CreateSubmission from "./src/pages/Submissions/newSubmission";
 import SubmissionManagement from "./src/pages/Submissions/submissions";
@@ -35,17 +35,17 @@ import UserManagement from "./src/pages/userManagement";
 import AdminsManagement from "./src/pages/UserManagement/admins";
 import NewAdmin from "./src/pages/UserManagement/newAdmin";
 
-import AdminDashboard from './src/pages/admin/adminDashboard'
-import AdminProfile from './src/pages/admin/adminProfile'
+import AdminDashboard from "./src/pages/admin/adminDashboard";
+import AdminProfile from "./src/pages/admin/adminProfile";
 
 import AcceptTopics from "./src/components/staff/AcceptTopics";
 
 import NewPanel from "./src/pages/Panels/newPanel";
 import PanelManagement from "./src/pages/Panels/panels";
 import PanelDetails from "./src/pages/Panels/panelDetails";
-import EditPanel from './src/pages/Panels/editPanel';
+import EditPanel from "./src/pages/Panels/editPanel";
 
-import StudentGroups from "./src/pages/StudentGroups/groupManagement"
+import StudentGroups from "./src/pages/StudentGroups/groupManagement";
 
 import StudentDashboard from "./src/pages/studentDashboard";
 import GroupCard from "./src/components/GroupDetails/GroupDetails";
@@ -57,6 +57,7 @@ import CoSupervisorRequest from "./src/pages/Student/coSupervisorRequest";
 import CoSupervisorStatus from "./src/components/CoSupervisorStatus/coSupervisorStatus";
 import Submissions from "./src/components/SubmissionDetails/submissionItems";
 import SubmissionDetails from "./src/components/SubmissionDetails/submissionDetails";
+import StudentProfile from "./src/pages/Student/studentProfile";
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -70,7 +71,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
         <Route path="/accepttopics" element={<AcceptTopics />} />
-        <Route path='/staff/profile/:id' element={<StaffProfile />} />
+        <Route path="/staff/profile/:id" element={<StaffProfile />} />
 
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/admins/new" element={<NewAdmin />} />
@@ -80,12 +81,17 @@ createRoot(document.getElementById("app")).render(
 
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />
-        <Route path="/markingschemes/update/:markingId" element={<UpdateMarking />} />
-
+        <Route
+          path="/markingschemes/update/:markingId"
+          element={<UpdateMarking />}
+        />
 
         <Route path="/submissions/new" element={<CreateSubmission />} />
         <Route path="/submissions" element={<SubmissionManagement />} />
-        <Route path="/submissions/:submissionId" element={<UpdateSubmission />} />
+        <Route
+          path="/submissions/:submissionId"
+          element={<UpdateSubmission />}
+        />
 
         <Route path="/panels" element={<PanelManagement />} />
         <Route path="/panels/new" element={<NewPanel />} />
@@ -99,11 +105,21 @@ createRoot(document.getElementById("app")).render(
         <Route path="/student/register" element={<StudentRegsiter />} />
         <Route path="/student/groupRegister" element={<GroupRegister />} />
         <Route path="/student/groupDetails" element={<MyGroup />} />
-        <Route path="/student/supervisorRequest" element={<SupervisorRequest />} />
-        <Route path="/student/coSupervisorRequest" element={<CoSupervisorRequest />} />
-        <Route path="/student/groupDetailsCo" element={<CoSupervisorStatus />} />
+        <Route
+          path="/student/supervisorRequest"
+          element={<SupervisorRequest />}
+        />
+        <Route
+          path="/student/coSupervisorRequest"
+          element={<CoSupervisorRequest />}
+        />
+        <Route
+          path="/student/groupDetailsCo"
+          element={<CoSupervisorStatus />}
+        />
         <Route path="/student/submissions" element={<Submissions />} />
         <Route path="/student/submission/:id" element={<SubmissionDetails />} />
+        <Route path="/student/profile" element={<StudentProfile />} />
       </Routes>
     </div>
   </BrowserRouter>

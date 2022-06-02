@@ -35,17 +35,21 @@ export default function SupervisorRequest() {
     groupId: "",
   });
   const [staffSelect, setStaffSelect] = useState([]);
+  const [staffSelectField, setStaffSelectField] = useState([]);
+
   const [staff, setStaff] = useState([]);
+  const [fieldStaff, setFieldStaff] = useState([]);
 
   useEffect(() => {
     getAllStaff().then((res) => {
+      console.log(res.data);
       setStaff(res.data);
     });
   }, []);
 
   useEffect(() => {
-    var allStaff = [];
-    staff.forEach((member) => {
+    var allFieldStaff = [];
+    fieldStaff.forEach((member) => {
       var memberDetails = {
         value: member._id,
         label:
@@ -58,10 +62,16 @@ export default function SupervisorRequest() {
           ")",
       };
 
-      allStaff.push(memberDetails);
+      allFieldStaff.push(memberDetails);
     });
-    setStaffSelect(allStaff);
-  }, [staff]);
+    console.log(allFieldStaff);
+    setStaffSelect(allFieldStaff);
+  }, [fieldStaff]);
+  const options = [
+    { value: "IT", label: "IT" },
+    { value: "SE", label: "SE" },
+    { value: "CS", label: "CS" },
+  ];
 
   const handlePanelMembers = (e) => {
     SetRequestDetails({ ...RequestDetails, ["supervisorID"]: e.value });
@@ -97,6 +107,19 @@ export default function SupervisorRequest() {
         alert(e.data);
       });
   }
+
+  const onChangeField = (field) => {
+    console.log(field.value);
+    axios
+      .get(`http://localhost:8070/staff/getToField/${field.value}`)
+      .then((res) => {
+        console.log(res.data.staff);
+        setFieldStaff(res.data.staff);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   return (
     <>
       <div>
@@ -136,6 +159,22 @@ export default function SupervisorRequest() {
                                     >
                                       Research Topic
                                     </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="col-md-6 mb-4 d-flex align-items-center w-100">
+                                  <div className="form-floating datepicker w-100">
+                                    <Select
+                                      closeMenuOnSelect={false}
+                                      // components={animatedComponents}
+                                      name="supervisorField"
+                                      // value={panelData.panelMembers}
+                                      placeholder="Select Supervisor Field"
+                                      options={options}
+                                      onChange={onChangeField}
+                                      required
+                                    />
                                   </div>
                                 </div>
                               </div>
