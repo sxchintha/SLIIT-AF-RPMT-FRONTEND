@@ -53,7 +53,7 @@ export default function MyGroup() {
   }, [StudentDetails]);
 
   function onTapSupervisorRequest() {
-    navigate("/student/coSupervisorRequest");
+    navigate("/student/supervisorRequest");
   }
 
   console.log(GroupDetails.hasRequestedSupervisor);

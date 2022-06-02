@@ -106,7 +106,7 @@ function Sidebar() {
                     <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a className="dropdown-item" href="#">New project...</a></li>
                         <li><a className="dropdown-item" href="#">Settings</a></li>
-                        <li><a className="dropdown-item" href="#">Profile</a></li>
+                        <li><Link to='/admins/profile' className="dropdown-item">Profile</Link></li>
                         <li>
                             <hr className="dropdown-divider" />
                         </li>
