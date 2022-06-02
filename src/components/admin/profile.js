@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import profileImage from '../../assets/img/profile.png'
 import { getAdmin } from "../../index.api";
 
@@ -17,7 +18,6 @@ export default function AdminProfile() {
     }, [])
 
     return (
-
         <div className="container">
             <div className="main-body">
 
@@ -35,10 +35,20 @@ export default function AdminProfile() {
                                 </div>
                             </div>
                         </div>
+                        <div className="card mt-3">
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <Link to={''} className="text-secondary w-100 text-decoration-none">Edit Profile <i className="float-end bi-pencil" /></Link>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <Link to={''} className="text-secondary w-100 text-decoration-none">Change Password <i className="float-end bi-key" /> </Link>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div className="col-md-8">
                         <div className="card profile-card mb-3">
-                            <div className="card-body profile-card-body">
+                            <div className="card-body profile-card-body my-5">
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">Full Name</h6>
@@ -83,14 +93,10 @@ export default function AdminProfile() {
                                         {profiledata.address}
                                     </div>
                                 </div>
-                                <hr />
-                                <div className="row">
-                                    <div className="col-sm-12">
-                                        <a className="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+
+
 
                     </div>
                 </div>
