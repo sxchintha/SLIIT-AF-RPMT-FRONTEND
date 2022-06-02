@@ -112,32 +112,96 @@ export default function StaffProfile() {
     </div> */}
 
 
-{/* <div class="row py-5 px-4">
-    <div class="col-xl-4 col-md-6 col-sm-10 mx-auto">
 
-        
-        <div class="bg-white shadow rounded overflow-hidden">
-            <div class="px-4 pt-0 pb-4 bg-dark">
-                <div class="media align-items-end profile-header">
-                    <div class="profile mr-3">
-                        <img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail" />
-                    <a href="#" class="btn btn-dark btn-sm btn-block">Edit profile</a></div>
-                    <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0">{staffMember.firstname} {staffMember.lastname}</h4>
-                        <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i>{staffMember.researcharea}</p>
-                    </div>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+              <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" />
+                <span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
                 </div>
-            </div>
-            <div class="bg-light p-4 d-flex justify-content-end text-center"> 
-            </div>
-            <div class="py-4 px-4">
-                <div class="d-flex align-items-center justify-content-between mb-3">  
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                      <label class="labels">Name</label>
+                      <input type="text" class="form-control" placeholder="first name" value="" /></div>
+                    <div class="col-md-6"><label class="labels">Surname</label>
+                    <input type="text" class="form-control" value="" placeholder="surname" /></div>
+                </div>
+                <div class="row mt-3">
+
+                    <div class="col-md-12"><label class="labels">Mobile Number</label>
+                      <input type="text" class="form-control" placeholder="enter phone number" value="" />                     
                     </div>
+
+                    <div class="col-md-12"><label class="labels">Address Line 1</label>
+                      <input type="text" class="form-control" placeholder="enter address line 1" value="" />
+                    </div>
+
+                    <div class="col-md-12"><label class="labels">Address Line 2</label>
+                      <input type="text" class="form-control" placeholder="enter address line 2" value="" />
+                    </div>
+
+                    <div class="col-md-12"><label class="labels">Postcode</label>
+                      <input type="text" class="form-control" placeholder="enter address line 2" value="" />
+                    </div>
+
+                    <div class="col-md-12"><label class="labels">State</label>
+                      <input type="text" class="form-control" placeholder="enter address line 2" value="" />
+                    </div>
+
+                    <div class="col-md-12"><label class="labels">Area</label>
+                      <input type="text" class="form-control" placeholder="enter address line 2" value="" />
+                    </div>
+
+                    <div class="col-md-12"><label class="labels">Email ID</label>
+                      <input type="text" class="form-control" placeholder="enter email id" value="" />                       
+                    </div>
+
+                    <div class="col-md-12"><label class="labels">Education</label>
+                      <input type="text" class="form-control" placeholder="education" value="" />                       
+                    </div>
+
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Country</label>
+                      <input type="text" class="form-control" placeholder="country" value="" />
+                    </div>
+
+                    <div class="col-md-6"><label class="labels">State/Region</label>
+                      <input type="text" class="form-control" value="" placeholder="state" />
+                    </div>
+
+                </div>
+                <div class="mt-5 text-center">
+                  <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+                </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience">
+                  <span>Edit Experience</span>
+                  <span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span>
+                </div><br />
+
+                <div class="col-md-12">
+                  <label class="labels">Experience in Designing</label>
+                  <input type="text" class="form-control" placeholder="experience" value="" />
+                </div> <br />
+
+                <div class="col-md-12"><label class="labels">Additional Details</label>
+                  <input type="text" class="form-control" placeholder="additional details" value="" />
                 </div>
             </div>
         </div>
-    </div> */}
+    </div>
+</div>
+</div>
 
-        </div>
     )
 }
