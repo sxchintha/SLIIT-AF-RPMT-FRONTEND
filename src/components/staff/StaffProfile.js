@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import './StaffProfile.css'
 import Sidebar from "../Sidebar";
 import Footer from "../Footer";
-import profileImage from '../../assets/img/profile.png';
+// import profileImage from '../../assets/img/profile-staff.png';
 
 export default function StaffProfile() {
 
@@ -124,7 +124,7 @@ export default function StaffProfile() {
                                     <div class="row">
                                         <div class="col-md-3 profile-border">
                                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                              <img class="rounded-circle profile-image" src={profileImage} />
+                                              {/* <img class="rounded-circle profile-image" src={profileImage} /> */}
                                                 <span class="font-weight-bold profile-name">{staffMember.firstname} {staffMember.lastname}</span>
                                                 <span class="text-black-50 profile-email">{staffMember.email}</span><span> </span>
                                                 <p class="p-edit-profile">Edit profile &emsp;<i class="bi bi-gear"></i></p>
