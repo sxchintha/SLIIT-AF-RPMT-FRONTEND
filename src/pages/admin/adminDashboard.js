@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
-import AcceptStaff from '../components/admin/acceptStaff'
-import CountSummary from "../components/admin/countsSummary";
+import AcceptStaff from '../../components/admin/acceptStaff'
+import CountSummary from "../../components/admin/countsSummary";
 
-import Sidebar from '../components/Sidebar'
-import Footer from '../components/Footer'
-import DashboardExtra from "../components/admin/dashboardExtra";
+import Sidebar from '../../components/Sidebar'
+import Footer from '../../components/Footer'
+import DashboardExtra from "../../components/admin/dashboardExtra";
 
 function AdminDashboard() {
     return (

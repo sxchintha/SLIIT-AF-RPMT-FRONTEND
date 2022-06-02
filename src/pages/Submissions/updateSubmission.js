@@ -210,13 +210,13 @@ function NewSubmission() {
 
     return (
         <div>
-            {
-                isLoaded ?
-                    <div className="container-fluid overflow-hidden">
-                        <div className="row vh-100 overflow-auto">
-                            <Sidebar />
+            <div className="container-fluid overflow-hidden">
+                <div className="row vh-100 overflow-auto">
+                    <Sidebar />
+                    <div className="col d-flex flex-column h-sm-100">
+                        {
+                            isLoaded ?
 
-                            <div className="col d-flex flex-column h-sm-100">
                                 <main className="row overflow-auto">
                                     <div className="col pt-4 ps-4">
                                         {/* Body */}
@@ -284,12 +284,12 @@ function NewSubmission() {
 
                                     </div>
                                 </main>
-                                <Footer />
-                            </div>
-                        </div>
+                                : <LoadingSpinner />
+                        }
+                        <Footer />
                     </div>
-                    : <LoadingSpinner />
-            }
+                </div>
+            </div>
         </div>
     )
 
