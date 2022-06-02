@@ -58,6 +58,8 @@ import CoSupervisorStatus from "./src/components/CoSupervisorStatus/coSupervisor
 import Submissions from "./src/components/SubmissionDetails/submissionItems";
 import SubmissionDetails from "./src/components/SubmissionDetails/submissionDetails";
 import StudentProfile from "./src/pages/Student/studentProfile";
+import RequestCoSupervisor from "./src/components/staff/RequestCoSupervisor";
+import UpdateStaffProfile from "./src/components/staff/UpdateStaffDetails";
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -68,11 +70,12 @@ createRoot(document.getElementById("app")).render(
         <Route path="/home" element={<HomePage />} />
         <Route path="/students" element={<StudentManagement />} />
 
+        <Route path="/staff/profile/update/:id" element={<UpdateStaffProfile />} />
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
-
         <Route path="/request-supervisor" element={<RequestSupervisor />} />
         <Route path='/staff/profile/:id' element={<StaffProfile />} />
+        <Route path="/request-cosupervisor" element={<RequestCoSupervisor />} />
 
 
         <Route path="/usermanagement" element={<UserManagement />} />

@@ -180,7 +180,7 @@ export default function RegisterStaff() {
 
                                                 <div className="form-floating">
                                                     <Select      
-                                                        closeMenuOnSelect={false}
+                                                        closeMenuOnSelect={true}
                                                         name="researchArea"
                                                         options={options}
                                                         onChange={onSelect}
