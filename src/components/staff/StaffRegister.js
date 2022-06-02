@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import Select from 'react-select'
 import Footer from "../Footer";
 import Sidebar from "../Sidebar";
 
@@ -16,6 +16,15 @@ export default function RegisterStaff() {
     // const [researchArea, setResearchArea] = useState("");
     // const [password, setPassword] = useState("");
     // const [confirmpassword, setConfirmPasswoprd] = useSate("");
+    
+    const options = [
+        { value: 'Robotics and Artificial Intelligence', label: 'Robotics and Artificial Intelligence' },
+        { value: 'Graphics and Immersive Computing', label: 'Graphics and Immersive Computing' },
+        { value: 'Bioinformatics and Computational Biology', label: 'Bioinformatics and Computational Biology' },
+        { value: 'High Performance Computing', label: 'High Performance Computing' },
+        { value: 'Theoretical Foundations', label: 'Theoretical Foundations' },
+        { value: 'Information and System Security', label: 'Information and System Security' }
+      ]
 
     const [newStaffMember, setNewStaffMember] = useState({
         firstName:'',
@@ -28,17 +37,23 @@ export default function RegisterStaff() {
         cpassword:''
     })
 
-    // const allert = (
-    //     <div className="alert alert-danger d-flex align-items-center" role="alert">
-    //         <div>
-    //             {error}
-    //         </div>
-    //     </div>
-    // )
+    const customStyles = {
+        control: base => ({
+          ...base,
+          height: 58,
+          minHeight: 35,
+          
+        })
+      };
 
     const onChange = (e) => {
         setNewStaffMember({ ...newStaffMember, [e.target.name]: e.target.value })
-        //console.log(newStaffMember);
+        //console.log(e);
+    }
+
+    const onSelect = (e) => {
+        setNewStaffMember({ ...newStaffMember, ['researchArea']: e.value })
+        //console.log(e);
     }
 
     function sendData(e) {
@@ -69,7 +84,6 @@ export default function RegisterStaff() {
 
 }
     
-
     return(
         <div>
             <div>
@@ -165,13 +179,16 @@ export default function RegisterStaff() {
                                                 <div className="col-md-6 mb-4 pb-2">
 
                                                 <div className="form-floating">
-                                                    <input type="text" 
-                                                    id="researchArea"
-                                                    name="researchArea"
-                                                    placeholder="Research Area" 
-                                                    className="form-control" 
-                                                    onChange={onChange}/>
-                                                    <label className="ms-2 text-secondary" for="researchArea">Research Area</label>
+                                                    <Select      
+                                                        closeMenuOnSelect={false}
+                                                        name="researchArea"
+                                                        options={options}
+                                                        onChange={onSelect}
+                                                        styles={customStyles}
+                                                        required
+                                                    />
+
+                                                    {/* <label className="ms-2 text-secondary" for="researchArea">Research Area</label> */}
                                                 </div>
 
                                                 </div>

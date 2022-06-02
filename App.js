@@ -36,7 +36,7 @@ import NewAdmin from "./src/pages/UserManagement/newAdmin";
 
 import AdminDashboard from './src/pages/adminDashboard'
 
-import AcceptTopics from "./src/components/staff/AcceptTopics";
+import RequestSupervisor from "./src/components/staff/RequestSupervisor";
 
 import NewPanel from "./src/pages/Panels/newPanel";
 import PanelManagement from "./src/pages/Panels/panels";
@@ -67,7 +67,7 @@ createRoot(document.getElementById("app")).render(
 
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
-        <Route path="/accepttopics" element={<AcceptTopics />} />
+        <Route path="/request-supervisor" element={<RequestSupervisor />} />
         <Route path='/staff/profile/:id' element={<StaffProfile />} />
 
         <Route path="/usermanagement" element={<UserManagement />} />
