@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import "./src/style/Primary.scss";
 import "./src/style/Dashboard.css";
+import "./src/style/AdminProfile.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
@@ -34,7 +35,8 @@ import UserManagement from "./src/pages/userManagement";
 import AdminsManagement from "./src/pages/UserManagement/admins";
 import NewAdmin from "./src/pages/UserManagement/newAdmin";
 
-import AdminDashboard from './src/pages/adminDashboard'
+import AdminDashboard from './src/pages/admin/adminDashboard'
+import AdminProfile from './src/pages/admin/adminProfile'
 
 import AcceptTopics from "./src/components/staff/AcceptTopics";
 
@@ -74,6 +76,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/admins/new" element={<NewAdmin />} />
         <Route path="/admins" element={<AdminsManagement />} />
         <Route path="/admins/home" element={<AdminDashboard />} />
+        <Route path="/admins/profile" element={<AdminProfile />} />
 
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />

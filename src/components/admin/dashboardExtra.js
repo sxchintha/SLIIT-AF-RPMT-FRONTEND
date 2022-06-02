@@ -40,8 +40,8 @@ function DashboardExtra() {
                                                 <td>{submission.submissionName}</td>
                                                 <td>{new Date(submission.deadline).toDateString()}</td>
                                                 <td onClick={() => { navigate(`/submissions/${submission._id}`) }}
-                                                className="text-primary ">
-                                                    <i role="button" class="bi bi-pencil"></i>
+                                                    className="text-primary ">
+                                                    <i role="button" className="bi bi-pencil"></i>
                                                 </td>
                                             </tr>
                                         )

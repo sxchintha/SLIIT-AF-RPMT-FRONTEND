@@ -26,6 +26,7 @@ export const getAllGroups = () => API.get('/studentGroups')
 
 export const getAllAdmins = () => API.get('/admins')
 export const addNewAdmin = (data) => API.post('/admins/add', data)
+export const getAdmin = (data) => API.post(`/admins/profile`, data)
 export const getSummary = () => API.get('/admins/summary')
 
 export const getAllStaff = () => API.get('/staff')
