@@ -36,6 +36,7 @@ body {
     backdrop-filter: blur(5.8px);
     padding: 20px;
     padding-bottom: 40px;
+    width: 75%;
     -webkit-backdrop-filter: blur(5.8px);
 }
 
@@ -122,6 +123,12 @@ body {
 .deny:hover {
     background: rgb(255, 147, 128);
     box-shadow: 0 4px 0 0 #EF8282;
+}
+
+@media screen and (max-width: 575px) {
+    .sxch-glass-back {
+        width: 100%;
+    }
 }
 
 // ==================================== Toggle button =======================================

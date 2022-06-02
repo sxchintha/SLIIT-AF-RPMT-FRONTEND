@@ -38,7 +38,7 @@ export default function AdminProfile() {
                         <div className="card mt-3">
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <Link to={''} className="text-secondary w-100 text-decoration-none">Edit Profile <i className="float-end bi-pencil" /></Link>
+                                    <Link to={'update'} state={{ profiledata }} className="text-secondary w-100 text-decoration-none">Edit Profile <i className="float-end bi-pencil" /></Link>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     <Link to={''} className="text-secondary w-100 text-decoration-none">Change Password <i className="float-end bi-key" /> </Link>
@@ -55,6 +55,15 @@ export default function AdminProfile() {
                                     </div>
                                     <div className="col-sm-9 text-secondary">
                                         {profiledata.firstname + ' ' + profiledata.lastname}
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-sm-3">
+                                        <h6 className="mb-0">Name with initials</h6>
+                                    </div>
+                                    <div className="col-sm-9 text-secondary">
+                                        {profiledata.nameWithInitials}
                                     </div>
                                 </div>
                                 <hr />
