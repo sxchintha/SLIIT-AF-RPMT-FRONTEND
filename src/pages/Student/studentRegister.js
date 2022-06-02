@@ -29,7 +29,7 @@ export default function StudentRegsiter() {
       const newStudentDetails = {
         name: newStudent.name,
 
-        itNumber: newStudent.itNumber.toUpperCase,
+        itNumber: newStudent.itNumber.toUpperCase(),
         email: newStudent.email,
         password: newStudent.password,
       };
