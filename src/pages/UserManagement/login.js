@@ -20,8 +20,8 @@ const StudentLogin=()=> {
 
     const navigate=useNavigate();
     const location=useLocation();
-    const from = location.state?.from?.pathname ||
-    console.log(from);
+    // const from = location.state?.from?.pathname ||
+    // console.log(from);
 
     const userRef=useRef();
     const errRef=useRef();
@@ -67,7 +67,7 @@ const StudentLogin=()=> {
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try{
-            const response=await axios.post("https://af-backend-hosting-research.herokuapp.com/main/login",JSON.stringify({username,password}),
+            const response=await axios.post("http://localhost:8070/main/login",JSON.stringify({username,password}),
             {
               headers:{'content-type':'application/json'},
               withCredentials:false
@@ -82,10 +82,14 @@ const StudentLogin=()=> {
             const accessToken=response?.data.accessToken;
             const roles=response?.data?.roles;
             // const usern=response?.data
-            setAuth({username,password,roles,accessToken});
+            // setAuth({username,password,roles,accessToken});
             
             setusername('');
             setpassword('');
+            // const s=localStorage.setItem('usertoken', JSON.stringify(utoken));
+            localStorage.setItem('username',response?.data.uname);
+            localStorage.setItem('role',response?.data.roles);
+            // console.log(localStorage.getItem('role'))
             navigate("/student/dashboard");
             // if (roles==1984){
             //   navigate("student/dashboard",{replace:true});
