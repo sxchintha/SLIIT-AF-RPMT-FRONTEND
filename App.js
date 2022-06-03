@@ -7,8 +7,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // import 'mdbreact/dist/css/mdb.css';
 
 import "./src/style/Primary.scss";
+
+// import { AuthProvider } from "./src/context/AuthProvider";
+
 import "./src/style/Dashboard.css";
 import "./src/style/AdminProfile.css";
+
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
@@ -63,9 +67,13 @@ import StudentProfile from "./src/pages/Student/studentProfile";
 import RequestCoSupervisor from "./src/components/staff/RequestCoSupervisor";
 import UpdateStaffProfile from "./src/components/staff/UpdateStaffDetails";
 
+import StudentLogin from "./src/pages/UserManagement/login"
+import RequireAuth from "./src/components/landing/RequireAuth"
+import Unauthorized from "./src/components/landing/Unauthorized"
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
     <div>
+      {/* <AuthProvider> */}
       {/* <Header /> */}
       <Routes>
         <Route path="/home" element={<HomePage />} />
@@ -74,9 +82,12 @@ createRoot(document.getElementById("app")).render(
         <Route path="/staff/profile/update/:id" element={<UpdateStaffProfile />} />
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
+
+
         <Route path="/request-supervisor" element={<RequestSupervisor />} />
         <Route path='/staff/profile/:id' element={<StaffProfile />} />
         <Route path="/request-cosupervisor" element={<RequestCoSupervisor />} />
+
 
 
         <Route path="/usermanagement" element={<UserManagement />} />
@@ -127,9 +138,16 @@ createRoot(document.getElementById("app")).render(
         />
         <Route path="/student/submissions" element={<Submissions />} />
         <Route path="/student/submission/:id" element={<SubmissionDetails />} />
+
+
+        <Route path="/login" element={<StudentLogin/>}/>
+        <Route path="/unauthorized" element={<Unauthorized/>}/>
+        <Route path="/RequiedAuth" element={<RequireAuth/>}/>
+
         <Route path="/student/profile" element={<StudentProfile />} />
         <Route exact path="/" element={<App />} />
       </Routes>
+      {/* </AuthProvider> */}
     </div>
   </BrowserRouter>
 );

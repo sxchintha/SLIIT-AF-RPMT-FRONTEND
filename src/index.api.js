@@ -1,7 +1,28 @@
 import axios from "axios";
 
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+var token = getCookie('usertoken');
+// var token = ""
+
+console.log(token);
+
 const API = axios.create({
     baseURL: "http://localhost:8070",
+    headers: { Authorization: `Bearer ${token}` }
 }) // Set base url of backend
 
 export const getAllMarkings = () => API.get('/marking-schemes')
