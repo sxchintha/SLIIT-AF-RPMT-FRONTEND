@@ -35,17 +35,18 @@ export default function CoSupervisorRequest() {
     groupId: "",
   });
   const [staffSelect, setStaffSelect] = useState([]);
-  const [staff, setStaff] = useState([]);
+  const [fieldStaff, setFieldStaff] = useState([]);
 
   useEffect(() => {
     getAllStaff().then((res) => {
+      console.log(res.data);
       setStaff(res.data);
     });
   }, []);
 
   useEffect(() => {
-    var allStaff = [];
-    staff.forEach((member) => {
+    var allFieldStaff = [];
+    fieldStaff.forEach((member) => {
       var memberDetails = {
         value: member._id,
         label:
@@ -58,12 +59,14 @@ export default function CoSupervisorRequest() {
           ")",
       };
 
-      allStaff.push(memberDetails);
+      allFieldStaff.push(memberDetails);
     });
-    setStaffSelect(allStaff);
-  }, [staff]);
+    console.log(allFieldStaff);
+    setStaffSelect(allFieldStaff);
+  }, [fieldStaff]);
 
   const handlePanelMembers = (e) => {
+    console.log(e.value);
     SetRequestDetails({ ...RequestDetails, ["supervisorID"]: e.value });
   };
 
@@ -74,6 +77,34 @@ export default function CoSupervisorRequest() {
     });
     //console.log(newStaffMember);
   };
+  const options = [
+    {
+      value: "Robotics and Artificial Intelligence",
+      label: "Robotics and Artificial Intelligence",
+    },
+
+    {
+      value: "Graphics and Immersive Computing",
+      label: "Graphics and Immersive Computing",
+    },
+
+    {
+      value: "Bioinformatics and Computational Biology",
+      label: "Bioinformatics and Computational Biology",
+    },
+
+    {
+      value: "High Performance Computing",
+      label: "High Performance Computing",
+    },
+
+    { value: "Theoretical Foundations", label: "Theoretical Foundations" },
+
+    {
+      value: "Information and System Security",
+      label: "Information and System Security",
+    },
+  ];
 
   console.log(RequestDetails);
 
@@ -84,6 +115,8 @@ export default function CoSupervisorRequest() {
       supervisorId: RequestDetails.supervisorID,
       groupId: StudentDetails.groupId,
     };
+
+    console.log(newRequest);
 
     axios
       .post("http://localhost:8070/student/requestCoSupervisor", newRequest)
@@ -97,6 +130,19 @@ export default function CoSupervisorRequest() {
         alert(e.data);
       });
   }
+
+  const onChangeField = (field) => {
+    console.log(field.value);
+    axios
+      .get(`http://localhost:8070/staff/getToField/${field.value}`)
+      .then((res) => {
+        console.log(res.data.staff);
+        setFieldStaff(res.data.staff);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   return (
     <>
       <div>
@@ -119,6 +165,22 @@ export default function CoSupervisorRequest() {
                             </center>
 
                             <form onSubmit={sendData}>
+                              <div className="row">
+                                <div className="col-md-6 mb-4 d-flex align-items-center w-100">
+                                  <div className="form-floating datepicker w-100">
+                                    <Select
+                                      closeMenuOnSelect={true}
+                                      // components={animatedComponents}
+                                      name="supervisorField"
+                                      // value={panelData.panelMembers}
+                                      placeholder="Select Supervisor Field"
+                                      options={options}
+                                      onChange={onChangeField}
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                              </div>
                               <div className="row">
                                 <div className="col-md-6 mb-4 w-100">
                                   <div className="form-floating">
@@ -144,7 +206,7 @@ export default function CoSupervisorRequest() {
                                 <div className="col-md-6 mb-4 d-flex align-items-center w-100">
                                   <div className="form-floating datepicker w-100">
                                     <Select
-                                      closeMenuOnSelect={false}
+                                      closeMenuOnSelect={true}
                                       // components={animatedComponents}
                                       name="supervisorID"
                                       // value={panelData.panelMembers}

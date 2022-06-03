@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { MDBDataTableV5 } from 'mdbreact'
 
-import * as api from '../../index.api'
+import { getAcceptedStaff } from '../../index.api'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
@@ -41,7 +41,7 @@ function StaffManagement() {
     });
 
     useEffect(() => {
-        api.getAllStaff()
+        getAcceptedStaff()
             .then((res) => {
                 setDatatable({
                     columns: tableColumns,

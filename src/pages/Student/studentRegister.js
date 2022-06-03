@@ -29,7 +29,7 @@ export default function StudentRegsiter() {
       const newStudentDetails = {
         name: newStudent.name,
 
-        itNumber: newStudent.itNumber,
+        itNumber: newStudent.itNumber.toUpperCase(),
         email: newStudent.email,
         password: newStudent.password,
       };
@@ -97,6 +97,7 @@ export default function StudentRegsiter() {
                                       placeholder="Last name"
                                       className="form-control"
                                       onChange={onChange}
+                                      required
                                     />
                                     <label
                                       className="ms-2 text-secondary"

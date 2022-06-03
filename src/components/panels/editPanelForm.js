@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import Select from 'react-select'
 import LoadingSpinner from '../../components/LoadingSpinner'
 
-import { getAllStaff, updatePanel } from '../../index.api'
+import { getAcceptedStaff, updatePanel } from '../../index.api'
 import { alertError } from '../../components/Alerts'
 
 function EditPanelComp(props) {
@@ -24,7 +24,7 @@ function EditPanelComp(props) {
     })
 
     useEffect(() => {
-        getAllStaff()
+        getAcceptedStaff()
             .then((res) => {
                 setStaff(res.data)
             })

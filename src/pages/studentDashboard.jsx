@@ -40,23 +40,30 @@ import SupervisorStatus from "../components/SupervisorRequestStatus/supervisorSt
     
   </div>
 </div> 
+                       
+                 
+                    
 
 <div class="container">
   <div class="row">
     <div class="col-md">
       <SupervisorStatus/>
+      <br></br>
+      <CoSupervisorStatus/>
     </div>
     <div class="col-sm">
       <GroupCard/>
     </div>
-    <div class="col-sm">
-      <CoSupervisorStatus/>
-    </div>
+    {/* <div class="col-sm">
+      
+    </div> */}
   </div>
 </div>
 
 
+
                             </div>
+                            
                         </main>
                         <footer className="row bg-light py-4 mt-auto">
                             <Footer />

@@ -50,7 +50,7 @@ export default function GroupDetails() {
 
   return (
     <>
-      <div className="card text-white bg-primary mb-3 ">
+      <div className="card text-white bg-primary mb-3 card shadow border-0">
         <div className="card-header">Your Group Details</div>
         <div className="card-body">
           {StudentDetails.hasGroup ? (

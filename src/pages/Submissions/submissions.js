@@ -60,7 +60,7 @@ function Submission() {
                     // Format date to show
                     let hours = 0
                     let minutes = 0
-                    d = new Date(row.deadline)
+                    var d = new Date(row.deadline)
                     d.getHours() < 10 ? hours = '0' + d.getHours() : hours = String(d.getHours())
                     d.getMinutes() < 10 ? minutes = '0' + d.getMinutes() : minutes = String(d.getMinutes())
 
