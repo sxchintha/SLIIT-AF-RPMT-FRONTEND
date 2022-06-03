@@ -41,9 +41,9 @@ const StudentLogin = () => {
     setErrMsg('');
   }, [username, password])
 
-  function setCookie(cname, cvalue, exdays) {
+  function setCookie(cname, cvalue, exmins) {
     const d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    d.setTime(d.getTime() + (exmins * 60 * 1000));
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
@@ -77,7 +77,7 @@ const StudentLogin = () => {
 
         console.log(response);
         // setCookie("userrole", (JSON.stringify(response?.data.roles)), 1);
-        setCookie("usertoken", response?.data.accessToken, 1)
+        setCookie("usertoken", response?.data.accessToken, 60)
         // setCookie("username", (JSON.stringify(response?.data.uname)), 1)
         // const kgs = getCookie("kg");
         // console.log(response?.data);

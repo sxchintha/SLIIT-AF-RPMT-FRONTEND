@@ -5,11 +5,12 @@ import { getAdmin } from "../../index.api";
 
 export default function AdminProfile() {
 
+    const localToken = JSON.parse(localStorage.getItem('localToken'))
     const [profiledata, setProfiledata] = useState([])
 
     useEffect(() => {
 
-        const adminId = "628d3575eec19c704fa256c5"
+        const adminId = localToken.userId
         getAdmin({ adminId: adminId })
             .then(res => {
                 setProfiledata(res.data)
