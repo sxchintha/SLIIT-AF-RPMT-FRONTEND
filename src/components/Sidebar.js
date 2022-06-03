@@ -36,7 +36,7 @@ function Sidebar() {
             setUsername(localToken.fname)
         ) : navigate('/login')
 
-        console.log("Local Storage: " + localStorage.getItem('localToken'));
+        // console.log("Local Storage: " + localStorage.getItem('localToken'));
         // console.log("Cookie: " + getCookie('usertoken'));
     })
 

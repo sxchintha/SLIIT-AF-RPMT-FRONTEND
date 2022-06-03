@@ -14,7 +14,7 @@ const tableColumns = [
         field: 'leaderName'
     },
     {
-        label: 'Member 2',
+        label: 'Supervisor',
         field: 'firstMember'
     },
     {
@@ -25,6 +25,7 @@ const tableColumns = [
         label: 'Member 4',
         field: 'thirdMember'
     },
+
     // {
     //     label: 'Supervisor',
     //     field: '_id'
@@ -38,6 +39,7 @@ const tableColumns = [
 function GroupTable() {
 
     const navigate = useNavigate()
+
     const [datatable, setDatatable] = useState({
         columns: [],
         rows: []
@@ -46,7 +48,8 @@ function GroupTable() {
     useEffect(() => {
         getAllGroups()
             .then(res => {
-                // console.log(res.data);
+                // console.log(res.data.groups);
+                // var tempData = res.data.groups
                 res.data.groups.forEach(group => {
                     group.clickEvent = () => {
                         navigate(
@@ -54,6 +57,7 @@ function GroupTable() {
                             { state: { group } }
                         )
                     }
+                    // group?.allocatedPanel = group.allocatedPanel.panelName
                 });
 
                 setDatatable({

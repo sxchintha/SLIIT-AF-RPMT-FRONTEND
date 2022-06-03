@@ -18,7 +18,7 @@ function getCookie(cname) {
 var token = getCookie('usertoken');
 // var token = ""
 
-console.log(token);
+// console.log(token);
 
 const API = axios.create({
     baseURL: "http://localhost:8070",
