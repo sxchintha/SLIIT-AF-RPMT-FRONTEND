@@ -145,6 +145,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/RequiedAuth" element={<RequireAuth/>}/>
 
         <Route path="/student/profile" element={<StudentProfile />} />
+          
         <Route exact path="/" element={<App />} />
       </Routes>
       {/* </AuthProvider> */}
