@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import AdminProfile from "../../components/admin/profile";
-import { alertSuccess } from "../../components/Alerts";
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import UpdateAdminForm from "../../components/admin/updateProfile";
 import Footer from "../../components/Footer";
 import Sidebar from "../../components/Sidebar";
 
-export default function AdminProfilePage() {
 
-    const location = useLocation();
-    const [alert, setAlert] = useState("")
-
-    useEffect(() => {
-        // console.log(location.state);
-        location.state && location.state.message ?
-            setAlert(location.state.message) : setAlert("")
-
-    }, [])
+function AdminProfileUpdate() {
 
     return (
         <div>
@@ -27,12 +17,9 @@ export default function AdminProfilePage() {
                         <main className="row overflow-auto">
                             <div className="col pt-4 ps-4">
                                 {/* Body */}
-                                <h2>Admin Profile</h2>
+                                <h2>Update Profile</h2>
                                 <hr />
-                                {
-                                    alert ? alertSuccess(alert) : ""
-                                }
-                                <AdminProfile />
+                                <UpdateAdminForm />
 
                             </div>
                         </main>
@@ -43,3 +30,5 @@ export default function AdminProfilePage() {
         </div>
     )
 }
+
+export default AdminProfileUpdate;

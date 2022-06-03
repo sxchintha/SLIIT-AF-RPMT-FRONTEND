@@ -1,7 +1,28 @@
 import axios from "axios";
 
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+var token = getCookie('usertoken');
+// var token = ""
+
+console.log(token);
+
 const API = axios.create({
     baseURL: "http://localhost:8070",
+    headers: { Authorization: `Bearer ${token}` }
 }) // Set base url of backend
 
 export const getAllMarkings = () => API.get('/marking-schemes')
@@ -23,11 +44,14 @@ export const deletePanel = (id) => API.delete(`panels/delete/${id}`)
 export const updatePanel = (id, data) => API.put(`/panels/update/${id}`, data)
 
 export const getAllGroups = () => API.get('/studentGroups')
+export const randomAllocate = () => API.put('/studentGroups/rondomAllocatePanel')
 
 export const getAllAdmins = () => API.get('/admins')
 export const addNewAdmin = (data) => API.post('/admins/add', data)
 export const getAdmin = (data) => API.post(`/admins/profile`, data)
 export const getSummary = () => API.get('/admins/summary')
+export const updateAdmin = (data) => API.put('/admins/update', data)
+export const adminChangePass = (data) => API.put('/admins/changePass', data)
 
 export const getAllStaff = () => API.get('/staff')
 export const getStaffMember = (id) => API.get(`/staff/get/${id}`)

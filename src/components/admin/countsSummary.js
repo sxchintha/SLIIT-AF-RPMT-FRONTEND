@@ -59,7 +59,7 @@ function CountSummary() {
                         <div className="mr-5">Student Groups <span className="fw-bold">{summary.stdGrpCount}</span></div>
                     </div>
                     <Link className="card-footer text-white clearfix small z-1 text-decoration-none"
-                        to="/admins/home">
+                        to="/studentgroups">
                         <span className="float-left">View </span>
                         <span className="float-right">
                             <i className="fa fa-angle-right"></i>

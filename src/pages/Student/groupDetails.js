@@ -37,6 +37,29 @@ export default function MyGroup() {
     hasRequestedCoSupervisor: "",
   });
 
+  const [SupervisorDetails, SetSupervisorDetails] = useState({
+    supervisorRequestStatus: "",
+    requestedDate: "",
+  });
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      await axios
+        .get(
+          `http://localhost:8070/student/getSupervisorStatus/${StudentDetails.groupId}`
+        )
+        .then((res) => {
+          SetSupervisorDetails(res.data);
+
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
+    fetchUser();
+  }, [StudentDetails]);
+
   useEffect(() => {
     const fetchUser = async () => {
       await axios
@@ -51,12 +74,18 @@ export default function MyGroup() {
     };
     fetchUser();
   }, [StudentDetails]);
+  console.log(SupervisorDetails.supervisorRequestStatus == "Accepted");
+  function onTapCoSupervisorRequest() {
+    if (SupervisorDetails.supervisorRequestStatus == "Accepted") {
+      navigate("/student/supervisorRequest");
+    } else {
+      alert("Supervisor Request Not Accepted Yet");
+    }
+  }
 
   function onTapSupervisorRequest() {
     navigate("/student/supervisorRequest");
   }
-
-  console.log(GroupDetails.hasRequestedSupervisor);
 
   return (
     <div>
@@ -72,27 +101,28 @@ export default function MyGroup() {
                     <div className="row justify-content-center align-items-center h-100">
                       <div className="col-12 col-lg-9 col-xl-7">
                         <div className="card shadow-2-strong card-registration">
-                          <div className="card-body p-4 p-md-5 sxch-glass-back">
+                          <div className="card-body p-4 p-md-5 sxch-glass-back w-100">
                             <div className="d-flex justify-content-around">
                               {StudentDetails.hasGroup ? (
                                 <>
                                   {GroupDetails.hasRequestedSupervisor ? (
                                     <>
-                                      <button
-                                        type="button"
-                                        class="btn btn-success mb-5"
-                                        onClick={onTapSupervisorRequest}
-                                      >
-                                        Chat With Supervisor
-                                      </button>
                                       {GroupDetails.hasRequestedCoSupervisor ? (
-                                        <></>
+                                        <>
+                                          <button
+                                            type="button"
+                                            class="btn btn-success mb-5"
+                                            onClick={onTapSupervisorRequest}
+                                          >
+                                            Chat With Supervisor
+                                          </button>
+                                        </>
                                       ) : (
                                         <>
                                           <button
                                             type="button"
                                             class="btn btn-secondary mb-5"
-                                            onClick={onTapSupervisorRequest}
+                                            onClick={onTapCoSupervisorRequest}
                                           >
                                             Request Co Supervisor
                                           </button>

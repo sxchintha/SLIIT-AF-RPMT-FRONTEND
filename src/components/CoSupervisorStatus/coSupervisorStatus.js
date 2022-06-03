@@ -13,17 +13,17 @@ export default function CoSupervisorStatus() {
       await axios
         .get(`http://localhost:8070/student/getStudent/${ItNumber}`)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           SetStudentDetails(res.data);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
         });
     };
     fetchStudent();
   }, []);
 
-  console.log(StudentDetails.groupId);
+  // console.log(StudentDetails.groupId);
 
   const [GroupDetails, SetGroupDetails] = useState({
     supervisorRequestStatus: "",
@@ -39,10 +39,10 @@ export default function CoSupervisorStatus() {
         .then((res) => {
           SetGroupDetails(res.data);
 
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
         });
     };
     fetchUser();
@@ -50,26 +50,26 @@ export default function CoSupervisorStatus() {
 
   return (
     <>
-      <div class="card shadow border-0 w-75">
+      <div className="card shadow border-0 w-75">
         {/* <div className="card-header">CoSupervisor Request Status</div> */}
         <div className="card-body">
           {StudentDetails.hasGroup ? (
             <>
               {GroupDetails.supervisorRequestStatus == "Pending" ? (
                 <>
-                  <div class="row">
-                    <div class="col">
-                      <span class="h6 font-semibold text-muted text-sm d-block mb-2">
+                  <div className="row">
+                    <div className="col">
+                      <span className="h6 font-semibold text-muted text-sm d-block mb-2">
                         <u>Co-Supervisor Request Status</u>
                       </span>
-                      <span class="h3 font-bold mb-0">
+                      <span className="h3 font-bold mb-0">
                         {GroupDetails.supervisorRequestStatus}
                       </span>
                     </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                    <div className="col-auto">
+                      <div className="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
                         <i
-                          class="bi bi-question-circle-fill"
+                          className="bi bi-question-circle-fill"
                           style={{
                             color: "yellow",
                             fontSize: 40,
@@ -84,7 +84,7 @@ export default function CoSupervisorStatus() {
                     <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
 
                     <i
-                      class="bi bi-question-circle-fill"
+                      className="bi bi-question-circle-fill"
                       style={{
                         color: "yellow",
                         fontSize: 70,
@@ -96,19 +96,19 @@ export default function CoSupervisorStatus() {
                 </>
               ) : GroupDetails.supervisorRequestStatus == "Approved" ? (
                 <>
-                  <div class="row">
-                    <div class="col">
-                      <span class="h6 font-semibold text-muted text-sm d-block mb-2">
+                  <div className="row">
+                    <div className="col">
+                      <span className="h6 font-semibold text-muted text-sm d-block mb-2">
                         <u>Co-Supervisor Request Status</u>
                       </span>
-                      <span class="h3 font-bold mb-0">
+                      <span className="h3 font-bold mb-0">
                         {GroupDetails.supervisorRequestStatus}
                       </span>
                     </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                    <div className="col-auto">
+                      <div className="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
                         <i
-                          class="bi bi-check-circle-fill"
+                          className="bi bi-check-circle-fill"
                           style={{
                             color: "yellow",
                             fontSize: 40,
@@ -126,7 +126,7 @@ export default function CoSupervisorStatus() {
 
                   <div style={{ alignItems: "center", textAlign: "center" }}>
                     <i
-                      class="bi bi-check-circle-fill"
+                      className="bi bi-check-circle-fill"
                       style={{
                         color: "green",
                         fontSize: 67,
@@ -138,19 +138,19 @@ export default function CoSupervisorStatus() {
                 </>
               ) : (
                 <>
-                  <div class="row">
-                    <div class="col">
-                      <span class="h6 font-semibold text-muted text-sm d-block mb-2">
+                  <div className="row">
+                    <div className="col">
+                      <span className="h6 font-semibold text-muted text-sm d-block mb-2">
                         <u>Co-Supervisor Request Status</u>
                       </span>
-                      <span class="h3 font-bold mb-0">
+                      <span className="h3 font-bold mb-0">
                         {GroupDetails.supervisorRequestStatus}
                       </span>
                     </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                    <div className="col-auto">
+                      <div className="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
                         <i
-                          class="bi bi-x-circle-fill"
+                          className="bi bi-x-circle-fill"
                           style={{
                             color: "red",
                             fontSize: 40,
@@ -167,7 +167,7 @@ export default function CoSupervisorStatus() {
                   </center>
                   <div style={{ alignItems: "center", textAlign: "center" }}>
                     <i
-                      class="bi bi-x-circle-fill"
+                      className="bi bi-x-circle-fill"
                       style={{
                         color: "red",
                         fontSize: 67,

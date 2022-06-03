@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import profileImage from '../../assets/img/profile.png'
 import { getAdmin } from "../../index.api";
 
 export default function AdminProfile() {
 
+    const localToken = JSON.parse(localStorage.getItem('localToken'))
     const [profiledata, setProfiledata] = useState([])
 
     useEffect(() => {
 
-        const adminId = "628d3575eec19c704fa256c5"
+        const adminId = localToken.userId
         getAdmin({ adminId: adminId })
             .then(res => {
                 setProfiledata(res.data)
@@ -17,7 +19,6 @@ export default function AdminProfile() {
     }, [])
 
     return (
-
         <div className="container">
             <div className="main-body">
 
@@ -35,16 +36,35 @@ export default function AdminProfile() {
                                 </div>
                             </div>
                         </div>
+                        <div className="card mt-3">
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <Link to={'update'} state={{ profiledata }} className="text-secondary w-100 text-decoration-none">Edit Profile <i className="float-end bi-pencil" /></Link>
+                                </li>
+                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <Link to={'changepassword'} className="text-secondary w-100 text-decoration-none">Change Password <i className="float-end bi-key" /> </Link>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div className="col-md-8">
                         <div className="card profile-card mb-3">
-                            <div className="card-body profile-card-body">
+                            <div className="card-body profile-card-body my-5">
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">Full Name</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
                                         {profiledata.firstname + ' ' + profiledata.lastname}
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-sm-3">
+                                        <h6 className="mb-0">Name with initials</h6>
+                                    </div>
+                                    <div className="col-sm-9 text-secondary">
+                                        {profiledata.nameWithInitials}
                                     </div>
                                 </div>
                                 <hr />
@@ -83,14 +103,10 @@ export default function AdminProfile() {
                                         {profiledata.address}
                                     </div>
                                 </div>
-                                <hr />
-                                <div className="row">
-                                    <div className="col-sm-12">
-                                        <a className="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+
+
 
                     </div>
                 </div>

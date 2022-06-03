@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 
 const tableColumns = [
     {
-        label: 'Group ID',
-        field: '_id'
+        label: 'Group Name',
+        field: 'groupName'
     },
     {
         label: 'Group Leader',
