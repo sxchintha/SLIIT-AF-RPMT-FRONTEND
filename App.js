@@ -83,9 +83,6 @@ createRoot(document.getElementById("app")).render(
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
 
-        {/* <Route element={<RequireAuth/>}> */}
-        <Route path="/accepttopics" element={<AcceptTopics />} />
-        {/* </Route> */}
 
         <Route path="/request-supervisor" element={<RequestSupervisor />} />
         <Route path='/staff/profile/:id' element={<StaffProfile />} />
