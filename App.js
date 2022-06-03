@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // import 'mdbreact/dist/css/mdb.css';
 
 import "./src/style/Primary.scss";
+// import { AuthProvider } from "./src/context/AuthProvider";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
@@ -20,13 +21,9 @@ import StaffManagement from "./src/pages/UserManagement/staff";
 import App from "./src/components/main";
 import Header from "./src/components/Header";
 
-<<<<<<< HEAD
-// import NewPanel from './src/pages/Panels/newPanel'
-=======
 import CreateMarking from "./src/pages/MarkingSchemes/createMarking";
 import MarkingSchemes from "./src/pages/MarkingSchemes/markingSchemes";
 import UpdateMarking from './src/pages/MarkingSchemes/updateMarking'
->>>>>>> db4f8eeaa1c261cb60160819cd97028353e3388c
 
 import CreateSubmission from "./src/pages/Submissions/newSubmission";
 import SubmissionManagement from "./src/pages/Submissions/submissions";
@@ -54,10 +51,13 @@ import CoSupervisorStatus from "./src/components/CoSupervisorStatus/coSupervisor
 import Submissions from "./src/components/SubmissionDetails/submissionItems";
 import SubmissionDetails from "./src/components/SubmissionDetails/submissionDetails";
 
-
+import StudentLogin from "./src/pages/UserManagement/login"
+import RequireAuth from "./src/components/landing/RequireAuth"
+import Unauthorized from "./src/components/landing/Unauthorized"
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
     <div>
+      {/* <AuthProvider> */}
       {/* <Header /> */}
       <Routes>
         <Route exact path="/" element={<App />} />
@@ -66,7 +66,9 @@ createRoot(document.getElementById("app")).render(
 
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
+        {/* <Route element={<RequireAuth/>}> */}
         <Route path="/accepttopics" element={<AcceptTopics />} />
+        {/* </Route> */}
 
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/admins/new" element={<NewAdmin />} />
@@ -95,7 +97,12 @@ createRoot(document.getElementById("app")).render(
         <Route path="/student/groupDetailsCo" element={<CoSupervisorStatus />} />
         <Route path="/student/submissions" element={<Submissions />} />
         <Route path="/student/submission/:id" element={<SubmissionDetails />} />
+
+        <Route path="/student/login" element={<StudentLogin/>}/>
+        <Route path="/unauthorized" element={<Unauthorized/>}/>
+        <Route path="/RequiedAuth" element={<RequireAuth/>}/>
       </Routes>
+      {/* </AuthProvider> */}
     </div>
   </BrowserRouter>
 );
