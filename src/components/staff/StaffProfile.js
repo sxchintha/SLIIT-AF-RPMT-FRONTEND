@@ -49,7 +49,7 @@ export default function StaffProfile() {
                                                 <span class="font-weight-bold profile-name">{staffMember.firstname} {staffMember.lastname}</span>
                                                 <span class="text-black-50 profile-email">{staffMember.email}</span><span> </span>
                                                 <p class="p-edit-profile">Edit profile &emsp;
-                                                <Link to ='/register'><i class="bi bi-gear"></i></Link>
+                                                <Link to ={`/staff/profile/update/${id}`}><i class="bi bi-gear"></i></Link>
                                                 </p>
                                             </div>
                                         </div>

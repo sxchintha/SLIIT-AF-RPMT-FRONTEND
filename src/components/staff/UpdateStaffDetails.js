@@ -65,7 +65,7 @@ function UpdateStaffDetails() {
                                                       <div class="row mt-3">
 
                                                           <div class="col-md-12"><label class="labels">Username</label>
-                                                            <input type="text" class="form-control" value={staffMember.username}/>                     
+                                                            <input type="text" class="form-control" value={staffMember.username} readOnly/>                     
                                                           </div>
 
                                                           <div class="col-md-12"><label class="labels label-pd-top">Research Area</label>
@@ -81,8 +81,7 @@ function UpdateStaffDetails() {
                                                           </div>
 
                                                       </div>
-                                                      
-                     
+                                                      <div class="mt-5 text-center"><button class="btn btn-secondary profile-button" type="button">Save Profile</button></div>
                                                 </div>
                                               </div>
                                               <div class="col-md-4">

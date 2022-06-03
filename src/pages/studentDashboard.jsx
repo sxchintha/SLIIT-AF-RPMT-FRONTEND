@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import CoSupervisorStatus from "../components/CoSupervisorStatus/coSupervisorStatus";
 import Footer from "../components/Footer";
 import GroupCard from "../components/GroupDetails/GroupDetails";
@@ -11,6 +12,28 @@ import SupervisorStatus from "../components/SupervisorRequestStatus/supervisorSt
 
 
 export default function StudentDashboard() {
+  const [StudentDetails, SetStudentDetails] = useState({
+    hasGroup: "",
+    groupId: "",
+  });
+
+  var ItNumber = "IT20211714";
+  useEffect(() => {
+    const fetchStudent = async () => {
+      await axios
+        .get(`http://localhost:8070/student/getStudent/${ItNumber}`)
+        .then((res) => {
+          console.log(res);
+          SetStudentDetails(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
+    fetchStudent();
+  }, []);
+
+  console.log(StudentDetails.hasGroup)
 
   return (
     <>
@@ -58,6 +81,25 @@ export default function StudentDashboard() {
       
     </div> */}
                   </div>
+                  {
+                    StudentDetails.hasGroup?(
+                      <>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <h5>Welcome {ItNumber}</h5><p> You can check your group details and request status from here!!.</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+                      </>
+                    ):(
+                      <>
+                      <br></br>
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <h5>Welcome {ItNumber}</h5><p> Your group is not yet registered, register your group or wait till one of your group members register it !.</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+                      </>
+                    )
+                  }
+
                 </div>
 
 
