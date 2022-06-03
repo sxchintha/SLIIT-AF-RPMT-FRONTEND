@@ -31,7 +31,7 @@ export default function  AcceptStaff() {
                 <div className="table-responsive">
                     {
                         datatable.length > 0 ?
-                            <table className="table">
+                            <table className="table m-0">
                                 <thead>
                                     <tr>
                                         <th>Name</th>

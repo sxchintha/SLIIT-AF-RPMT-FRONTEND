@@ -51,6 +51,7 @@ export const addNewAdmin = (data) => API.post('/admins/add', data)
 export const getAdmin = (data) => API.post(`/admins/profile`, data)
 export const getSummary = () => API.get('/admins/summary')
 export const updateAdmin = (data) => API.put('/admins/update', data)
+export const adminChangePass = (data) => API.put('/admins/changePass', data)
 
 export const getAllStaff = () => API.get('/staff')
 export const getStaffMember = (id) => API.get(`/staff/get/${id}`)
