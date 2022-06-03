@@ -66,7 +66,6 @@ createRoot(document.getElementById("app")).render(
     <div>
       {/* <Header /> */}
       <Routes>
-        <Route exact path="/" element={<App />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/students" element={<StudentManagement />} />
 
@@ -125,6 +124,8 @@ createRoot(document.getElementById("app")).render(
         <Route path="/student/submissions" element={<Submissions />} />
         <Route path="/student/submission/:id" element={<SubmissionDetails />} />
         <Route path="/student/profile" element={<StudentProfile />} />
+        
+        <Route exact path="/" element={<App />} />
       </Routes>
     </div>
   </BrowserRouter>
