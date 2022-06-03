@@ -6,8 +6,9 @@ export default function SupervisorStatus() {
     hasGroup: "",
     groupId: "",
   });
-
-  var ItNumber = "IT20211714";
+  const localToken = JSON.parse(localStorage.getItem("localToken"));
+  console.log(localToken.username);
+  var ItNumber = localToken.username;
   useEffect(() => {
     const fetchStudent = async () => {
       await axios
