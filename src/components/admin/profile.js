@@ -41,7 +41,7 @@ export default function AdminProfile() {
                                     <Link to={'update'} state={{ profiledata }} className="text-secondary w-100 text-decoration-none">Edit Profile <i className="float-end bi-pencil" /></Link>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <Link to={''} className="text-secondary w-100 text-decoration-none">Change Password <i className="float-end bi-key" /> </Link>
+                                    <Link to={'changepassword'} className="text-secondary w-100 text-decoration-none">Change Password <i className="float-end bi-key" /> </Link>
                                 </li>
                             </ul>
                         </div>

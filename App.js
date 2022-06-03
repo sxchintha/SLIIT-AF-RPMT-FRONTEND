@@ -42,6 +42,7 @@ import NewAdmin from "./src/pages/UserManagement/newAdmin";
 import AdminDashboard from "./src/pages/admin/adminDashboard";
 import AdminProfile from "./src/pages/admin/adminProfile";
 import AdminProfileUpdate from "./src/pages/admin/adminUpdate";
+import AdminPassChange from "./src/pages/admin/changePassword";
 
 import RequestSupervisor from "./src/components/staff/RequestSupervisor";
 
@@ -75,7 +76,6 @@ createRoot(document.getElementById("app")).render(
       {/* <AuthProvider> */}
       {/* <Header /> */}
       <Routes>
-        <Route exact path="/" element={<App />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/students" element={<StudentManagement />} />
 
@@ -96,6 +96,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/admins/home" element={<AdminDashboard />} />
         <Route path="/admins/profile" element={<AdminProfile />} />
         <Route path="/admins/profile/update" element={<AdminProfileUpdate />} />
+        <Route path="/admins/profile/changepassword" element={<AdminPassChange />} />
 
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />
@@ -144,6 +145,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/RequiedAuth" element={<RequireAuth/>}/>
 
         <Route path="/student/profile" element={<StudentProfile />} />
+        <Route exact path="/" element={<App />} />
       </Routes>
       {/* </AuthProvider> */}
     </div>

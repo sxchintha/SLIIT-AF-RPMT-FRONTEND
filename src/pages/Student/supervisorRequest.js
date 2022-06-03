@@ -68,9 +68,32 @@ export default function SupervisorRequest() {
     setStaffSelect(allFieldStaff);
   }, [fieldStaff]);
   const options = [
-    { value: "IT", label: "IT" },
-    { value: "SE", label: "SE" },
-    { value: "CS", label: "CS" },
+    {
+      value: "Robotics and Artificial Intelligence",
+      label: "Robotics and Artificial Intelligence",
+    },
+
+    {
+      value: "Graphics and Immersive Computing",
+      label: "Graphics and Immersive Computing",
+    },
+
+    {
+      value: "Bioinformatics and Computational Biology",
+      label: "Bioinformatics and Computational Biology",
+    },
+
+    {
+      value: "High Performance Computing",
+      label: "High Performance Computing",
+    },
+
+    { value: "Theoretical Foundations", label: "Theoretical Foundations" },
+
+    {
+      value: "Information and System Security",
+      label: "Information and System Security",
+    },
   ];
 
   const handlePanelMembers = (e) => {
