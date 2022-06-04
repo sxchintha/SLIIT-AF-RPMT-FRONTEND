@@ -32,7 +32,8 @@ export default function SubmissionDetails() {
   }, []);
   
 
-  const [item, setItem] = useState({ name: '', document: '',itNumber:'IT20211718',date:new Date()});
+  const [item, setItem] = useState({ name: '', document: '',itNumber:JSON.parse(localStorage.getItem(localToken.username)),date:new Date()});
+  console.log(JSON.parse(localStorage.getItem(localToken.username)))
   const [items, setItems] = useState([])
   const onSubmitHandler = async (e) => {
     e.preventDefault();
