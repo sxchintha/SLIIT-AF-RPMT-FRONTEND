@@ -209,7 +209,7 @@ function Sidebar() {
 
             <li>
               <Link
-                to="/"
+                to="/request-supervisor"
                 className="nav-link px-sm-0 px-2"
                 style={{ textDecoration: "none" }}
               >
@@ -220,7 +220,7 @@ function Sidebar() {
 
             <li>
               <Link
-                to="/s"
+                to="/request-cosupervisor"
                 className="nav-link px-sm-0 px-2"
                 style={{ textDecoration: "none" }}
               >
