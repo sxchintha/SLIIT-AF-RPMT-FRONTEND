@@ -24,7 +24,7 @@ setToken()
 //     console.log('no token');
 // }
 
-console.log(token);
+// console.log(token);
 
 const API = axios.create({
     baseURL: "http://localhost:8070",
@@ -67,4 +67,4 @@ export const getPendingStaff = () => API.get('/staff/pending')
 export const staffStatus = (id, data) => API.put(`/staff/accept-reject/${id}`, data)
 
 export const getAllStudents = () => API.get('/student')
-// export const getStudent = (id) => API.get(`/student`)
+export const getStudent = (id) => API.get(`/student/get/${id}`)
