@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { MDBDataTableV5 } from 'mdbreact'
 
-import { getAllPanels } from '../../index.api'
+import { getItems } from '../../components/SubmissionDetails/api/index'
 
-function PanelTable() {
+function SubmissionList() {
 
     const navigate = useNavigate()
     const [datatable, setDatatable] = useState({
@@ -28,7 +28,7 @@ function PanelTable() {
     ]
 
     useEffect(() => {
-        getAllPanels()
+        getItems()
             .then((res) => {
                 // console.log(res.data);
                 res.data.forEach(row => {
@@ -61,4 +61,4 @@ function PanelTable() {
     )
 }
 
-export default PanelTable;
+export default SubmissionList;
