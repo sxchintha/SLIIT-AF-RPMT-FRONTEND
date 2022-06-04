@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function GroupRegister() {
+  const navigate = useNavigate();
+
   const [StudentDetails, SetStudentDetails] = useState({
     hasGroup: "",
     groupId: "",
@@ -78,8 +81,9 @@ export default function GroupRegister() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(`Hello${newStudentGroup}`);
-        alert(res);
+        console.log(res);
+        alert("Student group succesfully registered!");
+        navigate("/student/groupDetails");
       })
       .catch((e) => {
         console.log(newStudentGroup);
