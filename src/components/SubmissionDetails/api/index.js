@@ -19,7 +19,9 @@ function getCookie(cname) {
   var token = getCookie("usertoken");
 
 
-export const getItems = ()=>axios.get(url);
+export const getItems = ()=>axios.get(url, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 
 export const createItem = (item)=>axios.post((url),item,{
     headers: { Authorization: `Bearer ${token}` },
