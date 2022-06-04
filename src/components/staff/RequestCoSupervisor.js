@@ -7,10 +7,28 @@ function RequestCoSupervisor() {
 
     const[cosupervisor, setCoSupervisor] = useState([]);
 
+    function getCookie(cname) {
+        let name = cname + "=";
+        let ca = document.cookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);    
+          }    
+        }
+        return "";
+      }
+      var token = getCookie("usertoken");
+
     useEffect(() => {
         const getCosupervisors = () => {
             //all staff membersla fetch karala aran tiyenne methana
-            axios.get("http://localhost:8070/student/topics").then((res) => {
+            axios.get("http://localhost:8070/student/topics",  {
+                headers: { Authorization: `Bearer ${token}` },
+              }).then((res) => {
                 console.log(res.data)
                 setCoSupervisor(res.data)
 
@@ -20,6 +38,19 @@ function RequestCoSupervisor() {
         }
         getCosupervisors();
     },[])
+
+    const handleAccept = (id) => {
+    axios
+      .put(`http://localhost:8070/student/supervisor-accept/${id}`,  {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        window.location.reload(true);
+      })
+      .catch((er) => {
+        alert(er.message);
+      });
+  };
 
   return (
                 <div>
@@ -60,8 +91,8 @@ function RequestCoSupervisor() {
                                                                                 <td>{new Date(items.requestedDate).toDateString()}</td>
                                                                                 <td>{items.supervisorRequestStatus}</td>
 
-                                                                                {/* <td><button type="button" className="btn btn-danger" onClick={() => {handleReject (items._id, items.groupId)}} >Reject</button></td> */}
-                                                                                {/* <td><button type="button" className="btn btn-success" onClick={() => {handleAccept (items._id)}}>Accept</button></td> */}
+                                                                                <td><button type="button" className="btn btn-danger" onClick={() => {handleReject (items._id, items.groupId)}} >Reject</button></td>
+                                                                                <td><button type="button" className="btn btn-success" onClick={() => {handleAccept (items._id)}}>Accept</button></td>
                                                                             </tr>
                                                                         ))
                                                                     }
