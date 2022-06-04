@@ -36,9 +36,9 @@ function Sidebar() {
       ? setUsername(localToken.fname)
       : navigate("/login");
 
-        // console.log("Local Storage: " + localStorage.getItem('localToken'));
-        // console.log("Cookie: " + getCookie('usertoken'));
-    })
+    // console.log("Local Storage: " + localStorage.getItem('localToken'));
+    // console.log("Cookie: " + getCookie('usertoken'));
+  });
 
   logOut = (e) => {
     e.preventDefault();
@@ -180,7 +180,7 @@ function Sidebar() {
             </li>
             <li>
               <Link
-                to="/studentgroups"
+                to="/student/submissions"
                 className="nav-link px-sm-0 px-2"
                 style={{ textDecoration: "none" }}
               >

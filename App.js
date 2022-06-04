@@ -71,7 +71,12 @@ import StudentLogin from "./src/pages/UserManagement/login"
 import RequireAuth from "./src/components/landing/RequireAuth"
 import Unauthorized from "./src/components/landing/Unauthorized"
 
+
 import Chat from "./src/components/chat/Chat"
+
+import SubmissionView from "./src/components/SubmissionDetails/submissionView"
+import SubmissionList from "./src/components/SubmissionDetails/submissionList";
+
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -148,6 +153,9 @@ createRoot(document.getElementById("app")).render(
         <Route path="/RequiedAuth" element={<RequireAuth/>}/>
 
         <Route path="/student/profile" element={<StudentProfile />} />
+        <Route path="/student/submissionview" element={<SubmissionView/>}/>
+        <Route path="/submissionlist" element={<SubmissionList/>}/>
+
           
         <Route exact path="/" element={<App />} />
       </Routes>
