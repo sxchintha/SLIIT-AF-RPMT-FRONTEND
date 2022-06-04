@@ -15,10 +15,30 @@ export default function MyGroup() {
   const localToken = JSON.parse(localStorage.getItem("localToken"));
   console.log(localToken.username);
   var ItNumber = localToken.username;
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  var token = getCookie("usertoken");
+  console.log(token);
   useEffect(() => {
     const fetchStudent = async () => {
       await axios
-        .get(`http://localhost:8070/student/getStudent/${ItNumber}`)
+        .get(`http://localhost:8070/student/getStudent/${ItNumber}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((res) => {
           console.log(res);
           SetStudentDetails(res.data);
@@ -48,7 +68,10 @@ export default function MyGroup() {
     const fetchUser = async () => {
       await axios
         .get(
-          `http://localhost:8070/student/getSupervisorStatus/${StudentDetails.groupId}`
+          `http://localhost:8070/student/getSupervisorStatus/${StudentDetails.groupId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         )
         .then((res) => {
           SetSupervisorDetails(res.data);
@@ -65,7 +88,12 @@ export default function MyGroup() {
   useEffect(() => {
     const fetchUser = async () => {
       await axios
-        .get(`http://localhost:8070/student/getGroup/${StudentDetails.groupId}`)
+        .get(
+          `http://localhost:8070/student/getGroup/${StudentDetails.groupId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((res) => {
           SetGroupDetails(res.data.student);
           console.log(res.data);
