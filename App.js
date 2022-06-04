@@ -69,6 +69,8 @@ import UpdateStaffProfile from "./src/components/staff/UpdateStaffDetails";
 import StudentLogin from "./src/pages/UserManagement/login"
 import RequireAuth from "./src/components/landing/RequireAuth"
 import Unauthorized from "./src/components/landing/Unauthorized"
+import SubmissionView from "./src/components/SubmissionDetails/submissionView"
+
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
     <div>
@@ -144,6 +146,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/RequiedAuth" element={<RequireAuth/>}/>
 
         <Route path="/student/profile" element={<StudentProfile />} />
+        <Route path="/student/submissionview" element={<SubmissionView/>}/>
       </Routes>
       {/* </AuthProvider> */}
     </div>

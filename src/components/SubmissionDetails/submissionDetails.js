@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import FileBase64 from 'react-file-base64';
+import { createItem, getItems } from './functions';
 
 export default function SubmissionDetails() {
   const { id } = useParams();
@@ -28,6 +30,26 @@ export default function SubmissionDetails() {
     };
     fetchSubmissions();
   }, []);
+  
+
+  const [item, setItem] = useState({ name: '', document: '',itNumber:'IT20211718',date:new Date()});
+  const [items, setItems] = useState([])
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const result = await createItem(item);
+
+    // setItems([...items, result]);
+    console.log(result)
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getItems();
+      console.log('fetch data;m', result)
+      setItems(result)
+    }
+    fetchData()
+  }, [])
 
   var deadline = new Date(Submission.deadline);
   // var ded = deadline.toDateString();
@@ -73,10 +95,27 @@ export default function SubmissionDetails() {
           <p class="card-text">{Submission.description}.</p>
           <p class="card-text">File Types -{Submission.fileTypes}.</p>
 
-          <a href="#" class="btn btn-primary">
+          {/* <a href="#" class="btn btn-primary">
             Upload Document
-          </a>
+          </a> */}
+          {/* <pre>{JSON.stringify(item, null, '\t')}</pre> */}
+          
+      <form action="" onSubmit={onSubmitHandler}>
+        <input type="text" class="input-field" value={Submission.submissionName}
+
+          onChange={e => setItem({ ...item, name: e.target.value })}
+        />
+        <FileBase64
+          type="file"
+          multiple={false}
+          onDone={({ base64 }) => setItem({ ...item, document: base64 })}
+        />
+        <div className="right-align">
+        <button class="btn btn-danger">submit</button>
         </div>
+        </form>
+        </div>
+        
         <div class="card-footer text-muted">2 days ago</div>
       </div>
     </>
