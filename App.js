@@ -70,8 +70,13 @@ import UpdateStaffProfile from "./src/components/staff/UpdateStaffDetails";
 import StudentLogin from "./src/pages/UserManagement/login"
 import RequireAuth from "./src/components/landing/RequireAuth"
 import Unauthorized from "./src/components/landing/Unauthorized"
+
+
+import Chat from "./src/components/chat/Chat"
+
 import SubmissionView from "./src/components/SubmissionDetails/submissionView"
 import SubmissionList from "./src/components/SubmissionDetails/submissionList";
+
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -91,7 +96,7 @@ createRoot(document.getElementById("app")).render(
         <Route path='/staff/profile/:id' element={<StaffProfile />} />
         <Route path="/request-cosupervisor" element={<RequestCoSupervisor />} />
 
-
+        <Route path="/chat" element={<Chat />} />
 
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/admins/new" element={<NewAdmin />} />
