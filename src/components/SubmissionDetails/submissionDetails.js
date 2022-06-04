@@ -19,7 +19,9 @@ export default function SubmissionDetails() {
   useEffect(() => {
     const fetchSubmissions = async () => {
       await axios
-        .get(`http://localhost:8070/submissions/${id}`)
+        .get(`http://localhost:8070/submissions/${id}`),{
+          headers: { Authorization: `Bearer ${token}` },
+        }
         .then((res) => {
           SetSubmission(res.data.submission);
           console.log(res);
@@ -30,10 +32,29 @@ export default function SubmissionDetails() {
     };
     fetchSubmissions();
   }, []);
-  
 
-  const [item, setItem] = useState({ name: '', document: '',itNumber:JSON.parse(localStorage.getItem(localToken.username)),date:new Date()});
-  console.log(JSON.parse(localStorage.getItem(localToken.username)))
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  var token = getCookie("usertoken");
+
+  
+  const localToken=localStorage.getItem('localToken');
+
+  const [item, setItem] = useState({ name: '', document: '',itNumber:JSON.parse(localToken).username,date:new Date()});
+  // console.log(JSON.parse(localStorage.getItem(localToken.username)))
   const [items, setItems] = useState([])
   const onSubmitHandler = async (e) => {
     e.preventDefault();
