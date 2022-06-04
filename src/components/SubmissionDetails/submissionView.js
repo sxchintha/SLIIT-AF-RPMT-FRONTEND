@@ -47,7 +47,7 @@ export default function Submissions() {
 
 
     useEffect(() => {
-        const fetchStudent = async () => {
+        const fetchsubmissions = async () => {
           await axios
             .get(`http://localhost:8070/fileupload/docup/629ad5f0a37ca63bf48698b3`)
             .then((res) => {
