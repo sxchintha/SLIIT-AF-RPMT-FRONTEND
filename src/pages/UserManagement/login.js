@@ -84,7 +84,7 @@ const StudentLogin = () => {
 
         response?.data.roles == 5150 ?
           // navigate('/staff/home')
-          window.location.replace('/staff/home')
+          window.location.replace(`/staff/profile/${localToken.userId}`)
           : (response?.data.roles == 1984 ?
             // navigate('/student/dashboard')
             window.location.replace('/student/dashboard')

@@ -13,7 +13,7 @@ export default function GroupRegister() {
   });
 
   const localToken = JSON.parse(localStorage.getItem("localToken"));
-  console.log(localToken.username);
+  // console.log(localToken.username);
   var ItNumber = localToken.username;
   function getCookie(cname) {
     let name = cname + "=";
@@ -31,7 +31,7 @@ export default function GroupRegister() {
   }
 
   var token = getCookie("usertoken");
-  console.log(token);
+  // console.log(token);
   useEffect(() => {
     const fetchStudent = async () => {
       await axios
@@ -48,7 +48,7 @@ export default function GroupRegister() {
     };
     fetchStudent();
   }, []);
-  console.log(StudentDetails.hasGroup);
+  // console.log(StudentDetails.hasGroup);
   const [newGroup, setnewGroup] = useState({
     leaderName: "",
     firstMember: "",

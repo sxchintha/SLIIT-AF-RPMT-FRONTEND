@@ -241,6 +241,26 @@ function Sidebar() {
                 <span className="ms-1 d-none d-sm-inline"> Group Chat</span>
               </Link>
             </li>
+            <li>
+              <Link
+                to="/presentationlist"
+                className="nav-link px-sm-0 px-2"
+                style={{ textDecoration: "none" }}
+              >
+                <i className="bi bi-chat-left-text-fill"></i>
+                <span className="ms-1 d-none d-sm-inline"> Presentation List</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/submissionlist"
+                className="nav-link px-sm-0 px-2"
+                style={{ textDecoration: "none" }}
+              >
+                <i className="bi bi-chat-left-text-fill"></i>
+                <span className="ms-1 d-none d-sm-inline"> Submissions</span>
+              </Link>
+            </li>
 
             <li>
               <Link
