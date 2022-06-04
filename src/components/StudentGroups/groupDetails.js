@@ -14,7 +14,7 @@ export default function StudentGroupDetailsComp() {
     useEffect(() => {
         getGroupDetails(groupId)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 let groupD = res.data.group
                 groupD.supervisorId != 'No Supervisor Yet' ?
                     getStaffMember(groupD.supervisorId)

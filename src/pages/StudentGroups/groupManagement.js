@@ -18,9 +18,12 @@ function Blank() {
             .then(res => {
                 console.log(res);
                 if (!res.data.error) {
-                    setSuccess(res.data.status)
+                    window.alert("Panels successfully allocated.")
+                    window.location.reload()
                     setError('')
-                } else { setError(res.data.error); setSuccess('') }
+                } else {
+                    setError(res.data.error); setSuccess('')
+                }
             })
             .catch(err => {
                 console.log(err.message);
