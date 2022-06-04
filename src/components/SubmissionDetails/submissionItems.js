@@ -14,11 +14,28 @@ export default function Submissions() {
       deadline: "",
     },
   ]);
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 
+  var token = getCookie("usertoken");
   useEffect(() => {
     const fetchSubmissions = async () => {
       await axios
-        .get(`http://localhost:8070/submissions/availableSubmissions`)
+        .get(`http://localhost:8070/submissions/availableSubmissions`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((res) => {
           SetSubmissions(res.data.submissions);
           console.log(res.data.submissions);
