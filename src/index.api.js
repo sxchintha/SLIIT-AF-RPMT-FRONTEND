@@ -14,11 +14,17 @@ function getCookie(cname) {
     }
     return "";
 }
+// var token =''
+function setToken() {
+    token = getCookie('usertoken');
+}
+setToken()
 
-var token = getCookie('usertoken');
-// var token = ""
+// while(!token){
+//     console.log('no token');
+// }
 
-// console.log(token);
+console.log(token);
 
 const API = axios.create({
     baseURL: "http://localhost:8070",
@@ -45,6 +51,7 @@ export const updatePanel = (id, data) => API.put(`/panels/update/${id}`, data)
 
 export const getAllGroups = () => API.get('/studentGroups')
 export const randomAllocate = () => API.put('/studentGroups/rondomAllocatePanel')
+export const getGroupDetails = (id) => API.get(`/studentGroups/${id}`)
 
 export const getAllAdmins = () => API.get('/admins')
 export const addNewAdmin = (data) => API.post('/admins/add', data)

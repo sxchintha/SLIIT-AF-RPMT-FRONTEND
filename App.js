@@ -52,6 +52,7 @@ import PanelDetails from "./src/pages/Panels/panelDetails";
 import EditPanel from "./src/pages/Panels/editPanel";
 
 import StudentGroups from "./src/pages/StudentGroups/groupManagement";
+import StudentGroupDetails from "./src/pages/StudentGroups/groupDetails";
 
 import StudentDashboard from "./src/pages/studentDashboard";
 import GroupCard from "./src/components/GroupDetails/GroupDetails";
@@ -91,7 +92,6 @@ createRoot(document.getElementById("app")).render(
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
 
-
         <Route path="/request-supervisor" element={<RequestSupervisor />} />
         <Route path='/staff/profile/:id' element={<StaffProfile />} />
         <Route path="/request-cosupervisor" element={<RequestCoSupervisor />} />
@@ -126,6 +126,8 @@ createRoot(document.getElementById("app")).render(
         <Route path="/panels/edit/:panelId" element={<EditPanel />} />
 
         <Route path="/studentgroups" element={<StudentGroups />} />
+        <Route path="/studentgroups/:groupId" element={<StudentGroupDetails />} />
+
 
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/group" element={<GroupCard />} />
@@ -148,9 +150,9 @@ createRoot(document.getElementById("app")).render(
         <Route path="/student/submission/:id" element={<SubmissionDetails />} />
 
 
-        <Route path="/login" element={<StudentLogin/>}/>
-        <Route path="/unauthorized" element={<Unauthorized/>}/>
-        <Route path="/RequiedAuth" element={<RequireAuth/>}/>
+        <Route path="/login" element={<StudentLogin />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="/RequiedAuth" element={<RequireAuth />} />
 
         <Route path="/student/profile" element={<StudentProfile />} />
         <Route path="/student/submissionview" element={<SubmissionView/>}/>

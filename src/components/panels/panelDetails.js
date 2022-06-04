@@ -79,7 +79,6 @@ function PanelDetails() {
                     })
                     .catch(err => {
                         console.log(err.message.data.error)
-                        setError(err.message.data.error)
                     })
             }
         })
