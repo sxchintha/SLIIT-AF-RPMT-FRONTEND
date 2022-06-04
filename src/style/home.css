@@ -42,7 +42,7 @@ img {
     width: 100%;
 }
 
-a {
+.ahref {
     text-decoration: none;
 }
 
@@ -119,17 +119,18 @@ header .container {
     transform: scale(1.05);
 }
 
-.btn {
+.button {
     display: inline-block;
     padding: 0.9rem 1.9rem;
-    /* color: #fff !important; */
+    color: #fff !important;
     background-color: var(--mainColor);
     border-radius: 16px;
     text-transform: capitalize;
     transition: 0.3s;
+   
 }
 
-.btn:hover {
+.button:hover {
     background-color: var(--hoverColor);
     transform: scale(1) !important;
 }

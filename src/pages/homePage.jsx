@@ -20,10 +20,10 @@ export default function HomePage() {
 
               <div className="links">
                 <ul>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Pricing</a></li>
-                  <li><a href="#">Testimonials</a></li>
-                  <li><a href="#" className="btn">Sign up</a></li>
+                  <li><a className="ahref" href="#">Features</a></li>
+                  <li><a href="#" className="ahref">Pricing</a></li>
+                  <li><a href="#" className="ahref">Testimonials</a></li>
+                  <li><a href="#" className="button ahref">Sign up</a></li>
                 </ul>
               </div>
 
@@ -46,7 +46,7 @@ export default function HomePage() {
                   Welcome to the SLIIT Research Project Management Tool
                 </p>
                 <div className="cta">
-                  <a href="#" className="btn">Login</a>
+                  <a href="/login" className="button ahref">Login</a>
                 </div>
               </div>
 
