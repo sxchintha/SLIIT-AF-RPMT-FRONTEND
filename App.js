@@ -148,7 +148,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/RequiedAuth" element={<RequireAuth/>}/>
 
         <Route path="/student/profile" element={<StudentProfile />} />
-        <Route path="/student/submissionview" element={<SubmissionView/>}/>
+        <Route path="/student/submissionview/:id" element={<SubmissionView/>}/>
         <Route path="/submissionlist" element={<SubmissionList/>}/>
 
           

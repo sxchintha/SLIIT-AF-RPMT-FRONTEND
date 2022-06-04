@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.parcel2';
 import "../SubmissionDetails/submissionView.css"
+import { getOneItem } from '../../components/SubmissionDetails/api/index'
 
 // //import path from 'path';
 // import fs from 'fs';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 //const cMapsDir = path.join(path.dirname(require.resolve('pdfjs-dist/package.json')), 'cmaps');
 
@@ -27,6 +29,11 @@ export default function Submissions() {
     const [pageNumber, setPageNumber] = useState(1);
 
     const [StudentDetails, SetStudentDetails] = useState()
+    // const idtoken=(localStorage.getItem('localToken'))
+    // const id=JSON.parse(idtoken).username
+    
+    const {id}=useParams()
+    console.log(id);
   
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
@@ -47,30 +54,29 @@ export default function Submissions() {
 
 
     useEffect(() => {
-        const fetchsubmissions = async () => {
-          await axios
-            .get(`http://localhost:8070/fileupload/docup/629ad5f0a37ca63bf48698b3`)
+
+       getOneItem(id)
             .then((res) => {
               console.log(res);
-              SetStudentDetails(res.data.fileData.image);
-            //   console.log(res.data.fileData.image.data)
+              SetStudentDetails(res.data.fileData.document);
+                console.log(StudentDetails)
             })
             .catch((e) => {
               console.log(e);
             });
-        };
-        fetchStudent();
+        // fetchsubmissions();
       }, []);
 
     return(
         
-        <div>
-            <div style={{height:100}}>
-        <Document style={{height:10}}
+        <div class="docview">
+            <h1>Evaluvate Student Topics</h1>
+            <div class="docview container">
+        <Document 
           file={StudentDetails}
           onLoadSuccess={onDocumentLoadSuccess}
         >
-          <Page style={{height:10}} pageNumber={pageNumber} />
+          <Page  pageNumber={pageNumber} />
         </Document>
         </div>
         
@@ -80,19 +86,43 @@ export default function Submissions() {
           </p>
           <button
             type="button"
-            disabled={pageNumber <= 1}
+            
             onClick={previousPage}
           >
             Previous
           </button>
           <button
             type="button"
-            disabled={pageNumber >= numPages}
+            
             onClick={nextPage}
           >
             Next
           </button>
         </div>
+        <h1>sdfjsdfls</h1>
+        Copy
+        <div class="formsubmit">
+<form>
+    <div class="form-group">
+      <label for="disabledTextInput">Leader ID</label>
+      <input type="text" id="itNumber" class="form-control" placeholder={id} disabled/>
+      <br/>
+    </div>
+    <div class="form-group">
+    <label for="disabledTextInput">Select wether Passed or failed</label>
+    <select class="form-select" aria-label="Default select example" placeholder=''>
+        <option value="Passed">Passed</option>
+        <option value="Failed">Failed</option>
+    </select>
+    <br/>
+    </div>
+    <div class="form-group purple-border">
+        <label for="exampleFormControlTextarea4">Feedback</label>
+        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
         </div>
       
     );

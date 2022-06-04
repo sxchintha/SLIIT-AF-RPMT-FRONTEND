@@ -6,24 +6,26 @@ import { getItems } from '../../components/SubmissionDetails/api/index'
 
 function SubmissionList() {
 
+
     const navigate = useNavigate()
     const [datatable, setDatatable] = useState({
         columns: [],
         rows: [],
     });
+    
 
     const tableColumns = [
         {
             label: 'Panel name',
-            field: 'panelName'
+            field: '_id'
         },
         {
             label: 'Members',
-            field: 'panelMembers'
+            field: 'itNumber'
         },
         {
             label: 'Description / Notes',
-            field: 'panelDesc'
+            field: 'date'
         },
     ]
 
@@ -33,9 +35,9 @@ function SubmissionList() {
                 // console.log(res.data);
                 res.data.forEach(row => {
                     row.clickEvent = () => {
-                        navigate(`/panels/${row._id}`)
+                        navigate(`/student/submissionview/${row.itNumber}`)
                     }
-                    row.panelMembers = row.panelMembers.length
+                    row._id = row._id.length
                 });
                 setDatatable({
                     columns: tableColumns,
