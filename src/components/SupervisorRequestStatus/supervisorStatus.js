@@ -159,43 +159,65 @@ export default function SupervisorStatus() {
                 </>
               ) : GroupDetails.supervisorRequestStatus == "Approved" ? (
                 <>
-                  <center>
-                    <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
-                  </center>
-
-                  <div style={{ alignItems: "center", textAlign: "center" }}>
-                    <i
-                      className="bi bi-check-circle-fill"
-                      style={{
-                        color: "green",
-                        fontSize: 67,
-                        alignItems: "center",
-                        textAlign: "center",
-                      }}
-                    ></i>
+                  <div className="row">
+                    <div className="col">
+                      <span className="h6 font-semibold text-muted text-sm d-block mb-2">
+                        <u>Supervisor Request Status</u>
+                      </span>
+                      <span className="h3 font-bold mb-0">
+                        {GroupDetails.supervisorRequestStatus}
+                      </span>
+                    </div>
+                    <div className="col-auto">
+                      <div className="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                        <i
+                          className="bi bi-check-circle-fill"
+                          style={{
+                            color: "green",
+                            fontSize: 40,
+                            alignItems: "center",
+                            textAlign: "center",
+                          }}
+                        ></i>
+                      </div>
+                    </div>
                   </div>
                 </>
               ) : (
                 <>
-                  <center>
-                    <h3>STATUS-{GroupDetails.supervisorRequestStatus}</h3>
-                  </center>
-                  <div style={{ alignItems: "center", textAlign: "center" }}>
-                    <i
-                      className="bi bi-x-circle-fill"
-                      style={{
-                        color: "red",
-                        fontSize: 67,
-                        alignItems: "center",
-                        textAlign: "center",
-                      }}
-                    ></i>
+                  <div className="row">
+                    <div className="col">
+                      <span className="h6 font-semibold text-muted text-sm d-block mb-2">
+                        <u>Supervisor Request Status</u>
+                      </span>
+                      <span className="h3 font-bold mb-0">
+                        {GroupDetails.supervisorRequestStatus}
+                      </span>
+                    </div>
+                    <div className="col-auto">
+                      <div className="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                        <i
+                          className="bi bi-x-circle-fill"
+                          style={{
+                            color: "red",
+                            fontSize: 40,
+                            alignItems: "center",
+                            textAlign: "center",
+                          }}
+                        ></i>
+                      </div>
+                    </div>
                   </div>
                 </>
               )}
             </>
           ) : (
-            <h1>No Group</h1>
+            <>
+              <span className="h6 font-semibold text-muted text-sm d-block mb-2">
+                <u>Supervisor Request Status</u>
+              </span>
+              <h5> Supervisor is not requested yet...</h5>
+            </>
           )}
         </div>
       </div>
