@@ -94,7 +94,7 @@ export default function GroupDetails() {
               </ul>
             </div>
           ) : (
-            <h1>No Group</h1>
+            <h5>Group is not registered..</h5>
           )}
         </div>
       </div>

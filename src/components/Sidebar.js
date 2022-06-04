@@ -170,12 +170,14 @@ function Sidebar() {
             </li>
             <li>
               <Link
-                to="/studentgroups"
+                to="/presentationSub"
                 className="nav-link px-sm-0 px-2"
                 style={{ textDecoration: "none" }}
               >
                 <i className="bi bi-chat-text"></i>
-                <span className="ms-1 d-none d-sm-inline">Group Chat</span>
+                <span className="ms-1 d-none d-sm-inline">
+                  Submit Presentation
+                </span>
               </Link>
             </li>
             <li>

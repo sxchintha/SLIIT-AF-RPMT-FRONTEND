@@ -204,7 +204,12 @@ export default function CoSupervisorStatus() {
               )}
             </>
           ) : (
-            <h1>No Group</h1>
+            <>
+              <span className="h6 font-semibold text-muted text-sm d-block mb-2">
+                <u>Co-Supervisor Request Status</u>
+              </span>
+              <h5>Co-Supervisor is not requested yet...</h5>
+            </>
           )}
         </div>
       </div>

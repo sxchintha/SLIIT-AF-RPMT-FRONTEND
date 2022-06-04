@@ -76,9 +76,9 @@ export default function StudentDashboard() {
                   </div>
                   <div className="card-body">
                     <ul>
-                      <li><h5 className="card-title">Test Faculty Notices</h5></li>
-                      <li><h5 className="card-title">Test Faculty Notices</h5></li>
-                      <li><h5 className="card-title">Test Faculty Notices</h5></li>
+                      <li><h5 className="card-title">Commencement of On-campus Final Examinations</h5></li>
+                      <li><h5 className="card-title">Commencement of Student Shuttle Services</h5></li>
+                      <li><h5 className="card-title">Academic Delivery During Curfew Period</h5></li>
                     </ul>
 
 
