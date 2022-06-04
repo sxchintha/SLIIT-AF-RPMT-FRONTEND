@@ -125,7 +125,7 @@ export default function CoSupervisorRequest() {
       .then((e) => {
         console.log(newRequest);
         console.log(e);
-        alert(e.data);
+        alert("Co Supervisor request successfully added!!");
       })
       .catch((e) => {
         console.log(e);

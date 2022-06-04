@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import Footer from "../../components/Footer";
 import Sidebar from "../../components/Sidebar";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function StudentRegsiter() {
+  const navigate = useNavigate();
   const [newStudent, setnewStudent] = useState({
     name: "",
     itNumber: "",
@@ -55,7 +57,8 @@ export default function StudentRegsiter() {
         })
         .then(() => {
           console.log(newStudentDetails);
-          alert("successful");
+          alert("Registeration succesfull!!");
+          navigate("/student/dashboard");
         })
         .catch((e) => {
           alert(e.response.data.error);
