@@ -2,8 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Sidebar from "../../components/Sidebar";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function SubmitPresentation() {
+  const navigate = useNavigate();
   const [StudentDetails, SetStudentDetails] = useState({
     hasGroup: "",
     groupId: "",
@@ -103,8 +105,9 @@ export default function SubmitPresentation() {
         }
       )
       .then((res) => {
-        console.log(`Hello${newStudentGroup}`);
-        alert(res);
+        console.log(res);
+        alert("Presentation sucessfully submitted!!");
+        navigate("/student/dashboard");
       })
       .catch((e) => {
         console.log(newStudentGroup);

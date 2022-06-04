@@ -76,6 +76,7 @@ import Chat from "./src/components/chat/Chat";
 
 import SubmissionView from "./src/components/SubmissionDetails/submissionView";
 import SubmissionList from "./src/components/SubmissionDetails/submissionList";
+import SubmitPresentation from "./src/pages/Student/presentationSubmission";
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>

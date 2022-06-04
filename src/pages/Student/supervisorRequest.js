@@ -4,12 +4,15 @@ import { getAllStaff } from "../../index.api";
 import Select from "react-select";
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function SupervisorRequest() {
   const [StudentDetails, SetStudentDetails] = useState({
     hasGroup: "",
     groupId: "",
   });
+
+  const navigate = useNavigate();
 
   const localToken = JSON.parse(localStorage.getItem("localToken"));
   console.log(localToken.username);
@@ -125,7 +128,8 @@ export default function SupervisorRequest() {
       .then((e) => {
         console.log(newRequest);
         console.log(e);
-        alert(e.data);
+        alert("Supervisor request successfull!!");
+        navigate("/student/groupDetails");
       })
       .catch((e) => {
         console.log(e);
