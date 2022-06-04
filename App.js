@@ -66,6 +66,7 @@ import SubmissionDetails from "./src/components/SubmissionDetails/submissionDeta
 import StudentProfile from "./src/pages/Student/studentProfile";
 import RequestCoSupervisor from "./src/components/staff/RequestCoSupervisor";
 import UpdateStaffProfile from "./src/components/staff/UpdateStaffDetails";
+import SubmitPresentation from "./src/pages/Student/presentationSubmission";
 
 import StudentLogin from "./src/pages/UserManagement/login";
 import RequireAuth from "./src/components/landing/RequireAuth";
@@ -109,6 +110,7 @@ createRoot(document.getElementById("app")).render(
           path="/admins/profile/changepassword"
           element={<AdminPassChange />}
         />
+        <Route path="/admins/profile/:id" element={<AdminProfile />} />
 
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />

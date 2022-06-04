@@ -22,6 +22,9 @@ function DashboardExtra() {
                         <i className="fa fa-bar-chart"></i> Improtant</div>
                     <div className="card-body">
                         {/* Body */}
+                        <li>You are an admin of SLIIT Research Project Management System.</li>
+                        <li>Admin can manage users, manage marking schemes, manage panels, manage submissions, manage student groups... </li>
+                        <li>This car is for important things.</li>
                     </div>
                 </div>
             </div>

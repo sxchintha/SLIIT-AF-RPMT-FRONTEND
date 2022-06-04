@@ -1,10 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom"
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"
 
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer'
 
 function Blank() {
+    const navigate = useNavigate()
+    useEffect(() => {
+        navigate(-1)
+    })
+    
     return (
         <div>
             <div className="container-fluid overflow-hidden">

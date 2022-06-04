@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { MDBDataTableV5 } from 'mdbreact'
 
 import { getAcceptedStaff } from '../../index.api'
@@ -8,6 +8,8 @@ import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 
 function StaffManagement() {
+
+    const navigate = useNavigate()
 
     const tableColumns = [
         {
@@ -43,6 +45,11 @@ function StaffManagement() {
     useEffect(() => {
         getAcceptedStaff()
             .then((res) => {
+                res.data.forEach(row => {
+                    row.clickEvent = () => {
+                        navigate(`/staff/profile/${row._id}`)
+                    }
+                });
                 setDatatable({
                     columns: tableColumns,
                     rows: res.data

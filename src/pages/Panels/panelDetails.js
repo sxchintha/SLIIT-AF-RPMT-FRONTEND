@@ -8,6 +8,7 @@ import { alertError } from '../../components/Alerts'
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import PanelDetails from '../../components/panels/panelDetails'
+import PanelData from '../../components/panels/panelTable'
 
 function ShowPanelDetails() {
 
@@ -29,8 +30,13 @@ function ShowPanelDetails() {
                                 {
                                     error ? alertError(error) : ""
                                 }
-                                <PanelDetails />
-                                
+                                <div className="row flex">
+                                    <div className="col-6">
+                                        <PanelDetails />
+                                    </div>
+                                    <div className="col-6" style={{borderLeft: "1px solid #323A45"}}><PanelData /></div>
+                                </div>
+
                             </div>
                         </main>
                         <Footer />

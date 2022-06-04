@@ -50,6 +50,8 @@ export const deletePanel = (id) => API.delete(`panels/delete/${id}`)
 export const updatePanel = (id, data) => API.put(`/panels/update/${id}`, data)
 
 export const getAllGroups = () => API.get('/studentGroups')
+export const getNoPanelGrps = () => API.get('/studentGroups/nopanel')
+export const getHavePanelGrps = () => API.get('/studentGroups/havepanel')
 export const randomAllocate = () => API.put('/studentGroups/rondomAllocatePanel')
 export const getGroupDetails = (id) => API.get(`/studentGroups/${id}`)
 
