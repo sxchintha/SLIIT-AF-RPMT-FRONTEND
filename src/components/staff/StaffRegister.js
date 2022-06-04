@@ -46,6 +46,22 @@ export default function RegisterStaff() {
         })
       };
 
+      function getCookie(cname) {
+        let name = cname + "=";
+        let ca = document.cookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);    
+          }    
+        }
+        return "";
+      }
+      var token = getCookie("usertoken");
+
     const onChange = (e) => {
         setNewStaffMember({ ...newStaffMember, [e.target.name]: e.target.value })
         //console.log(e);
@@ -72,7 +88,9 @@ export default function RegisterStaff() {
             password: newStaffMember.password
         }
 
-        axios.post("http://localhost:8070/staff/add", newStaff).then (() =>{
+        axios.post("http://localhost:8070/staff/add", newStaff,  {
+            headers: { Authorization: `Bearer ${token}` },
+          }).then (() =>{
             console.log(newStaff);
             alert("successful");
         }).catch((e) =>{

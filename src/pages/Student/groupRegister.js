@@ -9,11 +9,32 @@ export default function GroupRegister() {
     groupId: "",
   });
 
-  var ItNumber = "IT20211714";
+  const localToken = JSON.parse(localStorage.getItem("localToken"));
+  console.log(localToken.username);
+  var ItNumber = localToken.username;
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  var token = getCookie("usertoken");
+  console.log(token);
   useEffect(() => {
     const fetchStudent = async () => {
       await axios
-        .get(`http://localhost:8070/student/getStudent/${ItNumber}`)
+        .get(`http://localhost:8070/student/getStudent/${ItNumber}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((res) => {
           console.log(res);
           SetStudentDetails(res.data);
@@ -53,7 +74,9 @@ export default function GroupRegister() {
     };
     console.log(newStudentGroup);
     axios
-      .post("http://localhost:8070/student/groupRegister", newStudentGroup)
+      .post("http://localhost:8070/student/groupRegister", newStudentGroup, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         console.log(`Hello${newStudentGroup}`);
         alert(res);
@@ -82,6 +105,12 @@ export default function GroupRegister() {
                             <div className="card-body p-4 p-md-5 sxch-glass-back">
                               {StudentDetails.hasGroup ? (
                                 <>
+                                  <div class="alert alert-danger" role="alert">
+                                    Your group is already registered
+                                  </div>
+                                </>
+                              ) : (
+                                <>
                                   <center>
                                     <h3 className="mb-4 pb-2 pb-md-0 mb-md-5">
                                       Group Registration Form
@@ -98,6 +127,7 @@ export default function GroupRegister() {
                                             name="leaderName"
                                             placeholder="Group Leader Name"
                                             className="form-control"
+                                            pattern="^[a-zA-Z]{2}$"
                                             onChange={onChange}
                                           />
                                           <label
@@ -193,12 +223,6 @@ export default function GroupRegister() {
                                       </center>
                                     </div>
                                   </form>
-                                </>
-                              ) : (
-                                <>
-                                  <div class="alert alert-danger" role="alert">
-                                    Your group is already registered
-                                  </div>
                                 </>
                               )}
                             </div>
