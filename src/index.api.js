@@ -14,11 +14,12 @@ function getCookie(cname) {
     }
     return "";
 }
-// var token =''
+var token =''
 function setToken() {
     token = getCookie('usertoken');
+    return token
 }
-setToken()
+token = setToken()
 
 // while(!token){
 //     console.log('no token');
