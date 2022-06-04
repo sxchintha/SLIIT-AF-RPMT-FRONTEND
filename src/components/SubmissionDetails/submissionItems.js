@@ -30,6 +30,7 @@ export default function Submissions() {
   }
 
   var token = getCookie("usertoken");
+  console.log(token);
   useEffect(() => {
     const fetchSubmissions = async () => {
       await axios
