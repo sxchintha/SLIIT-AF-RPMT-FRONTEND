@@ -77,6 +77,8 @@ import Chat from "./src/components/chat/Chat";
 import SubmissionView from "./src/components/SubmissionDetails/submissionView";
 import SubmissionList from "./src/components/SubmissionDetails/submissionList";
 import SubmitPresentation from "./src/pages/Student/presentationSubmission";
+import Presentationlist from "./src/pages/Panels/presentationlist"
+
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -162,9 +164,10 @@ createRoot(document.getElementById("app")).render(
         <Route path="/RequiedAuth" element={<RequireAuth />} />
 
         <Route path="/student/profile" element={<StudentProfile />} />
-        <Route path="/student/submissionview" element={<SubmissionView />} />
-        <Route path="/submissionlist" element={<SubmissionList />} />
+        <Route path="/student/submissionview/:id" element={<SubmissionView/>}/>
+        <Route path="/submissionlist" element={<SubmissionList/>}/>
         <Route path="/presentationSub" element={<SubmitPresentation />} />
+        <Route path="/presentationlist" element={<Presentationlist/>}/>
 
         <Route exact path="/" element={<App />} />
       </Routes>

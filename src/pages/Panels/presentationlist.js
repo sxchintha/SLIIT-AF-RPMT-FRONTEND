@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { MDBDataTableV5 } from 'mdbreact'
+import axios from "axios";
 
-import { getItems } from '../../components/SubmissionDetails/api/index'
 
 function SubmissionList() {
 
@@ -17,12 +17,18 @@ function SubmissionList() {
     const tableColumns = [
         {
             label: 'Leader ID',
-            field: '_id'
-        },
-        {
-            label: 'LeaderID',
             field: 'itNumber'
         },
+        {
+            label: 'Topic',
+            field: 'topic'
+        },
+
+        {
+            label: 'Presentation Link',
+            field: 'Link'
+        },
+
         {
             label: 'Date',
             field: 'date'
@@ -30,12 +36,15 @@ function SubmissionList() {
     ]
 
     useEffect(() => {
-        getItems()
+        axios
+        .get(`http://localhost:8070/presentation/presentationview`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
             .then((res) => {
                 // console.log(res.data);
                 res.data.forEach(row => {
                     row.clickEvent = () => {
-                        navigate(`/student/submissionview/${row.itNumber}`)
+                        navigate(`/student/presentationview/${row.itNumber}`)
                     }
                     row._id = row._id.length
                 });

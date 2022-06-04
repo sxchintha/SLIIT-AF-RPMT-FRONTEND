@@ -2,3 +2,13 @@
     width: 400px;
     height: 600px;
 }
+
+.formsubmit{
+    padding-left: 20%;
+    width: 50%;
+}
+
+.docview{
+    overflow-y: scroll;
+    padding-left: 20%;
+}

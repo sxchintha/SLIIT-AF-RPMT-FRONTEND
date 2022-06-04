@@ -113,6 +113,8 @@ export default function SubmissionDetails() {
 
   return (
     <>
+          
+      <form action="" onSubmit={onSubmitHandler}>
       <div class="card text-center">
         <div class="card-header">
           Submission Details - {Submission.submissionType}
@@ -120,6 +122,7 @@ export default function SubmissionDetails() {
         <div class="card-body">
           <h5 class="card-title">
             Submission Name - {Submission.submissionName}
+            <input type="text" id="topicname"onChange={e => setItem({ ...item, name: e.target.value })} required></input>
           </h5>
           <p class="card-text">Submission Deadline - {ded}</p>
           <p class="card-text text-danger">
@@ -131,30 +134,29 @@ export default function SubmissionDetails() {
           </p>
           <p class="card-text">{Submission.description}.</p>
           <p class="card-text">File Types -{Submission.fileTypes}.</p>
-
-          {/* <a href="#" class="btn btn-primary">
-            Upload Document
-          </a> */}
-          {/* <pre>{JSON.stringify(item, null, '\t')}</pre> */}
-          
-      <form action="" onSubmit={onSubmitHandler}>
-        <input type="text" class="input-field" value={Submission.submissionName}
+        {/* <input type="text" class="input-field" value={Submission.submissionName}
 
           onChange={e => setItem({ ...item, name: e.target.value })}
-        />
+        /> */}
         <FileBase64
           type="file"
+          required
           multiple={false}
           onDone={({ base64 }) => setItem({ ...item, document: base64 })}
         />
         <div className="right-align">
         <button class="btn btn-danger">submit</button>
         </div>
-        </form>
+        
         </div>
         
         <div class="card-footer text-muted">2 days ago</div>
       </div>
+      <div>
+
+
+      </div>
+      </form>
     </>
   );
 }

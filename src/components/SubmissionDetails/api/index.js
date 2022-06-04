@@ -25,4 +25,8 @@ export const getItems = ()=>axios.get(url, {
 
 export const createItem = (item)=>axios.post((url),item,{
     headers: { Authorization: `Bearer ${token}` },
-  })
+  });
+
+export const getOneItem=(id)=>axios.get((`http://localhost:8070/fileupload/docup/${id}`),{
+    headers: { Authorization: `Bearer ${token}` },
+  });
