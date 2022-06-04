@@ -88,15 +88,17 @@ export default function SubmitPresentation() {
     e.preventDefault();
     const newStudentGroup = {
       topic: newPresentation.topic,
-      video: newPresentation.video,
-      groupId: StudentDetails.groupId,
+      itNumber: ItNumber,
+      groupID: StudentDetails.groupId,
+      Link: newPresentation.Link,
+      date:new Date(),
       supervisorId: SupervisorDetails.supervisorId,
-      submittorId: ItNumber,
+      
     };
     console.log(newStudentGroup);
     axios
       .post(
-        "http://localhost:8070/student/submitPresentation",
+        "http://localhost:8070/presentation",
         newStudentGroup,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -161,9 +163,9 @@ export default function SubmitPresentation() {
                                       <div className="col-md-6 mb-4">
                                         <div className="form-floating">
                                           <input
-                                            type="text"
+                                            type="Link"
                                             id="lastName"
-                                            name="video"
+                                            name="Link"
                                             placeholder="Video Link"
                                             className="form-control"
                                             onChange={onChange}
