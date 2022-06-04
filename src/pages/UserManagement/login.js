@@ -69,15 +69,7 @@ const StudentLogin = () => {
         console.log(response);
         // setCookie("userrole", (JSON.stringify(response?.data.roles)), 1);
         setCookie("usertoken", response?.data.accessToken, 60)
-        // setCookie("username", (JSON.stringify(response?.data.uname)), 1)
-        // const kgs = getCookie("kg");
-        // console.log(response?.data);
-        // console.log(JSON.stringify(response?.data));
-        //console.log(username,password);
-        // const accessToken = response?.data.accessToken;
-        // const roles = response?.data?.roles;
-        // const usern=response?.data
-        // setAuth({username,password,roles,accessToken});
+
 
         setusername('');
         setpassword('');
@@ -101,15 +93,6 @@ const StudentLogin = () => {
               window.location.replace('/admins/home')
               : navigate('/unauthorized'))
       }
-      // console.log(localStorage.getItem('role'))
-      // if (roles==1984){
-      //   navigate("student/dashboard",{replace:true});
-      // }
-      // else if(roles==2001){
-      //   navigate("/staff")
-      // }
-
-
 
 
     } catch (err) {
@@ -129,43 +112,9 @@ const StudentLogin = () => {
 
   }
 
-  //   const [StudentDetails, SetStudentDetails] = useState({
-  //     email: "",
-  //     password: "",
-  //   });
 
-  //   function sendData(e) {
-  //     e.preventDefault();
-  //     const newStudentLogin = {
-  //       email: StudentDetails.email,
-  //       password: StudentDetails.password,
-  //     };
-
-  //     axios
-  //       .post("http://localhost:8070/student/login", newStudentGroup)
-  //       .then(() => {
-  //         console.log(`Hello${newStudentGroup}`);
-  //         alert("successful");
-  //       })
-  //       .catch((e) => {
-  //         console.log(newStudentGroup);
-  //         console.log(e);
-  //         alert(e.response.data.status);
-  //       });
-  //   }
   return (
     <>
-      {/* {success?(
-        <section>
-            <h1>you are logged in</h1>
-            <br/>
-            <P>
-                <a href="#">go to home</a>
-            </P>
-        </section>
-    ):(
-    
-       */}
       <section className="vh-100">
         <div className="container-fluid">
           <div className="row">
