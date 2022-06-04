@@ -13,11 +13,28 @@ export default function SubmissionDetails() {
     fileTypes: [],
     description: "",
   });
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 
+  var token = getCookie("usertoken");
   useEffect(() => {
     const fetchSubmissions = async () => {
       await axios
-        .get(`http://localhost:8070/submissions/${id}`)
+        .get(`http://localhost:8070/submissions/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((res) => {
           SetSubmission(res.data.submission);
           console.log(res);
