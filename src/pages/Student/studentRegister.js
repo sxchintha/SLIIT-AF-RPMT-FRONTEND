@@ -11,7 +11,22 @@ export default function StudentRegsiter() {
     password: "",
     cpassword: "",
   });
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 
+  var token = getCookie("usertoken");
   const onChange = (e) => {
     setnewStudent({
       ...newStudent,
@@ -35,7 +50,9 @@ export default function StudentRegsiter() {
       };
 
       axios
-        .post("http://localhost:8070/student/add", newStudentDetails)
+        .post("http://localhost:8070/student/add", newStudentDetails, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then(() => {
           console.log(newStudentDetails);
           alert("successful");

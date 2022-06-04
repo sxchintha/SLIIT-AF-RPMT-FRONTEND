@@ -13,7 +13,6 @@ import "./src/style/Primary.scss";
 import "./src/style/Dashboard.css";
 import "./src/style/AdminProfile.css";
 
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 
@@ -52,6 +51,7 @@ import PanelDetails from "./src/pages/Panels/panelDetails";
 import EditPanel from "./src/pages/Panels/editPanel";
 
 import StudentGroups from "./src/pages/StudentGroups/groupManagement";
+import StudentGroupDetails from "./src/pages/StudentGroups/groupDetails";
 
 import StudentDashboard from "./src/pages/studentDashboard";
 import GroupCard from "./src/components/GroupDetails/GroupDetails";
@@ -67,10 +67,13 @@ import StudentProfile from "./src/pages/Student/studentProfile";
 import RequestCoSupervisor from "./src/components/staff/RequestCoSupervisor";
 import UpdateStaffProfile from "./src/components/staff/UpdateStaffDetails";
 
-import StudentLogin from "./src/pages/UserManagement/login"
-import RequireAuth from "./src/components/landing/RequireAuth"
-import Unauthorized from "./src/components/landing/Unauthorized"
-import SubmissionView from "./src/components/SubmissionDetails/submissionView"
+import StudentLogin from "./src/pages/UserManagement/login";
+import RequireAuth from "./src/components/landing/RequireAuth";
+import Unauthorized from "./src/components/landing/Unauthorized";
+
+import Chat from "./src/components/chat/Chat";
+
+import SubmissionView from "./src/components/SubmissionDetails/submissionView";
 import SubmissionList from "./src/components/SubmissionDetails/submissionList";
 
 createRoot(document.getElementById("app")).render(
@@ -82,16 +85,18 @@ createRoot(document.getElementById("app")).render(
         <Route path="/home" element={<HomePage />} />
         <Route path="/students" element={<StudentManagement />} />
 
-        <Route path="/staff/profile/update/:id" element={<UpdateStaffProfile />} />
+        <Route
+          path="/staff/profile/update/:id"
+          element={<UpdateStaffProfile />}
+        />
         <Route path="/staff" element={<StaffManagement />} />
         <Route path="/register" element={<StaffRegister />} />
 
-
         <Route path="/request-supervisor" element={<RequestSupervisor />} />
-        <Route path='/staff/profile/:id' element={<StaffProfile />} />
+        <Route path="/staff/profile/:id" element={<StaffProfile />} />
         <Route path="/request-cosupervisor" element={<RequestCoSupervisor />} />
 
-
+        <Route path="/chat" element={<Chat />} />
 
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/admins/new" element={<NewAdmin />} />
@@ -99,7 +104,10 @@ createRoot(document.getElementById("app")).render(
         <Route path="/admins/home" element={<AdminDashboard />} />
         <Route path="/admins/profile" element={<AdminProfile />} />
         <Route path="/admins/profile/update" element={<AdminProfileUpdate />} />
-        <Route path="/admins/profile/changepassword" element={<AdminPassChange />} />
+        <Route
+          path="/admins/profile/changepassword"
+          element={<AdminPassChange />}
+        />
 
         <Route path="/markingschemes/create" element={<CreateMarking />} />
         <Route path="/markingschemes" element={<MarkingSchemes />} />
@@ -121,6 +129,10 @@ createRoot(document.getElementById("app")).render(
         <Route path="/panels/edit/:panelId" element={<EditPanel />} />
 
         <Route path="/studentgroups" element={<StudentGroups />} />
+        <Route
+          path="/studentgroups/:groupId"
+          element={<StudentGroupDetails />}
+        />
 
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/group" element={<GroupCard />} />
@@ -142,16 +154,15 @@ createRoot(document.getElementById("app")).render(
         <Route path="/student/submissions" element={<Submissions />} />
         <Route path="/student/submission/:id" element={<SubmissionDetails />} />
 
-
-        <Route path="/login" element={<StudentLogin/>}/>
-        <Route path="/unauthorized" element={<Unauthorized/>}/>
-        <Route path="/RequiedAuth" element={<RequireAuth/>}/>
+        <Route path="/login" element={<StudentLogin />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="/RequiedAuth" element={<RequireAuth />} />
 
         <Route path="/student/profile" element={<StudentProfile />} />
         <Route path="/student/submissionview/:id" element={<SubmissionView/>}/>
         <Route path="/submissionlist" element={<SubmissionList/>}/>
+        <Route path="/presentationSub" element={<SubmitPresentation />} />
 
-          
         <Route exact path="/" element={<App />} />
       </Routes>
       {/* </AuthProvider> */}

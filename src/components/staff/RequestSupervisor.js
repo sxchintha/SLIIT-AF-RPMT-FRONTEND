@@ -8,13 +8,33 @@ import Sidebar from "../Sidebar";
 export default function AcceptTopics() {
   const { id } = useParams();
   const [topics, setTopics] = useState([]);
+  const localToken = JSON.parse(localStorage.getItem('localToken'))
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  var token = getCookie("usertoken");
 
   useEffect(() => {
+
     const getTopics = () => {
       axios
-        .get("http://localhost:8070/student/topics")
+        .get("http://localhost:8070/student/topics", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((res) => {
-          console.log(res.data);
+          console.log(res);
           setTopics(res.data);
         })
         .catch((er) => {
@@ -24,14 +44,17 @@ export default function AcceptTopics() {
     getTopics();
   }, []);
 
-  const handleAccept = (id) => {
+  const handleAccept = (id, groupId) => {
     axios
-      .put(`http://localhost:8070/student/supervisor-accept/${id}`)
+      .put(`http://localhost:8070/staff/supervisor-accept/${id}/${groupId}`, { supervisorId: localToken.userId }, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(() => {
         window.location.reload(true);
       })
       .catch((er) => {
         alert(er.message);
+        console.log(er)
       });
   };
 
@@ -39,9 +62,9 @@ export default function AcceptTopics() {
     const supervisorId = id;
     axios
       .put(
-        `http://localhost:8070/student/supervisor-reject/${id}/${groupId}`,
-        supervisorId
-      )
+        `http://localhost:8070/staff/supervisor-reject/${id}/${groupId}`, { supervisorId: localToken.userId }, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(() => {
         window.location.reload(true);
       })
@@ -106,7 +129,7 @@ export default function AcceptTopics() {
                                     type="button"
                                     className="btn btn-success"
                                     onClick={() => {
-                                      handleAccept(items._id);
+                                      handleAccept(items._id, items.groupId);
                                     }}
                                   >
                                     Accept

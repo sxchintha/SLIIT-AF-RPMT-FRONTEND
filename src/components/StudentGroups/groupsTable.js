@@ -52,10 +52,7 @@ function GroupTable() {
                 // var tempData = res.data.groups
                 res.data.groups.forEach(group => {
                     group.clickEvent = () => {
-                        navigate(
-                            `/studentgroups/${group._id}`,
-                            { state: { group } }
-                        )
+                        navigate(`/studentgroups/${group._id}`)
                     }
                     // group?.allocatedPanel = group.allocatedPanel.panelName
                 });

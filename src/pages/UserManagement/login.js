@@ -1,18 +1,9 @@
 // import React, { useState } from "react";
 import axios from "axios";
-import { useState, useRef, useEffect, useContext } from "react"
+import { useState, useRef, useEffect } from "react"
 import useAuth from "../../hooks/useAuth";
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import './login.css'
-import { MDBDataTableV5 } from 'mdbreact'
-
-import * as api from '../../index.api'
-
-import Sidebar from '../../components/Sidebar'
-import Footer from '../../components/Footer'
-
-
-
 
 const StudentLogin = () => {
 
@@ -100,11 +91,14 @@ const StudentLogin = () => {
         localStorage.setItem('localToken', JSON.stringify(localToken));
 
         response?.data.roles == 5150 ?
-          navigate('/staff/home')
+          // navigate('/staff/home')
+          window.location.replace('/staff/home')
           : (response?.data.roles == 1984 ?
-            navigate('/student/dashboard')
+            // navigate('/student/dashboard')
+            window.location.replace('/student/dashboard')
             : response?.data.roles == 2001 ?
-              navigate('/admins/home')
+              // navigate('/admins/home')
+              window.location.replace('/admins/home')
               : navigate('/unauthorized'))
       }
       // console.log(localStorage.getItem('role'))

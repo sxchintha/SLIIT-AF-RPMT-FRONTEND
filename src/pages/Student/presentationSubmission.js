@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Sidebar from "../../components/Sidebar";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
+import Sidebar from "../../components/Sidebar";
 
-export default function GroupRegister() {
+export default function SubmitPresentation() {
   const [StudentDetails, SetStudentDetails] = useState({
     hasGroup: "",
     groupId: "",
+    supervisorId: "",
   });
 
   const localToken = JSON.parse(localStorage.getItem("localToken"));
@@ -46,37 +47,61 @@ export default function GroupRegister() {
     fetchStudent();
   }, []);
   console.log(StudentDetails.hasGroup);
-  const [newGroup, setnewGroup] = useState({
-    leaderName: "",
-    firstMember: "",
-    secondMember: "",
-    thirdMember: "",
-    groupName: "",
+  const [newPresentation, setnewPresentation] = useState({
+    topic: "",
+    video: "",
   });
 
   const onChange = (e) => {
-    setnewGroup({
-      ...newGroup,
+    setnewPresentation({
+      ...newPresentation,
       [e.target.name]: e.target.value,
     });
     //console.log(newStaffMember);
   };
+  const [SupervisorDetails, SetSupervisorDetails] = useState({
+    supervisorId: "",
+  });
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      await axios
+        .get(
+          `http://localhost:8070/student/getSupervisorStatus/${StudentDetails.groupId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+        .then((res) => {
+          SetSupervisorDetails(res.data);
+
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
+    fetchUser();
+  }, [StudentDetails]);
 
   function sendData(e) {
     e.preventDefault();
     const newStudentGroup = {
-      leaderName: newGroup.leaderName,
-      groupName: newGroup.groupName,
-
-      firstMember: newGroup.firstMember,
-      secondMember: newGroup.secondMember,
-      thirdMember: newGroup.thirdMember,
+      topic: newPresentation.topic,
+      video: newPresentation.video,
+      groupId: StudentDetails.groupId,
+      supervisorId: SupervisorDetails.supervisorId,
+      submittorId: ItNumber,
     };
     console.log(newStudentGroup);
     axios
-      .post("http://localhost:8070/student/groupRegister", newStudentGroup, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .post(
+        "http://localhost:8070/student/submitPresentation",
+        newStudentGroup,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((res) => {
         console.log(`Hello${newStudentGroup}`);
         alert(res);
@@ -84,9 +109,10 @@ export default function GroupRegister() {
       .catch((e) => {
         console.log(newStudentGroup);
         console.log(e);
-        alert(e.response.data.status);
+        alert(e);
       });
   }
+
   return (
     <>
       <div>
@@ -105,15 +131,9 @@ export default function GroupRegister() {
                             <div className="card-body p-4 p-md-5 sxch-glass-back">
                               {StudentDetails.hasGroup ? (
                                 <>
-                                  <div class="alert alert-danger" role="alert">
-                                    Your group is already registered
-                                  </div>
-                                </>
-                              ) : (
-                                <>
                                   <center>
                                     <h3 className="mb-4 pb-2 pb-md-0 mb-md-5">
-                                      Group Registration Form
+                                      Presentation Submission
                                     </h3>
                                   </center>
 
@@ -124,17 +144,17 @@ export default function GroupRegister() {
                                           <input
                                             type="text"
                                             id="name"
-                                            name="leaderName"
-                                            placeholder="Group Leader Name"
+                                            name="topic"
+                                            placeholder="Presentation Topic"
                                             className="form-control"
-                                            pattern="^[a-zA-Z]{2}$"
+                                            required
                                             onChange={onChange}
                                           />
                                           <label
                                             className="ms-2 text-secondary"
                                             for="firstName"
                                           >
-                                            Group Leader IT Number
+                                            Presentation topic
                                           </label>
                                         </div>
                                       </div>
@@ -143,8 +163,8 @@ export default function GroupRegister() {
                                           <input
                                             type="text"
                                             id="lastName"
-                                            name="firstMember"
-                                            placeholder="Last name"
+                                            name="video"
+                                            placeholder="Video Link"
                                             className="form-control"
                                             onChange={onChange}
                                           />
@@ -152,67 +172,12 @@ export default function GroupRegister() {
                                             className="ms-2 text-secondary"
                                             for="lastName"
                                           >
-                                            First Member IT Number
+                                            Video Link
                                           </label>
                                         </div>
                                       </div>
                                     </div>
 
-                                    <div className="row">
-                                      <div className="col-md-6 mb-4 pb-2">
-                                        <div className="form-floating">
-                                          <input
-                                            type="text"
-                                            id="password"
-                                            name="secondMember"
-                                            placeholder="Second Member"
-                                            className="form-control"
-                                            onChange={onChange}
-                                          />
-                                          <label
-                                            className="ms-2 text-secondary"
-                                            for="password"
-                                          >
-                                            Second Member IT Number
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <div className="col-md-6 mb-4 pb-2">
-                                        <div className="form-floating">
-                                          <input
-                                            type="text"
-                                            id="confirm-password"
-                                            name="thirdMember"
-                                            placeholder="Third Member"
-                                            className="form-control"
-                                            onChange={onChange}
-                                          />
-                                          <label
-                                            className="ms-2 text-secondary"
-                                            for="confirm-password"
-                                          >
-                                            Third Member IT Number
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="form-floating">
-                                      <input
-                                        type="text"
-                                        id="name"
-                                        name="groupName"
-                                        placeholder="Group  Name"
-                                        className="form-control"
-                                        onChange={onChange}
-                                        required
-                                      />
-                                      <label
-                                        className="ms-2 text-secondary"
-                                        for="firstName"
-                                      >
-                                        Group Name
-                                      </label>
-                                    </div>
                                     <div className="mt-4 pt-2">
                                       <center>
                                         <input
@@ -223,6 +188,12 @@ export default function GroupRegister() {
                                       </center>
                                     </div>
                                   </form>
+                                </>
+                              ) : (
+                                <>
+                                  <div class="alert alert-danger" role="alert">
+                                    Your group is not registered
+                                  </div>
                                 </>
                               )}
                             </div>
