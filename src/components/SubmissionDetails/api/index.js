@@ -20,6 +20,7 @@ function getCookie(cname) {
 
 
 export const getItems = ()=>axios.get(url);
-export const createItem = (item)=>axios.post((url),{
+
+export const createItem = (item)=>axios.post((url),item,{
     headers: { Authorization: `Bearer ${token}` },
-  },item)
+  })
