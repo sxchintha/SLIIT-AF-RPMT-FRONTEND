@@ -7,17 +7,19 @@ export default function GroupDetails() {
     groupId: "",
   });
 
-  var ItNumber = "IT20211714";
+  const localToken = JSON.parse(localStorage.getItem("localToken"));
+  console.log(localToken.username);
+  var ItNumber = localToken.username;
   useEffect(() => {
     const fetchStudent = async () => {
       await axios
         .get(`http://localhost:8070/student/getStudent/${ItNumber}`)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           SetStudentDetails(res.data);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
         });
     };
     fetchStudent();
@@ -36,17 +38,17 @@ export default function GroupDetails() {
         .get(`http://localhost:8070/student/getGroup/${StudentDetails.groupId}`)
         .then((res) => {
           SetGroupDetails(res.data.student);
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
         });
     };
     fetchUser();
   }, [StudentDetails]);
 
-  console.log(StudentDetails.hasGroup);
-  console.log(StudentDetails.groupId);
+  // console.log(StudentDetails.hasGroup);
+  // console.log(StudentDetails.groupId);
 
   return (
     <>

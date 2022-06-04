@@ -18,11 +18,11 @@ export default function StudentProfile() {
       await axios
         .get(`http://localhost:8070/student/getStudent/${ItNumber}`)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           SetStudentDetails(res.data);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
         });
     };
     fetchStudent();
@@ -56,7 +56,7 @@ export default function StudentProfile() {
         alert("successful");
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
         alert(e.response.data.status);
       });
   };
@@ -78,7 +78,7 @@ export default function StudentProfile() {
         alert("successful");
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
         alert(e.response.data.status);
       });
   };

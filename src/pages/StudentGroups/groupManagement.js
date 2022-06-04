@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom"
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
-import Alert from '../../components/Alerts'
+import Alert, { alertError, alertSuccess } from '../../components/Alerts'
 import GroupData from '../../components/StudentGroups/groupsTable'
 import { randomAllocate } from "../../index.api";
 
 function Blank() {
+
+    const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
+
     const allocateRandom = (e) => {
         e.preventDefault()
         randomAllocate()
-        console.log("Random allocate clicked!");
+            .then(res => {
+                console.log(res);
+                if (!res.data.error) {
+                    setSuccess(res.data.status)
+                    setError('')
+                } else { setError(res.data.error); setSuccess('') }
+            })
+            .catch(err => {
+                console.log(err.message);
+                setError(err.message)
+            })
+        // console.log("Random allocate clicked!");
     }
 
     return (
@@ -29,6 +44,11 @@ function Blank() {
                                     <i className="bi bi-plus-circle"></i> Allocate Panels Randomly
                                 </button>
                                 <hr />
+                                {
+                                    success ? alertSuccess(success)
+                                        : (error ? alertError(error)
+                                            : "")
+                                }
                                 <GroupData />
 
                             </div>
