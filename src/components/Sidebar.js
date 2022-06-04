@@ -194,7 +194,62 @@ function Sidebar() {
             className="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
             id="menu"
           >
-            <li>this is staff</li>
+            <li>Staff Dashboard</li>
+            <br></br>
+            <li>
+              <Link
+                to="/student/groupRegister"
+                className="nav-link px-sm-0 px-2"
+                style={{ textDecoration: "none" }}
+              >
+                <i className="fs-5 bi bi-people"></i>
+                <span className="ms-1 d-none d-sm-inline"> Group Register</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/"
+                className="nav-link px-sm-0 px-2"
+                style={{ textDecoration: "none" }}
+              >
+                <i className="fs-5 bi bi-people"></i>
+                <span className="ms-1 d-none d-sm-inline"> Supervisor Requests</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/s"
+                className="nav-link px-sm-0 px-2"
+                style={{ textDecoration: "none" }}
+              >
+                <i className="fs-5 bi bi-people"></i>
+                <span className="ms-1 d-none d-sm-inline"> Co-supervisor Requests</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/chat"
+                className="nav-link px-sm-0 px-2"
+                style={{ textDecoration: "none" }}
+              >
+                <i className="bi bi-chat-left-text-fill"></i>
+                <span className="ms-1 d-none d-sm-inline"> Group Chat</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/student/groupRegister"
+                className="nav-link px-sm-0 px-2"
+                style={{ textDecoration: "none" }}
+              >
+                <i className="bi bi-person-circle"></i>
+                <span className="ms-1 d-none d-sm-inline"> Staff Profile</span>
+              </Link>
+            </li>
           </ul>
         ) : (
           <ul

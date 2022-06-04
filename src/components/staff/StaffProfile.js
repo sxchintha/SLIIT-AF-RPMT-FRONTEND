@@ -102,15 +102,13 @@ export default function StaffProfile() {
                                                           </div>
 
                                                       </div>
-                                                      
-                     
                                                 </div>
                                               </div>
                                               <div class="col-md-4">
                                             <div class="p-3 py-5">
                                                 <div class="d-flex justify-content-between align-items-center experience">
                                                   <h5>Allocated Student Groups</h5>
-                                                  {/* <span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span> */}
+                                                
                                                 </div><br />
 
                                             </div>

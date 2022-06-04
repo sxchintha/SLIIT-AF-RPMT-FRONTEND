@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 import Footer from '../Footer';
 import Sidebar from '../Sidebar';
 
 function RequestCoSupervisor() {
 
+    const { id } = useParams();
     const[cosupervisor, setCoSupervisor] = useState([]);
 
     function getCookie(cname) {
@@ -39,9 +42,23 @@ function RequestCoSupervisor() {
         getCosupervisors();
     },[])
 
-    const handleAccept = (id) => {
+    const handleAccept = (id,groupId) => {
     axios
-      .put(`http://localhost:8070/student/supervisor-accept/${id}`,  {
+      .put(`http://localhost:8070/student/supervisor-accept/${id}/${groupId}`, {},  {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        window.location.reload(true);
+      })
+      .catch((er) => {
+        alert(er.message);
+      });
+  };
+
+  const handleReject = (id, groupId) => {
+    axios
+      .put(
+        `http://localhost:8070/staff/supervisor-reject/${id}/${groupId}`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
@@ -91,8 +108,13 @@ function RequestCoSupervisor() {
                                                                                 <td>{new Date(items.requestedDate).toDateString()}</td>
                                                                                 <td>{items.supervisorRequestStatus}</td>
 
-                                                                                <td><button type="button" className="btn btn-danger" onClick={() => {handleReject (items._id, items.groupId)}} >Reject</button></td>
-                                                                                <td><button type="button" className="btn btn-success" onClick={() => {handleAccept (items._id)}}>Accept</button></td>
+                                                                                <td><button type="button" 
+                                                                                className="btn btn-danger" 
+                                                                                onClick={() => {handleReject (items._id, items.groupId)}} >Reject</button></td>
+
+                                                                                <td><button type="button" 
+                                                                                className="btn btn-success" 
+                                                                                onClick={() => {handleAccept (items._id)}}>Accept</button></td>
                                                                             </tr>
                                                                         ))
                                                                     }

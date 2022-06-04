@@ -28,21 +28,52 @@ function UpdateStaffDetails() {
     }
     var token = getCookie("usertoken");
 
+    
     useEffect(() => {
-
-        const getStaffMember = () =>{
-            
-            axios.get(`http://localhost:8070/staff/get/${id}`,  {
-              headers: { Authorization: `Bearer ${token}` },
-            }).then((res) => {
-                setStaffmember(res.data.staff)
-                //console.log(res.data)
-            }).catch((er) => {
-                alert(er.message);
-           })       
-        }
-        getStaffMember();
+      
+      const getStaffMember = () =>{
+        
+        axios.get(`http://localhost:8070/staff/get/${id}`,  {
+          headers: { Authorization: `Bearer ${token}` },
+        }).then((res) => {
+          setStaffmember(res.data.staff)
+          //console.log(res.data)
+        }).catch((er) => {
+          alert(er.message);
+        })       
+      }
+      getStaffMember();
     },[])
+    
+    const onChange = (e) => {
+      setStaffmember({ ...staffMember, [e.target.name]: e.target.value })
+      // console.log(staffMember);
+  }
+
+
+    const updateStaff = (e) => {
+      console.log(staffMember);
+      
+      e.preventDefault();
+      
+      const UpdatedStaff = {
+        firstName: staffMember.firstName,
+        lastName: staffMember.lastName,
+        email: staffMember.email,
+        telephone: staffMember.telephone,
+
+      };
+      console.log(UpdatedStaff)
+      axios.put(`http://localhost:8070/staff/update/${id}`, staffMember, {
+        headers: { Authorization: `Bearer ${token}` },
+      }).then(() => {
+        alert("successful");
+      }).catch((e) => {
+        alert(e);
+        
+      });
+    };
+
 
   return (
     <div>
@@ -69,6 +100,7 @@ function UpdateStaffDetails() {
                                             </div>
                                         </div>
                                               <div class="col-md-5 profile-border">
+                                              <form onSubmit={updateStaff}>
                                                   <div class="p-3 py-5">
                                                       <div class="d-flex justify-content-between align-items-center mb-3">
                                                           <h5 class="text-right">Edit Profile</h5>
@@ -76,37 +108,38 @@ function UpdateStaffDetails() {
                                                       <div class="row mt-2">
                                                           <div class="col-md-6">
                                                             <label class="labels">First Name</label>
-                                                            <input type="text" class="form-control" value={staffMember.firstname}/></div>
+                                                            <input type="text" name="firstName" class="form-control" defaultValue={staffMember.firstname} onChange={onChange}/></div>
                                                           <div class="col-md-6"><label class="labels">Last Name</label>
-                                                          <input type="text" class="form-control" value={staffMember.lastname}/></div>
+                                                          <input type="text" name="lastName" class="form-control" defaultValue={staffMember.lastname} onChange={onChange}/></div>
                                                       </div>
                                                       <div class="row mt-3">
 
                                                           <div class="col-md-12"><label class="labels">Username</label>
-                                                            <input type="text" class="form-control" value={staffMember.username} readOnly/>                     
+                                                            <input type="text" name="username" class="form-control" defaultValue={staffMember.username} readOnly/>                     
                                                           </div>
 
                                                           <div class="col-md-12"><label class="labels label-pd-top">Research Area</label>
-                                                            <input type="text" class="form-control" value={staffMember.researcharea}/>
+                                                            <input type="text"  name="researchArea" class="form-control" defaultValue={staffMember.researcharea} readOnly/>
                                                           </div>
 
                                                           <div class="col-md-12"><label class="labels label-pd-top">Email ID</label>
-                                                            <input type="text" class="form-control" value={staffMember.email}/>                       
+                                                            <input type="text" name="email" class="form-control" defaultValue={staffMember.email} onChange={onChange}/>                       
                                                           </div>
 
                                                           <div class="col-md-12"><label class="labels label-pd-top">Mobile Number</label>
-                                                            <input type="text" class="form-control" value={staffMember.telephone}/>                       
+                                                            <input type="text" name="telephone" class="form-control" defaultValue={staffMember.telephone} onChange={onChange}/>                       
                                                           </div>
 
                                                       </div>
-                                                      <div class="mt-5 text-center"><button class="btn btn-secondary profile-button" type="button">Save Profile</button></div>
+                                                      <div class="mt-5 text-center"><button class="btn btn-secondary profile-button" type="submit">Save Profile</button></div>
                                                 </div>
+                                                </form>
                                               </div>
                                               <div class="col-md-4">
                                             <div class="p-3 py-5">
                                                 <div class="d-flex justify-content-between align-items-center experience">
                                                   <h5>Allocated Student Groups</h5>
-                                                    //group list
+                                                    
                                                 </div><br />
 
                                             </div>
