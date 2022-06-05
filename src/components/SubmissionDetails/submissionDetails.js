@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import FileBase64 from 'react-file-base64';
 import { createItem, getItems } from './functions';
 
+
 export default function SubmissionDetails() {
   const { id } = useParams();
   const [Submission, SetSubmission] = useState({
@@ -145,7 +146,7 @@ export default function SubmissionDetails() {
           onDone={({ base64 }) => setItem({ ...item, document: base64 })}
         />
         <div className="right-align">
-        <button class="btn btn-danger">submit</button>
+        <button class="btn btn-danger" onClick={window.location.replace(``)}>submit</button>
         </div>
         
         </div>

@@ -7,6 +7,8 @@ import { getOneItem } from '../../components/SubmissionDetails/api/index'
 // import fs from 'fs';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Sidebar from '../Sidebar';
+import Footer from '../Footer';
 
 //const cMapsDir = path.join(path.dirname(require.resolve('pdfjs-dist/package.json')), 'cmaps');
 
@@ -68,9 +70,21 @@ export default function Submissions() {
       }, []);
 
     return(
+
+      <div>
+      <div className="container-fluid overflow-hidden">
+          <div className="row vh-100 overflow-auto">
+              <Sidebar />
+
+              <div className="col d-flex flex-column h-sm-100">
+                  <main className="row overflow-auto">
+                      <div className="col pt-4 ps-4">
+                          {/* Body */}
+                          <h2>Evaluvate Student Topics</h2>
+                          <hr />
         
         <div class="docview">
-            <h1>Evaluvate Student Topics</h1>
+
             <div class="docview container">
         <Document 
           file={StudentDetails}
@@ -99,8 +113,6 @@ export default function Submissions() {
             Next
           </button>
         </div>
-        <h1>sdfjsdfls</h1>
-        Copy
         <div class="formsubmit">
 <form>
     <div class="form-group">
@@ -109,20 +121,29 @@ export default function Submissions() {
       <br/>
     </div>
     <div class="form-group">
-    <label for="disabledTextInput">Select wether Passed or failed</label>
+    <label for="disabledTextInput">Select wether Approved or Rejected</label>
     <select class="form-select" aria-label="Default select example" placeholder=''>
-        <option value="Passed">Passed</option>
-        <option value="Failed">Failed</option>
+        <option value="Approved">Approved</option>
+        <option value="Rejected">Rejected</option>
     </select>
     <br/>
     </div>
     <div class="form-group purple-border">
         <label for="exampleFormControlTextarea4">Feedback</label>
         <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+        <br/>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <br/>
 </form>
 </div>
+        </div>
+        </div>
+        </main>
+        <Footer />
+        </div>
+        </div>
+        </div>
         </div>
       
     );

@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom"
 import { MDBDataTableV5 } from 'mdbreact'
 import axios from "axios";
 
+import Sidebar from "../../components/Sidebar";
+import Footer from "../../components/Footer";
+
 
 function SubmissionList() {
 
@@ -12,6 +15,23 @@ function SubmissionList() {
         columns: [],
         rows: [],
     });
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let ca = document.cookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      var token = getCookie("usertoken");
     
 
     const tableColumns = [
@@ -60,6 +80,19 @@ function SubmissionList() {
 
     return (
         <div>
+        <div className="container-fluid overflow-hidden">
+            <div className="row vh-100 overflow-auto">
+                <Sidebar />
+
+                <div className="col d-flex flex-column h-sm-100">
+                    <main className="row overflow-auto">
+                        <div className="col pt-4 ps-4">
+                            {/* Body */}
+                            <h2>Panel Details</h2>
+                            <hr />
+                           
+                            
+        <div>
             <MDBDataTableV5
                 hover
                 entriesOptions={[5, 10, 20, 25]}
@@ -68,6 +101,14 @@ function SubmissionList() {
                 data={datatable}
                 searchTop
                 searchBottom={false} />
+        </div>
+
+        </div>
+                        </main>
+                        <Footer />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
