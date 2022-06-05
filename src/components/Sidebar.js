@@ -34,7 +34,7 @@ function Sidebar() {
   useEffect(() => {
     localToken && getCookie("usertoken")
       ? setUsername(localToken.fname)
-      : navigate("/login");
+      : navigate("/unauthorized");
 
     // console.log("Local Storage: " + localStorage.getItem('localToken'));
     // console.log("Cookie: " + getCookie('usertoken'));
