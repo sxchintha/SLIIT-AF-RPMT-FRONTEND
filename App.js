@@ -80,6 +80,7 @@ import SubmitPresentation from "./src/pages/Student/presentationSubmission";
 import Presentationlist from "./src/pages/Panels/presentationlist";
 import StudentProfileNew from "./src/pages/Student/studentProfileNew";
 import StudentProfileUpdate from "./src/pages/Student/StudentProfileUpdate";
+import HomePageNew from "./src/pages/homePage";
 
 createRoot(document.getElementById("app")).render(
   <BrowserRouter>
@@ -87,7 +88,7 @@ createRoot(document.getElementById("app")).render(
       {/* <AuthProvider> */}
       {/* <Header /> */}
       <Routes>
-        <Route path="/home" element={<HomePage />} />
+        {/* <Route path="/home" element={<HomePage />} /> */}
         <Route path="/students" element={<StudentManagement />} />
 
         <Route
@@ -177,8 +178,8 @@ createRoot(document.getElementById("app")).render(
           path="/student/profile/new/update"
           element={<StudentProfileUpdate />}
         />
-
-        <Route exact path="/" element={<App />} />
+        <Route path="/homeNEw" element={<HomePageNew />} />
+        <Route exact path="/" element={<HomePage />} />
       </Routes>
       {/* </AuthProvider> */}
     </div>
