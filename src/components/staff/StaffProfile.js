@@ -12,6 +12,7 @@ export default function StaffProfile() {
 
     const {id} = useParams();
     const [staffMember, setStaffmember] = useState([]);
+    const [studentgroups, setStudentGroups] = useState([]);
 
     function getCookie(cname) {
       let name = cname + "=";
@@ -29,6 +30,23 @@ export default function StaffProfile() {
     }
     var token = getCookie("usertoken");
 
+    useEffect (() => {
+
+      const getStudentGroups = () =>{
+
+        axios.get("http://localhost:8070/studentGroups/",{
+          headers: { Authorization: `Bearer ${token}` },
+        }).then((res) => {
+          setStudentGroups(res.data.groups);
+          console.log(res.data.groups);
+        
+        }).catch((er) => {
+          alert(er.message);
+        });
+      };
+      getStudentGroups();
+    },[])
+
     useEffect(() => {
 
         const getStaffMember = () =>{
@@ -37,7 +55,7 @@ export default function StaffProfile() {
               headers: { Authorization: `Bearer ${token}` },
             }).then((res) => {
                 setStaffmember(res.data.staff)
-                console.log(res.data)
+                // console.log(res.data)
             }).catch((er) => {
                 alert(er.message);
            })
@@ -45,6 +63,7 @@ export default function StaffProfile() {
         }
         getStaffMember();
     },[])
+
 
     return(
         <div>
@@ -59,58 +78,63 @@ export default function StaffProfile() {
                                 <h2>Staff Profile</h2>
                                 <hr />
 
-                                  <div class="container rounded bg-white mt-5 mb-5">
-                                    <div class="row">
-                                        <div class="col-md-3 profile-border">
-                                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                              <img class="rounded-circle profile-image" src={profileImage} />
-                                                <span class="font-weight-bold profile-name">{staffMember.firstname} {staffMember.lastname}</span>
-                                                <span class="text-black-50 profile-email">{staffMember.email}</span><span> </span>
-                                                <p class="p-edit-profile">Edit profile &emsp;
-                                                <Link to ={`/staff/profile/update/${id}`}><i class="bi bi-gear"></i></Link>
+                                  <div className="container rounded bg-white mt-5 mb-5">
+                                    <div className="row">
+                                        <div className="col-md-3 profile-border">
+                                            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                                              <img className="rounded-circle profile-image" src={profileImage} />
+                                                <span className="font-weight-bold profile-name">{staffMember.firstname} {staffMember.lastname}</span>
+                                                <span className="text-black-50 profile-email">{staffMember.email}</span><span> </span>
+                                                <p className="p-edit-profile">Edit profile &emsp;
+                                                <Link to ={`/staff/profile/update/${id}`}><i className="bi bi-gear"></i></Link>
                                                 </p>
                                             </div>
                                         </div>
-                                              <div class="col-md-5 profile-border">
-                                                  <div class="p-3 py-5">
-                                                      <div class="d-flex justify-content-between align-items-center mb-3">
-                                                          <h5 class="text-right">Profile Settings</h5>
+                                              <div className="col-md-5 profile-border">
+                                                  <div className="p-3 py-5">
+                                                      <div className="d-flex justify-content-between align-items-center mb-3">
+                                                          <h5 className="text-right">Profile Settings</h5>
                                                       </div>
-                                                      <div class="row mt-2">
-                                                          <div class="col-md-6">
-                                                            <label class="labels">First Name</label>
-                                                            <input type="text" class="form-control" value={staffMember.firstname} readOnly/></div>
-                                                          <div class="col-md-6"><label class="labels">Last Name</label>
-                                                          <input type="text" class="form-control" value={staffMember.lastname} readOnly/></div>
+                                                      <div className="row mt-2">
+                                                          <div className="col-md-6">
+                                                            <label className="labels">First Name</label>
+                                                            <input type="text" className="form-control" value={staffMember.firstname} readOnly/></div>
+                                                          <div className="col-md-6"><label className="labels">Last Name</label>
+                                                          <input type="text" className="form-control" value={staffMember.lastname} readOnly/></div>
                                                       </div>
-                                                      <div class="row mt-3">
+                                                      <div className="row mt-3">
 
-                                                          <div class="col-md-12"><label class="labels">Username</label>
-                                                            <input type="text" class="form-control" value={staffMember.username} readOnly/>                     
+                                                          <div className="col-md-12"><label className="labels">Username</label>
+                                                            <input type="text" className="form-control" value={staffMember.username} readOnly/>                     
                                                           </div>
 
-                                                          <div class="col-md-12"><label class="labels label-pd-top">Research Area</label>
-                                                            <input type="text" class="form-control" value={staffMember.researcharea} readOnly/>
+                                                          <div className="col-md-12"><label className="labels label-pd-top">Research Area</label>
+                                                            <input type="text" className="form-control" value={staffMember.researcharea} readOnly/>
                                                           </div>
 
-                                                          <div class="col-md-12"><label class="labels label-pd-top">Email ID</label>
-                                                            <input type="text" class="form-control" value={staffMember.email} readOnly/>                       
+                                                          <div className="col-md-12"><label className="labels label-pd-top">Email ID</label>
+                                                            <input type="text" className="form-control" value={staffMember.email} readOnly/>                       
                                                           </div>
 
-                                                          <div class="col-md-12"><label class="labels label-pd-top">Mobile Number</label>
-                                                            <input type="text" class="form-control" value={staffMember.telephone} readOnly/>                       
+                                                          <div className="col-md-12"><label className="labels label-pd-top">Mobile Number</label>
+                                                            <input type="text" className="form-control" value={staffMember.telephone} readOnly/>                       
                                                           </div>
 
                                                       </div>
                                                 </div>
                                               </div>
-                                              <div class="col-md-4">
-                                            <div class="p-3 py-5">
-                                                <div class="d-flex justify-content-between align-items-center experience">
-                                                  <h5>Allocated Student Groups</h5>
-                                                
-                                                </div><br />
+                                              <div className="col-md-4">
+                                            <div className="p-3 py-5">
+                                                  <h5>Student Groups &emsp;<i class="fas fa-users"></i></h5>
+                                                  <br />
+                                                  <ul class="list-group">
 
+                                                  {
+                                                    studentgroups.map((items, key) => (       
+                                                        <li key={key} class="list-group-item">{items.groupName}</li>     
+                                                    ))
+                                                      }                        
+                                                  </ul>  
                                             </div>
                                         </div>
                                     </div>
