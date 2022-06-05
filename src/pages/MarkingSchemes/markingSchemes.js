@@ -9,6 +9,7 @@ import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import SunEditor from 'suneditor-react'
 import 'suneditor/dist/css/suneditor.min.css';
+import Unauthorized from "../../components/landing/Unauthorized";
 
 
 function MarkingSchemes() {
@@ -19,7 +20,6 @@ function MarkingSchemes() {
     const [isLoaded, setIsLoaded] = useState(false)
     // const [markings, setMarkings] = useState([{_id: '34'}, {_id: '53'}]);
 
-    const navigate = useNavigate();
     const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     useEffect(() => {
@@ -115,7 +115,7 @@ function MarkingSchemes() {
                             </div>
                         </div>
                     </div>
-                    : navigate("/unauthorized")
+                    : <Unauthorized />
             }
         </div>
     )

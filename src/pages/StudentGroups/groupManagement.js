@@ -6,11 +6,13 @@ import Footer from '../../components/Footer'
 import Alert, { alertError, alertSuccess } from '../../components/Alerts'
 import GroupData from '../../components/StudentGroups/groupsTable'
 import { randomAllocate } from "../../index.api";
+import Unauthorized from "../../components/landing/Unauthorized";
 
 function Blank() {
 
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+    const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     const allocateRandom = (e) => {
         e.preventDefault()
@@ -34,32 +36,36 @@ function Blank() {
 
     return (
         <div>
-            <div className="container-fluid overflow-hidden">
-                <div className="row vh-100 overflow-auto">
-                    <Sidebar />
+            {
+                localToken.role == 2001 ?
+                    <div className="container-fluid overflow-hidden">
+                        <div className="row vh-100 overflow-auto">
+                            <Sidebar />
 
-                    <div className="col d-flex flex-column h-sm-100">
-                        <main className="row overflow-auto">
-                            <div className="col pt-4 ps-4">
-                                {/* Body */}
-                                <h2>Student Groups</h2>
-                                <button type="button" className="btn btn-outline-sliit-primary" onClick={allocateRandom}>
-                                    <i className="bi bi-plus-circle"></i> Allocate Panels Randomly
-                                </button>
-                                <hr />
-                                {
-                                    success ? alertSuccess(success)
-                                        : (error ? alertError(error)
-                                            : "")
-                                }
-                                <GroupData />
+                            <div className="col d-flex flex-column h-sm-100">
+                                <main className="row overflow-auto">
+                                    <div className="col pt-4 ps-4">
+                                        {/* Body */}
+                                        <h2>Student Groups</h2>
+                                        <button type="button" className="btn btn-outline-sliit-primary" onClick={allocateRandom}>
+                                            <i className="bi bi-plus-circle"></i> Allocate Panels Randomly
+                                        </button>
+                                        <hr />
+                                        {
+                                            success ? alertSuccess(success)
+                                                : (error ? alertError(error)
+                                                    : "")
+                                        }
+                                        <GroupData />
 
+                                    </div>
+                                </main>
+                                <Footer />
                             </div>
-                        </main>
-                        <Footer />
+                        </div>
                     </div>
-                </div>
-            </div>
+                    : <Unauthorized />
+            }
         </div>
     )
 }

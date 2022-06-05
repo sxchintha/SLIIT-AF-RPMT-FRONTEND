@@ -34,6 +34,7 @@ function Submission() {
         columns: [],
         rows: []
     })
+    const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     useEffect(() => {
         getAllSubmissions()
@@ -76,36 +77,41 @@ function Submission() {
 
     return (
         <div>
-            <div className="container-fluid overflow-hidden">
-                <div className="row vh-100 overflow-auto">
-                    <Sidebar />
+            {
+                localToken.role == 2001 ?
 
-                    <div className="col d-flex flex-column h-sm-100">
-                        <main className="row overflow-auto">
-                            <div className="col pt-4 ps-4">
-                                {/* Body */}
-                                <h2>Submissions</h2>
-                                <Link to='/submissions/new' className="btn btn-outline-sliit-primary">
-                                    <i className="bi bi-plus-circle"></i> New Submission
-                                </Link>
-                                <hr />
+                    <div className="container-fluid overflow-hidden">
+                        <div className="row vh-100 overflow-auto">
+                            <Sidebar />
 
-                                <MDBDataTableV5
-                                    hover
-                                    entriesOptions={[5, 10, 20, 25]}
-                                    entries={10}
-                                    pagesAmount={4}
-                                    data={datatable}
-                                    searchTop
-                                    // checkbox
-                                    searchBottom={false} />
+                            <div className="col d-flex flex-column h-sm-100">
+                                <main className="row overflow-auto">
+                                    <div className="col pt-4 ps-4">
+                                        {/* Body */}
+                                        <h2>Submissions</h2>
+                                        <Link to='/submissions/new' className="btn btn-outline-sliit-primary">
+                                            <i className="bi bi-plus-circle"></i> New Submission
+                                        </Link>
+                                        <hr />
 
+                                        <MDBDataTableV5
+                                            hover
+                                            entriesOptions={[5, 10, 20, 25]}
+                                            entries={10}
+                                            pagesAmount={4}
+                                            data={datatable}
+                                            searchTop
+                                            // checkbox
+                                            searchBottom={false} />
+
+                                    </div>
+                                </main>
+                                <Footer />
                             </div>
-                        </main>
-                        <Footer />
+                        </div>
                     </div>
-                </div>
-            </div>
+                    : <Unauthorized />
+            }
         </div>
     )
 }

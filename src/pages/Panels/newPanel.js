@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom"
-import Select from 'react-select'
 
-import { getAllStaff, createNewPanel } from '../../index.api'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import NewPanelForm from '../../components/panels/newPanelForm'
+import Unauthorized from "../../components/landing/Unauthorized";
 
 function NewPanel() {
 
-    const navigate = useNavigate();
     const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     return (
@@ -29,15 +27,13 @@ function NewPanel() {
                                         <hr />
                                         <NewPanelForm />
 
-
-
                                     </div>
                                 </main>
                                 <Footer />
                             </div>
                         </div>
                     </div>
-                    : navigate("/unauthorized")
+                    : <Unauthorized />
             }
         </div>
     )
