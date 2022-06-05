@@ -83,7 +83,7 @@ export default function SubmissionDetails() {
     const result = await createItem(item);
 
     // setItems([...items, result]);
-    console.log(result);
+    alert(result);
   };
 
   useEffect(() => {
@@ -190,3 +190,4 @@ export default function SubmissionDetails() {
     </>
   );
 }
+

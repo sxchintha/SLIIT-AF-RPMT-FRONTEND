@@ -78,7 +78,7 @@ function SubmissionList() {
 
                             </div>
                         </main>
-                        <Footer />
+                        <Footer/>
                     </div>
                 </div>
             </div>

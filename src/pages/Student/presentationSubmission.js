@@ -114,7 +114,7 @@ export default function SubmitPresentation() {
       .catch((e) => {
         console.log(newStudentGroup);
         console.log(e);
-        alert(e);
+        alert(e.response.data.error);
       });
   }
 
