@@ -107,7 +107,6 @@ export default function RegisterStaff() {
             <div>
                 <div className="container-fluid overflow-hidden">
                     <div className="row vh-100 overflow-auto">
-                        <Sidebar />
                         
                         <div className="col d-flex flex-column h-sm-100">
                             <main className="row overflow-auto">
