@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import './StaffProfile.css'
 import Sidebar from "../Sidebar";
@@ -10,6 +10,7 @@ import profileImage from '../../assets/img/profile-staff.png';
 function UpdateStaffDetails() {
 
     const {id} = useParams();
+    const navigate = useNavigate();
     const [staffMember, setStaffmember] = useState([]);
 
     function getCookie(cname) {
@@ -67,7 +68,8 @@ function UpdateStaffDetails() {
       axios.put(`http://localhost:8070/staff/update/${id}`, staffMember, {
         headers: { Authorization: `Bearer ${token}` },
       }).then(() => {
-        alert("successful");
+        // alert("successful");
+        navigate(`/staff/profile/${id}`)
       }).catch((e) => {
         alert(e);
         
@@ -138,7 +140,7 @@ function UpdateStaffDetails() {
                                               <div class="col-md-4">
                                             <div class="p-3 py-5">
                                                 <div class="d-flex justify-content-between align-items-center experience">
-                                                  <h5>Allocated Student Groups</h5>
+                                                  {/* <h5>Allocated Student Groups</h5> */}
                                                     
                                                 </div><br />
 
