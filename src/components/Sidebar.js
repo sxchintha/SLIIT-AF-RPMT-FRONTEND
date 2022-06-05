@@ -137,7 +137,6 @@ function Sidebar() {
             className="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
             id="menu"
           >
-            <li>this is student</li>
             <li>
               <Link
                 to="/student/groupRegister"
@@ -216,7 +215,10 @@ function Sidebar() {
                 style={{ textDecoration: "none" }}
               >
                 <i className="fs-5 bi bi-people"></i>
-                <span className="ms-1 d-none d-sm-inline"> Supervisor Requests</span>
+                <span className="ms-1 d-none d-sm-inline">
+                  {" "}
+                  Supervisor Requests
+                </span>
               </Link>
             </li>
 
@@ -227,7 +229,10 @@ function Sidebar() {
                 style={{ textDecoration: "none" }}
               >
                 <i className="fs-5 bi bi-people"></i>
-                <span className="ms-1 d-none d-sm-inline"> Co-supervisor Requests</span>
+                <span className="ms-1 d-none d-sm-inline">
+                  {" "}
+                  Co-supervisor Requests
+                </span>
               </Link>
             </li>
 
@@ -248,7 +253,10 @@ function Sidebar() {
                 style={{ textDecoration: "none" }}
               >
                 <i className="bi bi-chat-left-text-fill"></i>
-                <span className="ms-1 d-none d-sm-inline"> Presentation List</span>
+                <span className="ms-1 d-none d-sm-inline">
+                  {" "}
+                  Presentation List
+                </span>
               </Link>
             </li>
             <li>
