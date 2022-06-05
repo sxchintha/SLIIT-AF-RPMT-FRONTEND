@@ -88,7 +88,7 @@ function SubmissionList() {
                     <main className="row overflow-auto">
                         <div className="col pt-4 ps-4">
                             {/* Body */}
-                            <h2>Panel Details</h2>
+                            <h2>Presentation List</h2>
                             <hr />
                            
                             

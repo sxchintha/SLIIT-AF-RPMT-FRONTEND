@@ -54,6 +54,61 @@ export default function Submissions() {
         changePage(1);
       }
 
+    const [newFeedback,setnewFeedback]=useState({
+      itNumber:"",
+      status:"",
+      feedback:"",
+    })
+
+    const onChange=(e)=>{
+      setnewFeedback({
+        ...newFeedback,
+        [e.target.neme]:e.target.value,
+      })
+    }
+
+    const options=[
+      {
+        value:"Approved",
+        label:"Approved"
+      },
+
+      {
+        value:"Rejected",
+        label:"Rejected"
+      }
+    ];
+
+    const handleOptions = (e) => {
+      setnewFeedback({ ...newFeedback, ["status"]: e.value });
+    };
+
+    function sendData(e){
+      e.preventDefault();
+
+      const newFeedback={
+        itNumber:newFeedback.itNumber,
+        status:newFeedback.status,
+        feedback:newFeedback.feedback
+      }
+
+      axios
+      .post("http://localhost:8070/feedback/add",newFeedback,{
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(()=>{
+        console.log(newFeedback)
+        alert("Feedback successfully submitted")
+      })
+      .catch((e) => {
+        alert(e.response.data.error);
+      });
+
+
+
+
+    }
+
 
     useEffect(() => {
 
@@ -114,23 +169,31 @@ export default function Submissions() {
           </button>
         </div>
         <div class="formsubmit">
-<form>
+<form onSubmit={
+  {sendData}
+}>
     <div class="form-group">
       <label for="disabledTextInput">Leader ID</label>
-      <input type="text" id="itNumber" class="form-control" placeholder={id} disabled/>
+      <input type="text" id="itNumber" class="form-control" value={id} placeholder={id} disabled/>
       <br/>
     </div>
     <div class="form-group">
     <label for="disabledTextInput">Select wether Approved or Rejected</label>
-    <select class="form-select" aria-label="Default select example" placeholder=''>
-        <option value="Approved">Approved</option>
-        <option value="Rejected">Rejected</option>
-    </select>
+    {/* <Select
+                                      closeMenuOnSelect={false}
+                                      // components={animatedComponents}
+                                      name="status"
+                                      // value={panelData.panelMembers}
+                                      placeholder="Select status"
+                                      options={options}
+                                      onChange={handleOptions}
+                                      required
+                                    /> */}
     <br/>
     </div>
     <div class="form-group purple-border">
         <label for="exampleFormControlTextarea4">Feedback</label>
-        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+        <textarea class="form-control" id="feedback" name="feedback" rows="3" onChange={onchange}></textarea>
         <br/>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
