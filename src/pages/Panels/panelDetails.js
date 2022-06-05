@@ -14,35 +14,42 @@ function ShowPanelDetails() {
 
     const navigate = useNavigate()
     const [error, setError] = useState("");
+    const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     return (
         <div>
-            <div className="container-fluid overflow-hidden">
-                <div className="row vh-100 overflow-auto">
-                    <Sidebar />
+            {
+                localToken.role == 2001 ?
+                    <div className="container-fluid overflow-hidden">
+                        <div className="row vh-100 overflow-auto">
+                            <Sidebar />
 
-                    <div className="col d-flex flex-column h-sm-100">
-                        <main className="row overflow-auto">
-                            <div className="col pt-4 ps-4">
-                                {/* Body */}
-                                <h2>Panel Details</h2>
-                                <hr />
-                                {
-                                    error ? alertError(error) : ""
-                                }
-                                <div className="row flex">
-                                    <div className="col-6">
-                                        <PanelDetails />
+                            <div className="col d-flex flex-column h-sm-100">
+                                <main className="row overflow-auto">
+                                    <div className="col pt-4 ps-4">
+                                        {/* Body */}
+                                        <h2>Panel Details</h2>
+                                        <hr />
+                                        {
+                                            error ? alertError(error) : ""
+                                        }
+                                        <div className="row flex">
+                                            <div className="col-6">
+                                                <PanelDetails />
+                                            </div>
+                                            <div className="col-6" style={{ borderLeft: "1px solid #323A45" }}>
+                                                <PanelData />
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div className="col-6" style={{borderLeft: "1px solid #323A45"}}><PanelData /></div>
-                                </div>
-
+                                </main>
+                                <Footer />
                             </div>
-                        </main>
-                        <Footer />
+                        </div>
                     </div>
-                </div>
-            </div>
+                    : navigate("/unauthorized")
+            }
         </div>
     )
 }
