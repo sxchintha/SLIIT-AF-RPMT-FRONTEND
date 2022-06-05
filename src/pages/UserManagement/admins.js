@@ -58,7 +58,7 @@ function AdminsManagement() {
                 // console.log(res.data);
                 res.data.forEach(row => {
                     row.clickEvent = () => {
-                        navigate(`/admin/profile/${row._id}`)
+                        navigate(`/admins/profile/${row._id}`)
                     }
                 });
                 setDatatable({

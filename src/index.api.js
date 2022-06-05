@@ -14,7 +14,7 @@ function getCookie(cname) {
     }
     return "";
 }
-var token =''
+var token = ''
 function setToken() {
     token = getCookie('usertoken');
     return token
@@ -68,6 +68,7 @@ export const getStaffMember = (id) => API.get(`/staff/get/${id}`)
 export const getAcceptedStaff = () => API.get('/staff/accepted')
 export const getPendingStaff = () => API.get('/staff/pending')
 export const staffStatus = (id, data) => API.put(`/staff/accept-reject/${id}`, data)
+export const deleteStaff = (id) => API.delete(`/staff/delete/${id}`)
 
 export const getAllStudents = () => API.get('/student')
 export const getStudent = (id) => API.get(`/student/get/${id}`)
