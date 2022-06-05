@@ -1,22 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import profileImage from '../../assets/img/profile.png'
+import { Link, useParams } from "react-router-dom";
+import profileImage from '../../assets/img/profile-staff.png'
 import { getAdmin } from "../../index.api";
 
 export default function AdminProfile() {
 
     const localToken = JSON.parse(localStorage.getItem('localToken'))
     const [profiledata, setProfiledata] = useState([])
+    const [adminId, setAdminId] = useState('')
+    const params = useParams()
 
     useEffect(() => {
+        params.adminId ?
+            setAdminId(params.adminId)
+            : setAdminId(localToken.userId)
 
-        const adminId = localToken.userId
+        // console.log(localToken.userId);
+        // console.log(params.adminId);
+        // console.log(adminId);
+
+        // localToken.userId == adminId ?
+        //     console.log("equal")
+        //     : console.log("not equal")
+
+    }, [])
+
+    useEffect(() => {
         getAdmin({ adminId: adminId })
             .then(res => {
                 setProfiledata(res.data)
                 // console.log(res.data);
             })
-    }, [])
+    }, [adminId])
 
     return (
         <div className="container">
@@ -41,9 +56,13 @@ export default function AdminProfile() {
                                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     <Link to={'update'} state={{ profiledata }} className="text-secondary w-100 text-decoration-none">Edit Profile <i className="float-end bi-pencil" /></Link>
                                 </li>
-                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                    <Link to={'changepassword'} className="text-secondary w-100 text-decoration-none">Change Password <i className="float-end bi-key" /> </Link>
-                                </li>
+                                {
+                                    localToken.userId == adminId ?
+                                        <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                            <Link to={'changepassword'} className="text-secondary w-100 text-decoration-none">Change Password <i className="float-end bi-key" /> </Link>
+                                        </li>
+                                        : ''
+                                }
                             </ul>
                         </div>
                     </div>
