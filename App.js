@@ -108,6 +108,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/admins/new" element={<NewAdmin />} />
         <Route path="/admins" element={<AdminsManagement />} />
         <Route path="/admins/home" element={<AdminDashboard />} />
+        <Route path="/admins/profile/:adminId" element={<AdminProfile />} />
         <Route path="/admins/profile" element={<AdminProfile />} />
         <Route path="/admins/profile/update" element={<AdminProfileUpdate />} />
         <Route

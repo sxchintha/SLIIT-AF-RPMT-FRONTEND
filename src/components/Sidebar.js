@@ -159,7 +159,7 @@ function Sidebar() {
             </li>
             <li>
               <Link
-                to="/studentgroups"
+                to="/chat"
                 className="nav-link px-sm-0 px-2"
                 style={{ textDecoration: "none" }}
               >
