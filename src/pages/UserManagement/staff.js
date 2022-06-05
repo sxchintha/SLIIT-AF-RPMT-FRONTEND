@@ -6,10 +6,12 @@ import { getAcceptedStaff } from '../../index.api'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
+import Unauthorized from "../../components/landing/Unauthorized";
 
 function StaffManagement() {
 
     const navigate = useNavigate()
+    const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     const tableColumns = [
         {
@@ -59,33 +61,37 @@ function StaffManagement() {
 
     return (
         <div>
-            <div className="container-fluid overflow-hidden">
-                <div className="row vh-100 overflow-auto">
-                    <Sidebar />
+            {
+                localToken.role == 2001 ?
+                    <div className="container-fluid overflow-hidden">
+                        <div className="row vh-100 overflow-auto">
+                            <Sidebar />
 
-                    <div className="col d-flex flex-column h-sm-100">
-                        <main className="row overflow-auto">
-                            <div className="col pt-4 ps-4">
-                                {/* Body */}
-                                <h2>Staff</h2>
+                            <div className="col d-flex flex-column h-sm-100">
+                                <main className="row overflow-auto">
+                                    <div className="col pt-4 ps-4">
+                                        {/* Body */}
+                                        <h2>Staff</h2>
 
-                                <hr />
+                                        <hr />
 
-                                <MDBDataTableV5
-                                    hover
-                                    entriesOptions={[5, 10, 20, 25]}
-                                    entries={10}
-                                    pagesAmount={4}
-                                    data={datatable}
-                                    searchTop
-                                    searchBottom={false} />
+                                        <MDBDataTableV5
+                                            hover
+                                            entriesOptions={[5, 10, 20, 25]}
+                                            entries={10}
+                                            pagesAmount={4}
+                                            data={datatable}
+                                            searchTop
+                                            searchBottom={false} />
 
+                                    </div>
+                                </main>
+                                <Footer />
                             </div>
-                        </main>
-                        <Footer />
+                        </div>
                     </div>
-                </div>
-            </div>
+                    : <Unauthorized />
+            }
         </div>
     )
 }

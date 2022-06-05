@@ -3,11 +3,10 @@ import React from "react";
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import MarkingUpdateEditor from '../../components/marking_scheme/updateMarking'
-import { useNavigate } from "react-router-dom";
+import Unauthorized from "../../components/landing/Unauthorized";
 
 function UpdateMarking() {
 
-    const navigate = useNavigate();
     const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     return (
@@ -31,7 +30,7 @@ function UpdateMarking() {
                             </div>
                         </div>
                     </div>
-                    : navigate("/unauthorized")
+                    : <Unauthorized />
             }
         </div>
     )

@@ -9,6 +9,7 @@ import { alertError } from '../../components/Alerts'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
+import Unauthorized from "../../components/landing/Unauthorized";
 
 const subSelect = [
     {
@@ -64,6 +65,7 @@ function NewSubmission() {
     const navigate = useNavigate()
     const [error, setError] = useState("");
     const [isLoaded, setIsLoaded] = useState(false)
+    const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     // const [submissionData, setSubmissionData] = useState([{
     //     submissionName: "",
@@ -210,86 +212,90 @@ function NewSubmission() {
 
     return (
         <div>
-            <div className="container-fluid overflow-hidden">
-                <div className="row vh-100 overflow-auto">
-                    <Sidebar />
-                    <div className="col d-flex flex-column h-sm-100">
-                        {
-                            isLoaded ?
+            {
+                localToken.role == 2001 ?
+                    <div className="container-fluid overflow-hidden">
+                        <div className="row vh-100 overflow-auto">
+                            <Sidebar />
+                            <div className="col d-flex flex-column h-sm-100">
+                                {
+                                    isLoaded ?
 
-                                <main className="row overflow-auto">
-                                    <div className="col pt-4 ps-4">
-                                        {/* Body */}
-                                        <h2>Update Submission</h2>
-                                        <hr />
+                                        <main className="row overflow-auto">
+                                            <div className="col pt-4 ps-4">
+                                                {/* Body */}
+                                                <h2>Update Submission</h2>
+                                                <hr />
 
-                                        <div className="d-flex justify-content-center m-5">
-                                            <form className="w-75 g-3 sxch-glass-back" onSubmit={onSubmit}>
-                                                <i className="bi bi-arrow-left-circle fs-4" onClick={() => navigate(-1)}> Go back</i>
-                                                <div className="row g-3 mt-3">
-                                                    {
-                                                        error ? alertError(error) : ""
-                                                    }
+                                                <div className="d-flex justify-content-center m-5">
+                                                    <form className="w-75 g-3 sxch-glass-back" onSubmit={onSubmit}>
+                                                        <i className="bi bi-arrow-left-circle fs-4" onClick={() => navigate(-1)}> Go back</i>
+                                                        <div className="row g-3 mt-3">
+                                                            {
+                                                                error ? alertError(error) : ""
+                                                            }
 
-                                                    <div className="form-floating col-6">
-                                                        <input type="text" className="form-control" id="submissionName" name="submissionName"
-                                                            placeholder="Panel name" required onChange={handleSubmissionData} value={submissionData.submissionName} />
-                                                        <label htmlFor="panelname" className="ms-2 text-secondary">Name</label>
-                                                    </div>
-                                                    <Select
-                                                        closeMenuOnSelect={true}
-                                                        name="submissionType"
-                                                        placeholder="Submission type..."
-                                                        defaultValue={subTempSelect}
-                                                        options={subSelect}
-                                                        onChange={handleSubmissionType}
-                                                        required
-                                                    />
-                                                    <Select
-                                                        closeMenuOnSelect={false}
-                                                        name="fileTypes"
-                                                        placeholder="Requiered file type..."
-                                                        defaultValue={fileTempSelect}
-                                                        isMulti
-                                                        options={fileTypes}
-                                                        onChange={handleFileTypes}
-                                                        required
-                                                    />
+                                                            <div className="form-floating col-6">
+                                                                <input type="text" className="form-control" id="submissionName" name="submissionName"
+                                                                    placeholder="Panel name" required onChange={handleSubmissionData} value={submissionData.submissionName} />
+                                                                <label htmlFor="panelname" className="ms-2 text-secondary">Name</label>
+                                                            </div>
+                                                            <Select
+                                                                closeMenuOnSelect={true}
+                                                                name="submissionType"
+                                                                placeholder="Submission type..."
+                                                                defaultValue={subTempSelect}
+                                                                options={subSelect}
+                                                                onChange={handleSubmissionType}
+                                                                required
+                                                            />
+                                                            <Select
+                                                                closeMenuOnSelect={false}
+                                                                name="fileTypes"
+                                                                placeholder="Requiered file type..."
+                                                                defaultValue={fileTempSelect}
+                                                                isMulti
+                                                                options={fileTypes}
+                                                                onChange={handleFileTypes}
+                                                                required
+                                                            />
 
-                                                    <label className="form-label">Deadline:</label>
-                                                    <input type="datetime-local" className="col-5 m-1 mydatepicker" defaultValue={dateTempSet}
-                                                        name="deadline" id="deadline" onChange={handleSubmissionData} />
+                                                            <label className="form-label">Deadline:</label>
+                                                            <input type="datetime-local" className="col-5 m-1 mydatepicker" defaultValue={dateTempSet}
+                                                                name="deadline" id="deadline" onChange={handleSubmissionData} />
 
-                                                    <div className="form-floating">
-                                                        <textarea className="form-control" placeholder="Leave a note here" value={submissionData.description}
-                                                            id="description" name="description" onChange={handleSubmissionData}></textarea>
-                                                        <label htmlFor="floatingTextarea" className="text-secondary">Description / Notes</label>
-                                                    </div>
+                                                            <div className="form-floating">
+                                                                <textarea className="form-control" placeholder="Leave a note here" value={submissionData.description}
+                                                                    id="description" name="description" onChange={handleSubmissionData}></textarea>
+                                                                <label htmlFor="floatingTextarea" className="text-secondary">Description / Notes</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <label className="form-lable mt-4 me-3">Available for students</label>
+                                                        <label className="switch">
+                                                            <input type="checkbox" name="available" id="available" onChange={handleAvailable} defaultChecked={submissionData.available} />
+                                                            <span className="slider round"></span>
+                                                        </label>
+                                                        <br />
+
+                                                        <button type="submit" className="btn btn-outline-primary ms-2 mt-4">Update</button>
+                                                        <button type="button" className="btn btn-outline-danger ms-2 mt-4" onClick={onDelete}>
+                                                            <i className="bi bi-trash3-fill"></i> Remove
+                                                        </button>
+                                                    </form>
                                                 </div>
 
-                                                <label className="form-lable mt-4 me-3">Available for students</label>
-                                                <label className="switch">
-                                                    <input type="checkbox" name="available" id="available" onChange={handleAvailable} defaultChecked={submissionData.available} />
-                                                    <span className="slider round"></span>
-                                                </label>
-                                                <br />
 
-                                                <button type="submit" className="btn btn-outline-primary ms-2 mt-4">Update</button>
-                                                <button type="button" className="btn btn-outline-danger ms-2 mt-4" onClick={onDelete}>
-                                                    <i className="bi bi-trash3-fill"></i> Remove
-                                                </button>
-                                            </form>
-                                        </div>
-
-
-                                    </div>
-                                </main>
-                                : <LoadingSpinner />
-                        }
-                        <Footer />
+                                            </div>
+                                        </main>
+                                        : <LoadingSpinner />
+                                }
+                                <Footer />
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    : <Unauthorized />
+            }
         </div>
     )
 

@@ -1,13 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import EditPanelForm from '../../components/panels/editPanelForm'
+import Unauthorized from "../../components/landing/Unauthorized";
 
 function EditPanel() {
 
-    const navigate = useNavigate();
     const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     return (
@@ -32,7 +31,7 @@ function EditPanel() {
                             </div>
                         </div>
                     </div>
-                    : navigate("/unauthorized")
+                    : <Unauthorized />
             }
         </div>
     )
