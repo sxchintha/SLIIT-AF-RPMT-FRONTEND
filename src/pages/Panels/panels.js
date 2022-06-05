@@ -1,13 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import PanelData from '../../components/panels/panelTable'
+import Unauthorized from "../../components/landing/Unauthorized";
 
 function PanelsManagement() {
 
-    const navigate = useNavigate();
     const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     return (
@@ -36,7 +36,7 @@ function PanelsManagement() {
                             </div>
                         </div>
                     </div>
-                    : navigate("/unauthorized")
+                    : <Unauthorized />
             }
         </div>
     )

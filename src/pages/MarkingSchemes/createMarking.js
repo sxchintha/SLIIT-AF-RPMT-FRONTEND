@@ -4,10 +4,10 @@ import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import MarkingEditor from '../../components/marking_scheme/createMarking'
 import { useNavigate } from "react-router-dom";
+import Unauthorized from "../../components/landing/Unauthorized";
 
 function CreateMarking() {
 
-    const navigate = useNavigate();
     const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     return (
@@ -29,7 +29,7 @@ function CreateMarking() {
                             </div>
                         </div>
                     </div>
-                    : navigate("/unauthorized")
+                    : <Unauthorized />
             }
         </div>
     )

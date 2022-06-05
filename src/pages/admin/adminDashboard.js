@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom"
 
 import AcceptStaff from '../../components/admin/acceptStaff'
 import CountSummary from "../../components/admin/countsSummary";
@@ -7,10 +6,10 @@ import CountSummary from "../../components/admin/countsSummary";
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import DashboardExtra from "../../components/admin/dashboardExtra";
+import Unauthorized from '../../components/landing/Unauthorized'
 
 function AdminDashboard() {
 
-    const navigate = useNavigate();
     const localToken = JSON.parse(localStorage.getItem("localToken"));
 
     return (
@@ -43,7 +42,7 @@ function AdminDashboard() {
                             </div>
                         </div>
                     </div>
-                    : navigate("/unauthorized")
+                    : <Unauthorized />
             }
         </div>
     )

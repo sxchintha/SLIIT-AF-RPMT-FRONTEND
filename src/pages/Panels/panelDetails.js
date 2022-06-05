@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom"
-import Swal from 'sweetalert2'
-
-import { deletePanel } from '../../index.api'
 import { alertError } from '../../components/Alerts'
 
 import Sidebar from '../../components/Sidebar'
 import Footer from '../../components/Footer'
 import PanelDetails from '../../components/panels/panelDetails'
 import PanelData from '../../components/panels/panelTable'
+import Unauthorized from "../../components/landing/Unauthorized";
 
 function ShowPanelDetails() {
 
-    const navigate = useNavigate()
     const [error, setError] = useState("");
     const localToken = JSON.parse(localStorage.getItem("localToken"));
 
@@ -48,7 +44,7 @@ function ShowPanelDetails() {
                             </div>
                         </div>
                     </div>
-                    : navigate("/unauthorized")
+                    : <Unauthorized />
             }
         </div>
     )
