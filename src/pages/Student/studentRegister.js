@@ -58,7 +58,7 @@ export default function StudentRegsiter() {
         .then(() => {
           console.log(newStudentDetails);
           alert("Registeration succesfull!!");
-          navigate("/student/dashboard");
+          navigate("/login");
         })
         .catch((e) => {
           alert(e.response.data.error);
