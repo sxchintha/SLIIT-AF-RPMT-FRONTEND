@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import FileBase64 from 'react-file-base64';
-import { createItem, getItems } from './functions';
+import FileBase64 from "react-file-base64";
+import { createItem, getItems } from "./functions";
+import Footer from "../Footer";
+import Sidebar from "../Sidebar";
 
 export default function SubmissionDetails() {
   const { id } = useParams();
@@ -65,28 +67,32 @@ export default function SubmissionDetails() {
 
   var token = getCookie("usertoken");
 
-  
-  const localToken=localStorage.getItem('localToken');
+  const localToken = localStorage.getItem("localToken");
 
-  const [item, setItem] = useState({ name: '', document: '',itNumber:JSON.parse(localToken).username,date:new Date()});
+  const [item, setItem] = useState({
+    name: "",
+    document: "",
+    itNumber: JSON.parse(localToken).username,
+    date: new Date(),
+  });
   // console.log(JSON.parse(localStorage.getItem(localToken.username)))
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState([]);
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     const result = await createItem(item);
 
     // setItems([...items, result]);
-    console.log(result)
-  }
+    console.log(result);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await getItems();
-      console.log('fetch data;m', result)
-      setItems(result)
-    }
-    fetchData()
-  }, [])
+      console.log("fetch data;m", result);
+      setItems(result);
+    };
+    fetchData();
+  }, []);
 
   var deadline = new Date(Submission.deadline);
   // var ded = deadline.toDateString();
@@ -113,50 +119,71 @@ export default function SubmissionDetails() {
 
   return (
     <>
-          
-      <form action="" onSubmit={onSubmitHandler}>
-      <div class="card text-center">
-        <div class="card-header">
-          Submission Details - {Submission.submissionType}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">
-            Submission Name - {Submission.submissionName}
-            <input type="text" id="topicname"onChange={e => setItem({ ...item, name: e.target.value })} required></input>
-          </h5>
-          <p class="card-text">Submission Deadline - {ded}</p>
-          <p class="card-text text-danger">
-            {difference < 0 ? (
-              <>Overdue By - {daysLeft} Days</>
-            ) : (
-              <>Days Left - {daysLeft} Days</>
-            )}
-          </p>
-          <p class="card-text">{Submission.description}.</p>
-          <p class="card-text">File Types -{Submission.fileTypes}.</p>
-        {/* <input type="text" class="input-field" value={Submission.submissionName}
+      <div>
+        <div className="container-fluid overflow-hidden">
+          <div className="row vh-100 overflow-auto">
+            <Sidebar />
+
+            <div className="col d-flex flex-column h-sm-100">
+              <main className="row overflow-auto">
+                <div className="col pt-4 ps-4">
+                  <form action="" onSubmit={onSubmitHandler}>
+                    <div class="card text-center">
+                      <div class="card-header">
+                        Submission Details - {Submission.submissionType}
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          Submission Name - {Submission.submissionName}
+                          <input
+                            type="text"
+                            id="topicname"
+                            onChange={(e) =>
+                              setItem({ ...item, name: e.target.value })
+                            }
+                            required
+                          ></input>
+                        </h5>
+                        <p class="card-text">Submission Deadline - {ded}</p>
+                        <p class="card-text text-danger">
+                          {difference < 0 ? (
+                            <>Overdue By - {daysLeft} Days</>
+                          ) : (
+                            <>Days Left - {daysLeft} Days</>
+                          )}
+                        </p>
+                        <p class="card-text">{Submission.description}.</p>
+                        <p class="card-text">
+                          File Types -{Submission.fileTypes}.
+                        </p>
+                        {/* <input type="text" class="input-field" value={Submission.submissionName}
 
           onChange={e => setItem({ ...item, name: e.target.value })}
         /> */}
-        <FileBase64
-          type="file"
-          required
-          multiple={false}
-          onDone={({ base64 }) => setItem({ ...item, document: base64 })}
-        />
-        <div className="right-align">
-        <button class="btn btn-danger">submit</button>
-        </div>
-        
-        </div>
-        
-        <div class="card-footer text-muted">2 days ago</div>
-      </div>
-      <div>
+                        <FileBase64
+                          type="file"
+                          required
+                          multiple={false}
+                          onDone={({ base64 }) =>
+                            setItem({ ...item, document: base64 })
+                          }
+                        />
+                        <div className="right-align">
+                          <button class="btn btn-danger">submit</button>
+                        </div>
+                      </div>
 
-
+                      <div class="card-footer text-muted">2 days ago</div>
+                    </div>
+                    <div></div>
+                  </form>
+                </div>
+              </main>
+              <Footer />
+            </div>
+          </div>
+        </div>
       </div>
-      </form>
     </>
   );
 }
