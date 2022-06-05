@@ -7,7 +7,7 @@ import Sidebar from "../Sidebar";
 
 export default function AcceptTopics() {
   const { id } = useParams();
-  const [topics, setTopics] = useState([]);
+  const [supervisorrequest, setSupervisorRequest] = useState([]);
   const localToken = JSON.parse(localStorage.getItem('localToken'))
 
   function getCookie(cname) {
@@ -24,26 +24,26 @@ export default function AcceptTopics() {
     }
     return "";
   }
+
   var token = getCookie("usertoken");
 
   useEffect(() => {
 
-    const getTopics = () => {
-      axios
-        .get("http://localhost:8070/student/topics", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((res) => {
-          console.log(res);
-          setTopics(res.data);
-        })
-        .catch((er) => {
-          alert(er.message);
-        });
-    };
-    getTopics();
-  }, []);
-
+    const getSupervisor = () => {
+      axios.get(`http://localhost:8070/staff/supervisor/request/${localToken.userId}`,{
+        headers: { Authorization: `Bearer ${token}` },
+      }).then((res) => {
+        setSupervisorRequest(res.data.request)
+      }).catch((er) => {
+        alert(er)
+      })
+    }
+    getSupervisor();
+    
+  },[]);
+  // console.log(supervisorrequest);
+  
+  
   const handleAccept = (id, groupId) => {
     axios
       .put(`http://localhost:8070/staff/supervisor-accept/${id}/${groupId}`, { supervisorId: localToken.userId }, {
@@ -88,11 +88,11 @@ export default function AcceptTopics() {
 
                 <div className="card mb-3">
                   <div className="card-header">
-                    <i className="fa fa-table"></i> Staff Register Requests
+                    <i className="fa fa-table"></i> Supervisor Requests
                   </div>
                   <div className="card-body">
                     <div className="table-responsive">
-                      {topics.length > 0 ? (
+                      {supervisorrequest.length > 0 ? (
                         <table className="table">
                           <thead>
                             <tr>
@@ -104,7 +104,7 @@ export default function AcceptTopics() {
                             </tr>
                           </thead>
                           <tbody>
-                            {topics.map((items, key) => (
+                            {supervisorrequest.map((items, key) => (
                               <tr key={key}>
                                 <td>{items.groupId}</td>
                                 <td>{items.topic}</td>

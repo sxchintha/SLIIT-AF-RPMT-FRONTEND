@@ -9,6 +9,7 @@ function RequestCoSupervisor() {
 
     const { id } = useParams();
     const[cosupervisor, setCoSupervisor] = useState([]);
+    const localToken = JSON.parse(localStorage.getItem('localToken'))
 
     function getCookie(cname) {
         let name = cname + "=";
@@ -27,24 +28,25 @@ function RequestCoSupervisor() {
       var token = getCookie("usertoken");
 
     useEffect(() => {
-        const getCosupervisors = () => {
-            //all staff membersla fetch karala aran tiyenne methana
-            axios.get("http://localhost:8070/student/topics",  {
-                headers: { Authorization: `Bearer ${token}` },
-              }).then((res) => {
-                console.log(res.data)
-                setCoSupervisor(res.data)
-
+        const getCosupervisor = () => {
+            axios.get(`http://localhost:8070/staff/cosupervisor/request/${localToken.userId}`,{
+              headers: { Authorization: `Bearer ${token}` },
+            }).then((res) => {
+              // console.log(res);
+              setCoSupervisor(res.data.request)
             }).catch((er) => {
-                alert(er.message)
+              alert(er)
             })
         }
-        getCosupervisors();
+        getCosupervisor();
     },[])
 
-    const handleAccept = (id,groupId) => {
+
+
+    const handleAccept = (id, groupId) => {
+      const supervisorId = id;
     axios
-      .put(`http://localhost:8070/student/supervisor-accept/${id}/${groupId}`, {},  {
+      .put(`http://localhost:8070/staff/cosupervisor-accept/${id}/${groupId}`, { supervisorId: localToken.userId },  {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
@@ -56,13 +58,15 @@ function RequestCoSupervisor() {
   };
 
   const handleReject = (id, groupId) => {
+    const supervisorId = id;
     axios
       .put(
-        `http://localhost:8070/staff/supervisor-reject/${id}/${groupId}`, {}, {
+        `http://localhost:8070/staff/cosupervisor-reject/${id}/${groupId}`, { supervisorId: localToken.userId }, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
         window.location.reload(true);
+        // console.log("ddfwf")
       })
       .catch((er) => {
         alert(er.message);
@@ -84,7 +88,7 @@ function RequestCoSupervisor() {
 
                                     <div className="card mb-3">
                                         <div className="card-header">
-                                            <i className="fa fa-table"></i> Staff Register Requests</div>
+                                            <i className="fa fa-table"></i> Co-supervisor Requests</div>
                                         <div className="card-body">
                                             <div className="table-responsive">
                                                 {

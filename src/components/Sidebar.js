@@ -197,7 +197,7 @@ function Sidebar() {
           >
             <li>Staff Dashboard</li>
             <br></br>
-            <li>
+            {/* <li>
               <Link
                 to="/student/groupRegister"
                 className="nav-link px-sm-0 px-2"
@@ -206,7 +206,7 @@ function Sidebar() {
                 <i className="fs-5 bi bi-people"></i>
                 <span className="ms-1 d-none d-sm-inline"> Group Register</span>
               </Link>
-            </li>
+            </li> */}
 
             <li>
               <Link
