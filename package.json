@@ -42,7 +42,7 @@
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
     "react-file-base64": "^1.0.3",
-    "react-pdf": "^5.7.2",
+    "react-pdf": "^9.0.0",
     "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.3.0",
     "react-select": "^5.3.2",
